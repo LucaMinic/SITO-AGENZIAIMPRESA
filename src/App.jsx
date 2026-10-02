@@ -10,6 +10,7 @@ import { ApriAgenzia, Contatti, Pagamenti, SedePage, Sedi } from './pages/Contac
 import Legal from './pages/Legal.jsx'
 import NotFound from './pages/NotFound.jsx'
 import SearchPage from './pages/SearchPage.jsx'
+import Accessibility from './pages/Accessibility.jsx'
 
 function RouteEffects() {
   const { pathname, hash } = useLocation()
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/privacy-policy" element={<Legal doc="privacy" />} />
           <Route path="/cookie-policy" element={<Legal doc="cookie" />} />
           <Route path="/note-legali" element={<Legal doc="note" />} />
+          <Route path="/dichiarazione-accessibilita" element={<Accessibility />} />
           <Route path="/pagamenti" element={<Pagamenti />} />
           <Route path="/cerca" element={<SearchPage />} />
           <Route path="*" element={<NotFound />} />

@@ -21,6 +21,8 @@ import { AreaIndexRow } from './Home.jsx'
 import NotFound from './NotFound.jsx'
 
 const familyTitle = (id) => families.find((f) => f.id === id)?.title
+// Prima frase completa del testo (anteprima senza troncamenti).
+const firstSentence = (t) => (t.match(/^.*?[.!?](?=\s|$)/) ?? [t])[0]
 const contactHref = (subject) => `/contatti?oggetto=${encodeURIComponent(subject)}`
 
 /* Elenco prestazioni di un servizio: righe numerate o testo singolo. */
@@ -99,7 +101,7 @@ function SchedeList({ slugs, title = 'Schede informative' }) {
           <li key={s} className="bg-white">
             <Link to={serviceUrl(s)} className="group flex h-full flex-col p-6 transition-colors hover:bg-mist/60 md:p-8">
               <span className="text-h3 group-hover:text-brand">{approfondimenti[s].title}</span>
-              <span className="mt-3 line-clamp-3 text-[0.9375rem] text-muted">{approfondimenti[s].blocks[0].text}</span>
+              <span className="mt-3 text-[0.9375rem] text-muted">{firstSentence(approfondimenti[s].blocks[0].text)}</span>
               <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand">
                 Leggi la scheda <Icon name="arrow" className="size-4 transition-transform group-hover:translate-x-1" />
               </span>
@@ -299,10 +301,10 @@ export function ServicePage() {
         <div className="wrap section pt-12 md:pt-16">
           <div className="grid gap-16 lg:grid-cols-8 lg:gap-6">
             <Blocks blocks={scheda.blocks} className="text-[1.0625rem] md:text-lg lg:col-span-5" />
-            <aside className="space-y-10 lg:col-span-2 lg:col-start-7">
+            <div className="space-y-10 lg:col-span-2 lg:col-start-7">
               <FramedPhoto photo={areaPhotos[area.slug]} sizes="(min-width: 1024px) 24vw, 92vw" />
               <CtaAside subject={scheda.title} />
-            </aside>
+            </div>
           </div>
           <OtherServices area={area} />
         </div>
@@ -326,10 +328,10 @@ export function ServicePage() {
               </div>
             )}
           </section>
-          <aside className="space-y-10 lg:col-span-2 lg:col-start-7">
+          <div className="space-y-10 lg:col-span-2 lg:col-start-7">
             <FramedPhoto photo={areaPhotos[area.slug]} sizes="(min-width: 1024px) 24vw, 92vw" />
             <CtaAside subject={`${svc.title} – ${area.title}`} />
-          </aside>
+          </div>
         </div>
         <SchedeList slugs={area.approfondimenti} title={`Schede informative · ${area.title}`} />
         <OtherServices area={area} current={slug} />
@@ -394,9 +396,9 @@ function TransversalPage({ slug }) {
               ))}
             </ul>
           </div>
-          <aside className="lg:col-span-2 lg:col-start-7">
+          <div className="lg:col-span-2 lg:col-start-7">
             <CtaAside subject={svc.title} />
-          </aside>
+          </div>
         </div>
       </div>
     </>

@@ -71,7 +71,7 @@ function Hero() {
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
-      className="on-dark relative isolate flex min-h-[640px] flex-col overflow-hidden bg-brand-dark text-white h-[100svh] max-h-[1100px]"
+      className="on-dark relative isolate flex min-h-[max(640px,100svh)] flex-col overflow-hidden bg-brand-dark text-white"
     >
       {/* Fotografie in dissolvenza con lento zoom (Ken Burns) */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
@@ -88,14 +88,18 @@ function Hero() {
         {/* Velatura nei colori del brand per leggibilità e coerenza cromatica */}
         <div className="absolute inset-0 bg-brand-dark/55 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#00103f]/90 via-[#00103f]/55 to-transparent" />
+        {/* Su schermi stretti il testo occupa tutta la larghezza: velatura uniforme più scura (contrasto ≥ 4.5:1) */}
+        <div className="absolute inset-0 bg-[#00103f]/45 xl:hidden" />
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#00103f]/80 to-transparent" />
         {/* Taglio diagonale a 45° in Main Blu (layout system guideline) */}
         <div className="absolute -bottom-px right-0 hidden h-[38%] w-[30%] bg-brand/90 [clip-path:polygon(100%_0,100%_100%,0_100%)] md:block" />
       </div>
 
       <div className="wrap relative flex flex-1 flex-col justify-center pb-10 pt-32 md:pt-40">
+        {/* Il titolo principale della pagina resta sempre presente per le tecnologie assistive. */}
+        {index !== 0 && <h1 className="sr-only">{home.claim}</h1>}
         <div key={index} className="hero-in max-w-[62rem]">
-          <Eyebrow className="mb-8 text-white/85">{slide.eyebrow}</Eyebrow>
+          <Eyebrow className="mb-8 text-white">{slide.eyebrow}</Eyebrow>
           <Title className={`${slide.long ? 'text-h1 md:text-display max-w-[19ch]' : 'text-display max-w-[16ch]'} text-balance`}>
             {slide.title}
           </Title>

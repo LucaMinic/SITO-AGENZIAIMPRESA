@@ -47,7 +47,7 @@ export function SedePage() {
             <h2 className="text-h2 mb-10">Scrivici</h2>
             <ContactForm sede={sede.slug} origin={`sede-${sede.slug}`} />
           </div>
-          <aside className="space-y-10 lg:col-span-3">
+          <div className="space-y-10 lg:col-span-3">
             {sede.locations.map((l, i) => (
               <div key={l.city}>
                 <h2 className="text-h3">{l.city}</h2>
@@ -71,7 +71,7 @@ export function SedePage() {
               </span>
               <Icon name="arrowUpRight" className="size-4" />
             </a>
-          </aside>
+          </div>
         </div>
       </section>
     </>
@@ -87,7 +87,7 @@ export function Contatti() {
           <div className="lg:col-span-5">
             <ContactForm origin="contatti" />
           </div>
-          <aside className="lg:col-span-2 lg:col-start-7">
+          <div className="lg:col-span-2 lg:col-start-7">
             <h2 className="eyebrow mb-6 text-muted">Le nostre Sedi</h2>
             <ul className="space-y-6 border-t border-line pt-6">
               {sedi.flatMap((s) =>
@@ -99,7 +99,7 @@ export function Contatti() {
                 )),
               )}
             </ul>
-          </aside>
+          </div>
         </div>
       </section>
     </>

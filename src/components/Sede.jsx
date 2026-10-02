@@ -45,7 +45,7 @@ export function Address({ location, className = '' }) {
       <span className="block">
         {location.cap} {location.city}
       </span>
-      <a href={telHref(location.phone)} className="mt-3 inline-flex items-center gap-2 font-semibold text-ink hover:text-brand">
+      <a href={telHref(location.phone)} className="mt-3 inline-flex min-h-6 items-center gap-2 font-semibold text-ink hover:text-brand">
         <Icon name="phone" className="size-4 text-brand" />
         <span className="link-draw">tel: {location.phone}</span>
       </a>

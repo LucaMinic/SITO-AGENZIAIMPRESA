@@ -42,6 +42,9 @@
   .on-dark :focus-visible { outline-color: #fff; }
 
   a { color: inherit; text-decoration: none; }
+
+  /* Reflow (WCAG 1.4.10): le parole molto lunghe vanno a capo invece di causare scorrimento orizzontale. */
+  h1, h2, h3, h4, p, li, dd, dt, label { overflow-wrap: anywhere; }
 }
 
 /* Contenitore con margini ≈ 1/25 del lato lungo (guideline layout system). */

@@ -207,7 +207,7 @@ export function Breadcrumb({ items, className = '' }) {
           <li key={i} className="flex items-center gap-2">
             {i > 0 && <span aria-hidden="true" className="text-line">/</span>}
             {it.to && i < items.length - 1 ? (
-              <Link to={it.to} className="link-draw hover:text-ink">
+              <Link to={it.to} className="link-draw inline-block py-0.5 hover:text-ink">
                 {it.label}
               </Link>
             ) : (

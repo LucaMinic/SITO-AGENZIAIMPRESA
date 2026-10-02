@@ -14,6 +14,7 @@ const LEGAL_LINKS = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
   { to: '/cookie-policy', label: 'Cookie Policy' },
   { to: '/note-legali', label: 'Note legali' },
+  { to: '/dichiarazione-accessibilita', label: 'Accessibilità' },
 ]
 
 function Col({ title, children }) {
@@ -60,7 +61,7 @@ export default function Footer({ cta = true }) {
           <ul className="space-y-2.5 text-[0.9375rem]">
             {areas.map((a) => (
               <li key={a.slug}>
-                <Link to={areaUrl(a)} className="link-draw text-white/85 hover:text-white">
+                <Link to={areaUrl(a)} className="link-draw inline-block py-0.5 text-white/85 hover:text-white">
                   {a.title}
                 </Link>
               </li>
@@ -73,7 +74,7 @@ export default function Footer({ cta = true }) {
             <ul className="space-y-2.5 text-[0.9375rem]">
               {COMPANY_LINKS.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="link-draw text-white/85 hover:text-white">
+                  <Link to={l.to} className="link-draw inline-block py-0.5 text-white/85 hover:text-white">
                     {l.label}
                   </Link>
                 </li>
@@ -87,11 +88,11 @@ export default function Footer({ cta = true }) {
               {sedi.flatMap((s) =>
                 s.locations.map((l) => (
                   <li key={l.city}>
-                    <Link to={`/sedi/${s.slug}`} className="link-draw font-semibold">
+                    <Link to={`/sedi/${s.slug}`} className="link-draw inline-block py-0.5 font-semibold">
                       {l.city}
                     </Link>
                     <span className="block text-white/70">{l.address}</span>
-                    <a href={telHref(l.phone)} className="link-draw text-white/85 hover:text-white">
+                    <a href={telHref(l.phone)} className="link-draw inline-block py-0.5 text-white/85 hover:text-white">
                       {l.phone}
                     </a>
                   </li>
@@ -107,7 +108,7 @@ export default function Footer({ cta = true }) {
           <p className="max-w-3xl">
             {company.legalName} – CF / P.IVA {company.vat} – Capitale Sociale {company.capital} – Sede Legale{' '}
             {company.legalSeat} –{' '}
-            <a href={`mailto:${company.pec}`} className="link-draw hover:text-white">
+            <a href={`mailto:${company.pec}`} className="link-draw inline-block hover:text-white">
               {company.pec}
             </a>
             <br />({company.group})
@@ -116,7 +117,7 @@ export default function Footer({ cta = true }) {
             <ul className="flex flex-wrap gap-x-6 gap-y-2">
               {LEGAL_LINKS.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="link-draw hover:text-white">
+                  <Link to={l.to} className="link-draw inline-block py-1 hover:text-white">
                     {l.label}
                   </Link>
                 </li>
@@ -124,7 +125,7 @@ export default function Footer({ cta = true }) {
             </ul>
             <p>
               Powered by:{' '}
-              <a href={company.poweredBy.href} target="_blank" rel="noopener" className="link-draw hover:text-white">
+              <a href={company.poweredBy.href} target="_blank" rel="noopener" className="link-draw inline-block py-1 hover:text-white">
                 {company.poweredBy.label}
               </a>
             </p>

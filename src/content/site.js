@@ -67,6 +67,14 @@ export const allLocations = sedi.flatMap((s) => s.locations.map((l) => ({ ...l, 
 // TODO: sostituire con il link definitivo indicato dal cliente.
 export const REGISTER_URL = '/contatti?oggetto=Registrazione'
 
+// Dichiarazione di accessibilità (EAA – D.Lgs. 82/2022).
+// TODO: indicare l'indirizzo email per le segnalazioni quando fornito dal cliente.
+export const accessibility = {
+  email: '',
+  date: '2026-10-02',
+  reviewed: '2026-10-02',
+}
+
 export const telHref = (phone) => 'tel:+39' + phone.replace(/[^\d]/g, '')
 
 // Raggruppamento delle 10 aree per la navigazione (nuova information architecture).

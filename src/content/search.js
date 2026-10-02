@@ -67,6 +67,7 @@ const entries = [
   { kind: 'Pagina', title: 'Contattaci', url: '/contatti', excerpt: contactIntro, text: contactIntro + ' contatti modulo email' },
   { kind: 'Pagina', title: 'Apri la tua Agenzia', url: '/apri-la-tua-agenzia', excerpt: apriAgenzia.title, text: apriAgenzia.text },
   { kind: 'Pagina', title: 'Privacy Policy', url: '/privacy-policy', excerpt: 'Informativa privacy', text: 'privacy dati personali gdpr' },
+  { kind: 'Pagina', title: 'Dichiarazione di accessibilità', url: '/dichiarazione-accessibilita', excerpt: 'Accessibilità del sito, stato di conformità e recapiti per le segnalazioni.', text: 'accessibilità dichiarazione disabilità wcag eaa segnalazione' },
   { kind: 'Pagina', title: 'Cookie Policy', url: '/cookie-policy', excerpt: 'Informativa cookie', text: 'cookie tracciamento' },
 ].map((e) => ({ ...e, _title: normalize(e.title), _all: normalize(`${e.title} ${e.context ?? ''} ${e.text}`) }))
 
