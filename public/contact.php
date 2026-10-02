@@ -18,9 +18,9 @@ $RECIPIENTS = [
     'brescia' => 'brescia@agenziaimpresa.com',   // comprende Darfo Boario Terme
     'bologna' => 'adempio.pratiche@agenziaimpresa.com',
 ];
-// Modulo generale senza sede scelta e "Apri la tua Agenzia": sede legale (da confermare).
+// Modulo generale senza sede scelta: sede legale (da confermare). "Apri la tua Agenzia": rete agenzie.
 $DEFAULT_TO     = 'milano@agenziaimpresa.com';
-$APRI_AGENZIA_TO = 'milano@agenziaimpresa.com';
+$APRI_AGENZIA_TO = 'network@agenziaimpresa.com';
 // Mittente tecnico: deve appartenere al dominio dell'hosting per non finire in spam.
 $FROM = 'noreply@agenziaimpresa.com';
 // -------------------------------------------------------------------------------

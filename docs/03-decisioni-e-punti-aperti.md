@@ -9,7 +9,7 @@
 | 3 | Shop e webinar | Eliminare | Eliminati prodotti, carrello, checkout, account e i Termini e condizioni della sezione webinar. Le vecchie URL rimandano alla Home. |
 | 4 | Dati delle sedi | Lasciarli come sono | Indirizzi, telefoni, login e mappe sono identici all'originale. |
 | 5 | Colore del logo | Usare il Main Blu delle guideline | Simbolo in `#0007e0`. Versione negativa (bianca) creata dall'SVG ufficiale. |
-| 6 | Moduli di contatto | Destinatari per sede comunicati dal cliente | `public/contact.php` (hosting PHP): Milano → milano@, Mantova → brescia@ *(da confermare)*, Modena → modena@, Brescia → brescia@, Bologna → adempio.pratiche@ (tutti @agenziaimpresa.com). Il modulo generale e Apri la tua Agenzia vanno a milano@ *(da confermare)*. |
+| 6 | Moduli di contatto | Destinatari per sede comunicati dal cliente | `public/contact.php` (hosting PHP): Milano → milano@, Mantova → brescia@ *(da confermare)*, Modena → modena@, Brescia → brescia@, Bologna → adempio.pratiche@ (tutti @agenziaimpresa.com). Apri la tua Agenzia → network@; il modulo generale senza sede va a milano@ *(da confermare)*. |
 | 7 | Refusi | Correggerli | "Presentazionedocumenti", "BUSINNESS", "notra", "Richeste", "anuale", "ufficali", "HCCP" → HACCP, "Un storia", "Inizia, variazioni", una parentesi non chiusa, una voce duplicata nel Tribunale, spaziature. |
 
 ## Modifiche successive (02/10/2026)

@@ -18,6 +18,7 @@ export const photos = {
   laptop: { id: '1484807352052-23338990c6c6', alt: 'Professionista al lavoro su un computer portatile' },
   milanoTower: { id: '1741513542741-26c8d5cdedf6', alt: 'La Torre UniCredit a Milano Porta Nuova vista dal basso' },
   handshake: { id: '1521790797524-b2497295b8a0', alt: 'Stretta di mano tra due professionisti' },
+  newOffice: { id: '1524758631624-e2822e304c36', alt: 'Ufficio moderno e luminoso con area di lavoro e salottino' },
 
   // Aree di servizio
   pen: { id: '1455390582262-044cdead277a', alt: 'Firma con penna stilografica su un documento' },

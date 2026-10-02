@@ -48,7 +48,7 @@ export default async function handler(req, res) {
 
   const { RESEND_API_KEY, CONTACT_FROM, CONTACT_TO } = process.env
   const to =
-    (data.origin === 'apri-la-tua-agenzia' && process.env.CONTACT_TO_APRI_AGENZIA) ||
+    (data.origin === 'apri-la-tua-agenzia' && (process.env.CONTACT_TO_APRI_AGENZIA || 'network@agenziaimpresa.com')) ||
     (data.sede && (process.env[`CONTACT_TO_${data.sede.toUpperCase()}`] || RECIPIENTS[data.sede])) ||
     CONTACT_TO ||
     RECIPIENTS.milano

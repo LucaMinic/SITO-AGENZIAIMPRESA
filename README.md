@@ -67,7 +67,8 @@ I moduli inviano a `contact.php` (in `public/`), uno script PHP per l'hosting de
 | Modena | modena@agenziaimpresa.com |
 | Brescia (e Darfo Boario Terme) | brescia@agenziaimpresa.com |
 | Bologna | adempio.pratiche@agenziaimpresa.com |
-| Nessuna sede scelta / Apri la tua Agenzia | milano@agenziaimpresa.com *(da confermare)* |
+| Apri la tua Agenzia | network@agenziaimpresa.com |
+| Nessuna sede scelta | milano@agenziaimpresa.com *(da confermare)* |
 
 Gli indirizzi e il mittente tecnico (`noreply@agenziaimpresa.com`, che deve appartenere al dominio dell'hosting) si modificano in testa a `public/contact.php`.
 

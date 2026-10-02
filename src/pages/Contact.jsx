@@ -114,7 +114,7 @@ export function ApriAgenzia() {
         eyebrow="Apri la tua Agenzia"
         title={apriAgenzia.title}
         lead={apriAgenzia.text}
-        image={photos.handshake}
+        image={photos.newOffice}
         crumbs={[HOME_CRUMB, { label: 'Apri la tua Agenzia' }]}
       />
       <section className="wrap section pt-12 md:pt-16">
