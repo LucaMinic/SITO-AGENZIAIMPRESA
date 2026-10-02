@@ -30,7 +30,7 @@ const pages = [
     title: services[slug].title + SUFFIX,
     description: `${services[slug].title}: ${services[slug].blocks.map((b) => b.text).join(' ')}`.slice(0, 158),
   })),
-  ...Object.values(solutions).map((s) => ({ path: `/soluzioni/${s.slug}`, title: s.title + SUFFIX, description: s.teaser })),
+  ...Object.values(solutions).map((s) => ({ path: `/soluzioni/${s.slug}`, title: s.title + SUFFIX, description: s.intro.slice(0, 158) })),
   { path: '/chi-siamo', title: 'Chi siamo' + SUFFIX, description: 'AgenziaImpresa affianca le Aziende e gli Studi Professionali nella gestione e nella conservazione della documentazione digitalizzata.' },
   { path: '/sedi', title: 'Le nostre sedi' + SUFFIX, description: 'Milano, Mantova, Modena, Brescia, Darfo Boario Terme, Bologna: indirizzi e contatti delle sedi AgenziaImpresa.' },
   ...sedi.map((s) => ({

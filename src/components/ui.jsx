@@ -259,7 +259,7 @@ export function FramedPhoto({ photo, className = '', aspect = 'aspect-[4/3]', si
 }
 
 /* Testata delle pagine interne: fondo chiaro, titolo Light, filo blu. Con `image` aggiunge una fascia fotografica. */
-export function PageHero({ eyebrow, title, lead, crumbs, children, aside, image }) {
+export function PageHero({ eyebrow, title, lead, crumbs, children, aside, image, media }) {
   return (
     <header className="relative border-b border-line pt-28 md:pt-36">
       <div className="wrap pb-14 md:pb-20">
@@ -274,7 +274,8 @@ export function PageHero({ eyebrow, title, lead, crumbs, children, aside, image 
           {aside && <div className="lg:col-span-3 lg:pt-2">{aside}</div>}
         </div>
       </div>
-      {image && (
+      {media && <div className="wrap pb-12 md:pb-16">{media}</div>}
+      {image && !media && (
         <div className="wrap pb-12 md:pb-16">
           <FramedPhoto photo={image} eager aspect="aspect-[16/9] md:aspect-[21/8]" sizes="(min-width: 1440px) 1280px, 92vw" />
         </div>

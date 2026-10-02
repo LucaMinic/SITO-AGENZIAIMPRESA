@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { apriAgenzia, contactIntro, iban, sedi } from '../content/site.js'
 import ContactForm from '../components/ContactForm.jsx'
 import { Address, MapFacade, SedeRow } from '../components/Sede.jsx'
+import SediMap from '../components/SediMap.jsx'
 import { Icon, PageHero, Reveal } from '../components/ui.jsx'
 import NotFound from './NotFound.jsx'
 import { photos } from '../content/images.js'
@@ -15,7 +16,7 @@ export function Sedi() {
         eyebrow="Contatta le nostre Sedi"
         title="Le nostre Sedi"
         lead={contactIntro}
-        image={photos.milanoTower}
+        media={<SediMap />}
         crumbs={[HOME_CRUMB, { label: 'Sedi' }]}
       />
       <section className="wrap section pt-8 md:pt-12">
@@ -81,7 +82,7 @@ export function SedePage() {
 export function Contatti() {
   return (
     <>
-      <PageHero eyebrow="Contatti" title="Contattaci" lead={contactIntro} image={photos.contact} crumbs={[HOME_CRUMB, { label: 'Contatti' }]} />
+      <PageHero eyebrow="Contatti" title="Contattaci" lead={contactIntro} crumbs={[HOME_CRUMB, { label: 'Contatti' }]} />
       <section className="wrap section pt-12 md:pt-16">
         <div className="grid gap-16 lg:grid-cols-8 lg:gap-6">
           <div className="lg:col-span-5">

@@ -49,8 +49,8 @@ export default function Accessibility() {
           <h2>Contenuti di terze parti</h2>
           <ul>
             <li>
-              Le mappe delle sedi sono fornite da Google Maps. Indirizzi e numeri di telefono sono sempre disponibili anche
-              in forma testuale.
+              Le mappe sono fornite da OpenStreetMap (pagina “Le nostre Sedi”) e da Google Maps (pagine delle singole
+              sedi). Indirizzi e numeri di telefono sono sempre disponibili anche in forma testuale.
             </li>
             <li>
               Le aree clienti raggiungibili dal collegamento “Area clienti” sono piattaforme esterne (EccoSolution) non

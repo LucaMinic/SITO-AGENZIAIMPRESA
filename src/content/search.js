@@ -60,7 +60,7 @@ const entries = [
     title: s.title,
     url: `/soluzioni/${s.slug}`,
     excerpt: s.teaser,
-    text: [s.text, ...s.principles.map((p) => p.title + ' ' + p.text)].join(' '),
+    text: [s.text, s.intro, ...s.audience, ...s.needs.map((n) => n.title + ' ' + n.text), ...s.principles.map((p) => p.title + ' ' + p.text)].join(' '),
   })),
   { kind: 'Pagina', title: 'I nostri Servizi', url: '/servizi', excerpt: home.claim, text: home.claim },
   { kind: 'Pagina', title: 'Le nostre Sedi', url: '/sedi', excerpt: contactIntro, text: 'sedi contatti indirizzi telefoni login area clienti' },

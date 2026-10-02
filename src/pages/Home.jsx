@@ -4,6 +4,7 @@ import { about, allLocations, apriAgenzia, home, sedi, solutions, telHref } from
 import { areasByFamily, areaIndex, areaUrl, serviceCount, services } from '../content/services.js'
 import { photos } from '../content/images.js'
 import { ArrowLink, Button, Eyebrow, FramedPhoto, Icon, Photo, Reveal } from '../components/ui.jsx'
+import SediMap from '../components/SediMap.jsx'
 
 // Slide dell'hero: i titoli sono contenuti già presenti nel sito.
 const SLIDES = [
@@ -335,7 +336,7 @@ function Locations() {
           </div>
         </Reveal>
         <Reveal className="mt-14 md:mt-20">
-          <FramedPhoto photo={photos.portaNuova} aspect="aspect-[16/9] md:aspect-[21/7]" sizes="(min-width: 1440px) 1280px, 92vw" />
+          <SediMap />
         </Reveal>
         <Reveal as="ul" data-stagger="" className="mt-6 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
           {sedi.flatMap((s) =>
