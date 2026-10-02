@@ -1,0 +1,19 @@
+// Mappe Google originali delle pagine contatti (invariate).
+export const maps = {
+  "milano": [
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4752.6971614873155!2d9.239500999999999!3d45.4901543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c7605718210f%3A0xd5a7ec921737c87b!2sAgenzia%20Impresa%20Srl!5e1!3m2!1sit!2sit!4v1781790674957!5m2!1sit!2sit"
+  ],
+  "mantova": [
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2813.4573718834677!2d10.779961915547192!3d45.1575873790986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781d4056feaf163%3A0xb7d7c2eca29b9ecc!2sLargo%20di%20Porta%20Pradella%2C%2011%2C%2046100%20Mantova%20MN!5e0!3m2!1sit!2sit!4v1618829115688!5m2!1sit!2sit"
+  ],
+  "modena": [
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2838.269668407116!2d10.910580116219272!3d44.65284179523172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fef0852c2d623%3A0xb17a561d81d4d341!2sVia%20Carlo%20Zucchi%2C%2021%2C%2041123%20Modena%20MO!5e0!3m2!1sit!2sit!4v1633685105346!5m2!1sit!2sit"
+  ],
+  "brescia": [
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.8405012813264!2d10.214009877430316!3d45.53341512881608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781766dbb4a72c3%3A0x86387d52e9b90a4a!2sVia%20Romanino%20Gerolamo%2C%201%2C%2025122%20Brescia%20BS!5e0!3m2!1sit!2sit!4v1673623704370!5m2!1sit!2sit",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2776.7369992078425!2d10.189116177440562!3d45.89657290448452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4783d00f727bec5d%3A0x23f5bf43bb2365f5!2sVia%20Roccole%2C%2076a%2C%2025047%20Darfo%20Boario%20Terme%20BS!5e0!3m2!1sit!2sit!4v1673623753305!5m2!1sit!2sit"
+  ],
+  "bologna": [
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.5448955928096!2d11.337957676321718!3d44.50399127107459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477fd49be802a96b%3A0x6d56503079394539!2sVia%20Giovanni%20Amendola%2C%208e%2C%2040121%20Bologna%20BO!5e0!3m2!1sit!2sit!4v1762341089676!5m2!1sit!2sit"
+  ]
+}

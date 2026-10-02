@@ -1,0 +1,552 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/cosa-facciamo",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/imprese",
+      "destination": "/soluzioni/imprese",
+      "permanent": true
+    },
+    {
+      "source": "/professionisti",
+      "destination": "/soluzioni/professionisti",
+      "permanent": true
+    },
+    {
+      "source": "/formazione",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/restainup",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/paolo-pistoni",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/stefano-colli",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/i-nostri-centri",
+      "destination": "/sedi",
+      "permanent": true
+    },
+    {
+      "source": "/contatti-milano",
+      "destination": "/sedi/milano",
+      "permanent": true
+    },
+    {
+      "source": "/contatti-mantova",
+      "destination": "/sedi/mantova",
+      "permanent": true
+    },
+    {
+      "source": "/contatti-modena",
+      "destination": "/sedi/modena",
+      "permanent": true
+    },
+    {
+      "source": "/contatti-brescia",
+      "destination": "/sedi/brescia",
+      "permanent": true
+    },
+    {
+      "source": "/contatti-bologna",
+      "destination": "/sedi/bologna",
+      "permanent": true
+    },
+    {
+      "source": "/iban",
+      "destination": "/pagamenti",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/il-rilascio-del-certificato",
+      "destination": "/servizi/uffici-esterni",
+      "permanent": true
+    },
+    {
+      "source": "/nasce-restainup",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/obbligatorio-pagare-online-il-certificato-dorigine",
+      "destination": "/servizi/servizio-estero/il-certificato-d-origine",
+      "permanent": true
+    },
+    {
+      "source": "/fabio-guadagnini-intervista-paolo-pistoni",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/author/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/servizi",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-cookie-policy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy-2",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy-termini-e-condizioni",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/negozio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/prodotto/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/categoria-prodotto/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tag-prodotto/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/carrello",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/check-out",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/mio-account/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/mio-account",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/termini-e-condizioni-duso",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/compliance",
+      "destination": "/chi-siamo",
+      "permanent": true
+    },
+    {
+      "source": "/area-registro-imprese-comunica",
+      "destination": "/servizi/registro-imprese-comunica",
+      "permanent": true
+    },
+    {
+      "source": "/area-marchi",
+      "destination": "/servizi/marchi",
+      "permanent": true
+    },
+    {
+      "source": "/area-agenzia-entrate-adm",
+      "destination": "/servizi/agenzia-entrate-adm",
+      "permanent": true
+    },
+    {
+      "source": "/area-agenzia-territorio",
+      "destination": "/servizi/agenzia-territorio",
+      "permanent": true
+    },
+    {
+      "source": "/area-pratiche-suap",
+      "destination": "/servizi/pratiche-suap",
+      "permanent": true
+    },
+    {
+      "source": "/area-servizi-ambientali",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/area-servizio-estero",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/area-uffici-esterni",
+      "destination": "/servizi/uffici-esterni",
+      "permanent": true
+    },
+    {
+      "source": "/area-servizi-digitali",
+      "destination": "/servizi/servizi-digitali",
+      "permanent": true
+    },
+    {
+      "source": "/area-varie",
+      "destination": "/servizi/varie",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-atti-reg-imprese",
+      "destination": "/servizi/registro-imprese-comunica/deposito-atti-reg-imprese",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-comunicazioni-reg-imprese",
+      "destination": "/servizi/registro-imprese-comunica/deposito-comunicazioni-reg-imprese",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-denunce-rea-per-attivita-non-regolate",
+      "destination": "/servizi/registro-imprese-comunica/deposito-denunce-rea-per-attivita-non-regolate",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-denunce-rea-per-attivita-regolate",
+      "destination": "/servizi/registro-imprese-comunica/deposito-denunce-rea-per-attivita-regolate",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-comunicazioni-rea",
+      "destination": "/servizi/registro-imprese-comunica/deposito-comunicazioni-rea",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-comunicazione-anagrafiche-dati-iva",
+      "destination": "/servizi/registro-imprese-comunica/deposito-comunicazione-anagrafiche-dati-iva",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-comunicazione-anagrafiche-dati-inps",
+      "destination": "/servizi/registro-imprese-comunica/deposito-comunicazione-anagrafiche-dati-inps",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-comunicazione-anagrafiche-dati-inail",
+      "destination": "/servizi/registro-imprese-comunica/deposito-comunicazione-anagrafiche-dati-inail",
+      "permanent": true
+    },
+    {
+      "source": "/deposito-bilancio",
+      "destination": "/servizi/registro-imprese-comunica/deposito-bilancio",
+      "permanent": true
+    },
+    {
+      "source": "/trasformazione-file-xbrl",
+      "destination": "/servizi/registro-imprese-comunica/trasformazione-file-xbrl",
+      "permanent": true
+    },
+    {
+      "source": "/compilazione-elenco-soci",
+      "destination": "/servizi/registro-imprese-comunica/compilazione-elenco-soci",
+      "permanent": true
+    },
+    {
+      "source": "/codice-lei-legal-entity-identifier",
+      "destination": "/servizi/registro-imprese-comunica/codice-lei-legal-entity-identifier",
+      "permanent": true
+    },
+    {
+      "source": "/assistenza-e-approfondimenti-sui-quesiti-specifici-inerenti-gli-aspetti-normativi-e-procedurali",
+      "destination": "/servizi/assistenza-normativa-e-procedurale",
+      "permanent": true
+    },
+    {
+      "source": "/diritto-durgenza",
+      "destination": "/servizi/diritto-durgenza",
+      "permanent": true
+    },
+    {
+      "source": "/registrazione-marchio-dimpresa",
+      "destination": "/servizi/marchi/registrazione-marchio-dimpresa",
+      "permanent": true
+    },
+    {
+      "source": "/ufficio-successioni",
+      "destination": "/servizi/agenzia-entrate-adm/ufficio-successioni",
+      "permanent": true
+    },
+    {
+      "source": "/ufficio-del-registro",
+      "destination": "/servizi/agenzia-entrate-adm/ufficio-del-registro",
+      "permanent": true
+    },
+    {
+      "source": "/iva",
+      "destination": "/servizi/agenzia-entrate-adm/iva",
+      "permanent": true
+    },
+    {
+      "source": "/adm",
+      "destination": "/servizi/agenzia-entrate-adm/adm",
+      "permanent": true
+    },
+    {
+      "source": "/ries",
+      "destination": "/servizi/agenzia-entrate-adm/ries",
+      "permanent": true
+    },
+    {
+      "source": "/catasto",
+      "destination": "/servizi/agenzia-territorio/catasto",
+      "permanent": true
+    },
+    {
+      "source": "/conservatoria-e-registri-immobiliari",
+      "destination": "/servizi/agenzia-territorio/conservatoria-e-registri-immobiliari",
+      "permanent": true
+    },
+    {
+      "source": "/attivita-di-vendita-vicinato-commercio-elettronico-commercio-ingrosso",
+      "destination": "/servizi/pratiche-suap/attivita-di-vendita-vicinato-commercio-elettronico-commercio-ingrosso",
+      "permanent": true
+    },
+    {
+      "source": "/attivita-artigianali-produttive",
+      "destination": "/servizi/pratiche-suap/attivita-artigianali-produttive",
+      "permanent": true
+    },
+    {
+      "source": "/attivita-di-intrattenimento",
+      "destination": "/servizi/pratiche-suap/attivita-di-intrattenimento",
+      "permanent": true
+    },
+    {
+      "source": "/attivita-ricettive-alberghi-ostelli",
+      "destination": "/servizi/pratiche-suap/attivita-ricettive-alberghi-ostelli",
+      "permanent": true
+    },
+    {
+      "source": "/attivita-ricettive-casa-vacanze-affitta-camere-airbnb",
+      "destination": "/servizi/pratiche-suap/attivita-ricettive-casa-vacanze-affitta-camere-airbnb",
+      "permanent": true
+    },
+    {
+      "source": "/somministrazione-alimenti-e-bevande",
+      "destination": "/servizi/pratiche-suap/somministrazione-alimenti-e-bevande",
+      "permanent": true
+    },
+    {
+      "source": "/altre-attivita-ex-ps-agenzia-daffari",
+      "destination": "/servizi/pratiche-suap/altre-attivita-ex-ps-agenzia-daffari",
+      "permanent": true
+    },
+    {
+      "source": "/altre-autorizzazioni-comunali-scia",
+      "destination": "/servizi/pratiche-suap/altre-autorizzazioni-comunali-scia",
+      "permanent": true
+    },
+    {
+      "source": "/carta-esercizio-ambulanti",
+      "destination": "/servizi/pratiche-suap/carta-esercizio-ambulanti",
+      "permanent": true
+    },
+    {
+      "source": "/rentri",
+      "destination": "/servizi/servizi-ambientali/rentri",
+      "permanent": true
+    },
+    {
+      "source": "/r-a-e-e-a-e-e-registro-pile-ed-apparecchiature-elettroniche",
+      "destination": "/servizi/servizi-ambientali/r-a-e-e-a-e-e-registro-pile-ed-apparecchiature-elettroniche",
+      "permanent": true
+    },
+    {
+      "source": "/albo-gestori-ambientali",
+      "destination": "/servizi/servizi-ambientali/albo-gestori-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/mud",
+      "destination": "/servizi/servizi-ambientali/mud",
+      "permanent": true
+    },
+    {
+      "source": "/altre-prestazioni-professionali",
+      "destination": "/servizi/servizi-ambientali/altre-prestazioni-professionali",
+      "permanent": true
+    },
+    {
+      "source": "/consolati-ambasciate",
+      "destination": "/servizi/servizio-estero/consolati-ambasciate",
+      "permanent": true
+    },
+    {
+      "source": "/documenti-commerciali",
+      "destination": "/servizi/servizio-estero/documenti-commerciali",
+      "permanent": true
+    },
+    {
+      "source": "/camera-di-commercio-industria-e-artigianato",
+      "destination": "/servizi/uffici-esterni/camera-di-commercio-industria-e-artigianato",
+      "permanent": true
+    },
+    {
+      "source": "/comune-anagrafiche-certificazioni",
+      "destination": "/servizi/uffici-esterni/comune-anagrafiche-certificazioni",
+      "permanent": true
+    },
+    {
+      "source": "/tribunale",
+      "destination": "/servizi/uffici-esterni/tribunale",
+      "permanent": true
+    },
+    {
+      "source": "/agenzia-entrate",
+      "destination": "/servizi/uffici-esterni/agenzia-entrate",
+      "permanent": true
+    },
+    {
+      "source": "/firma-digitale-e-marche-temporali",
+      "destination": "/servizi/servizi-digitali/firma-digitale-e-marche-temporali",
+      "permanent": true
+    },
+    {
+      "source": "/pec",
+      "destination": "/servizi/servizi-digitali/pec",
+      "permanent": true
+    },
+    {
+      "source": "/banche-dati",
+      "destination": "/servizi/servizi-digitali/banche-dati",
+      "permanent": true
+    },
+    {
+      "source": "/varie",
+      "destination": "/servizi/varie/varie",
+      "permanent": true
+    },
+    {
+      "source": "/il-codice-lei-legal-entity-identifier",
+      "destination": "/servizi/registro-imprese-comunica/il-codice-lei",
+      "permanent": true
+    },
+    {
+      "source": "/cpi",
+      "destination": "/servizi/pratiche-suap/cpi",
+      "permanent": true
+    },
+    {
+      "source": "/hccp",
+      "destination": "/servizi/pratiche-suap/haccp",
+      "permanent": true
+    },
+    {
+      "source": "/banca-dati-f-gas",
+      "destination": "/servizi/servizi-ambientali/banca-dati-f-gas",
+      "permanent": true
+    },
+    {
+      "source": "/registro-f-gas",
+      "destination": "/servizi/servizi-ambientali/registro-f-gas",
+      "permanent": true
+    },
+    {
+      "source": "/registro-nazionale-accumulatori-pile",
+      "destination": "/servizi/servizi-ambientali/registro-nazionale-accumulatori-pile",
+      "permanent": true
+    },
+    {
+      "source": "/valutazione-dellimpatto-acustico",
+      "destination": "/servizi/servizi-ambientali/valutazione-dellimpatto-acustico",
+      "permanent": true
+    },
+    {
+      "source": "/il-certificato-d-origine",
+      "destination": "/servizi/servizio-estero/il-certificato-d-origine",
+      "permanent": true
+    },
+    {
+      "source": "/il-carnet-ata",
+      "destination": "/servizi/servizio-estero/il-carnet-ata",
+      "permanent": true
+    },
+    {
+      "source": "/il-codice-meccanografico",
+      "destination": "/servizi/servizio-estero/il-codice-meccanografico",
+      "permanent": true
+    },
+    {
+      "source": "/visti-consolari-e-legalizzazioni",
+      "destination": "/servizi/servizio-estero/visti-consolari-e-legalizzazioni",
+      "permanent": true
+    },
+    {
+      "source": "/bolle-doganali-digitali",
+      "destination": "/servizi/servizio-estero/bolle-doganali-digitali",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ]
+}
