@@ -8,7 +8,7 @@ const HOME_CRUMB = { label: 'Home', to: '/' }
 export function ChiSiamo() {
   return (
     <>
-      <PageHero eyebrow="Chi siamo" title={about.storyTitle} image={photos.corridor} crumbs={[HOME_CRUMB, { label: 'Chi siamo' }]} />
+      <PageHero eyebrow="Chi siamo" title={about.storyTitle} image={photos.glassOffice} crumbs={[HOME_CRUMB, { label: 'Chi siamo' }]} />
 
       <section className="section">
         <div className="wrap grid gap-12 lg:grid-cols-8 lg:gap-6">
@@ -62,7 +62,7 @@ export function Soluzioni({ kind }) {
       <PageHero
         eyebrow="AgenziaImpresa Buffetti Group"
         title={s.title}
-        image={kind === 'imprese' ? photos.meeting : photos.desk}
+        image={kind === 'imprese' ? photos.glassTowers : photos.laptop}
         crumbs={[HOME_CRUMB, { label: 'Soluzioni' }, { label: s.label }]}
       />
       <section className="section">

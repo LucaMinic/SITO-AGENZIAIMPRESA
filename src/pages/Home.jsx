@@ -167,7 +167,7 @@ function Intro() {
     <section className="section">
       <div className="wrap grid gap-12 lg:grid-cols-8 lg:items-center lg:gap-6">
         <Reveal className="lg:col-span-3">
-          <FramedPhoto photo={photos.boardroom} aspect="aspect-[4/5]" sizes="(min-width: 1024px) 36vw, 92vw" />
+          <FramedPhoto photo={photos.executiveOffice} aspect="aspect-[4/5]" sizes="(min-width: 1024px) 36vw, 92vw" />
         </Reveal>
         <Reveal className="lg:col-span-4 lg:col-start-5">
           <Eyebrow className="mb-8 text-brand">Chi siamo</Eyebrow>
@@ -314,7 +314,7 @@ function Locations() {
           </div>
         </div>
         <Reveal className="mt-14 md:mt-20">
-          <FramedPhoto photo={photos.milano} aspect="aspect-[16/9] md:aspect-[21/7]" sizes="(min-width: 1440px) 1280px, 92vw" />
+          <FramedPhoto photo={photos.navigli} aspect="aspect-[16/9] md:aspect-[21/7]" sizes="(min-width: 1440px) 1280px, 92vw" />
         </Reveal>
         <ul className="mt-6 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
           {sedi.flatMap((s) =>
@@ -361,7 +361,7 @@ export function OpenAgencyBand() {
           </div>
           <div className="on-dark relative isolate flex min-h-72 items-end overflow-hidden bg-brand p-8 text-white md:p-14 lg:col-span-3 lg:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)] lg:pl-24">
             <div aria-hidden="true" className="absolute inset-0 -z-10">
-              <Photo photo={photos.teamwork} sizes="(min-width: 1024px) 36vw, 92vw" />
+              <Photo photo={photos.boardroom} sizes="(min-width: 1024px) 36vw, 92vw" />
               <div className="absolute inset-0 bg-brand mix-blend-multiply opacity-80" />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/70 to-transparent" />
             </div>

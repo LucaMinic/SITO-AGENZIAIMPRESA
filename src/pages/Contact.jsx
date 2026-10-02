@@ -15,7 +15,7 @@ export function Sedi() {
         eyebrow="Contatta le nostre Sedi"
         title="Le nostre Sedi"
         lead={contactIntro}
-        image={photos.milano}
+        image={photos.milanoTower}
         crumbs={[HOME_CRUMB, { label: 'Sedi' }]}
       />
       <section className="wrap section pt-8 md:pt-12">
@@ -81,7 +81,7 @@ export function SedePage() {
 export function Contatti() {
   return (
     <>
-      <PageHero eyebrow="Contatti" title="Contattaci" lead={contactIntro} image={photos.handshake} crumbs={[HOME_CRUMB, { label: 'Contatti' }]} />
+      <PageHero eyebrow="Contatti" title="Contattaci" lead={contactIntro} image={photos.contact} crumbs={[HOME_CRUMB, { label: 'Contatti' }]} />
       <section className="wrap section pt-12 md:pt-16">
         <div className="grid gap-16 lg:grid-cols-8 lg:gap-6">
           <div className="lg:col-span-5">
@@ -113,7 +113,7 @@ export function ApriAgenzia() {
         eyebrow="Apri la tua Agenzia"
         title={apriAgenzia.title}
         lead={apriAgenzia.text}
-        image={photos.team}
+        image={photos.handshake}
         crumbs={[HOME_CRUMB, { label: 'Apri la tua Agenzia' }]}
       />
       <section className="wrap section pt-12 md:pt-16">

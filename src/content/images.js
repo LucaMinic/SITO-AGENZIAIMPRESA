@@ -4,40 +4,48 @@
 // secondo le guideline (Human Soul / Smart Interaction / Pure Tech) quando disponibili.
 
 export const photos = {
+  // Hero slider (Home)
   skyline: { id: '1486406146926-c627a92ad1ab', alt: 'Grattacieli di un distretto direzionale visti dal basso' },
   officeView: { id: '1497215728101-856f4ea42174', alt: 'Ufficio luminoso con vista sulla città' },
   teamwork: { id: '1600880292203-757bb62b4baf', alt: 'Due professionisti si danno il cinque durante una riunione' },
-  corridor: { id: '1497366754035-f200968a6e72', alt: 'Corridoio di un ufficio moderno con pareti vetrate' },
-  boardroom: { id: '1431540015161-0bf868a2d407', alt: 'Sala riunioni con grandi vetrate' },
-  meeting: { id: '1542744173-8e7e53415bb0', alt: 'Riunione aziendale attorno a un tavolo con computer portatili' },
-  desk: { id: '1454165804606-c3d57bc86b40', alt: 'Professionisti al lavoro su documenti e computer portatili' },
-  milano: { id: '1520440229-6469a149ac59', alt: 'Il Duomo di Milano' },
-  handshake: { id: '1521791136064-7986c2920216', alt: 'Stretta di mano tra due professionisti' },
-  team: { id: '1552664730-d307ca884978', alt: 'Gruppo di lavoro in riunione davanti a una lavagna' },
-  signing: { id: '1450101499163-c8848c66ca85', alt: 'Firma di un documento' },
-  design: { id: '1434626881859-194d67b2b86f', alt: 'Tavolo di lavoro con tablet e grafici stampati' },
-  tax: { id: '1554224154-26032ffc0d07', alt: 'Modulistica fiscale, calcolatrice e caffè' },
-  plans: { id: '1581092160562-40aa08e78837', alt: 'Tecnico al lavoro su disegni e planimetrie' },
-  shop: { id: '1556740749-887f6717d7e4', alt: 'Esercente e cliente al banco di un locale' },
-  recycling: { id: '1532996122724-e3c354a0b15b', alt: 'Contenitori colorati per la raccolta differenziata' },
-  shipping: { id: '1578575437130-527eed3abbec', alt: 'Nave portacontainer in porto' },
-  justice: { id: '1589829545856-d10d557cf95f', alt: 'Statua della Giustizia con la bilancia' },
-  digital: { id: '1563986768609-322da13575f3', alt: 'Persona che usa smartphone e computer portatile' },
-  documents: { id: '1554224155-6726b3ff858f', alt: 'Documenti, ricevute e calcolatrice su una scrivania' },
+
+  // Sezioni e pagine
+  executiveOffice: { id: '1497366811353-6870744d04b2', alt: 'Ufficio direzionale con grandi vetrate' },
+  boardroom: { id: '1497366858526-0766cadbe8fa', alt: 'Sala riunioni con tavolo e grandi finestre' },
+  glassOffice: { id: '1497366412874-3415097a27e7', alt: 'Uffici moderni con pareti vetrate' },
+  towers: { id: '1449157291145-7efd050a4d0e', alt: 'Grattacieli nella nebbia visti dal basso' },
+  glassTowers: { id: '1511818966892-d7d671e672a2', alt: 'Grattacieli in vetro di un distretto direzionale' },
+  laptop: { id: '1484807352052-23338990c6c6', alt: 'Professionista al lavoro su un computer portatile' },
+  navigli: { id: '1513581166391-887a96ddeafd', alt: 'I Navigli di Milano al tramonto' },
+  milanoTower: { id: '1741513542741-26c8d5cdedf6', alt: 'La Torre UniCredit a Milano Porta Nuova vista dal basso' },
+  handshake: { id: '1521790797524-b2497295b8a0', alt: 'Stretta di mano tra due professionisti' },
+  contact: { id: '1505409859467-3a796fd5798e', alt: 'Uffici moderni con area di accoglienza e vista sulla città' },
+
+  // Aree di servizio
+  pen: { id: '1455390582262-044cdead277a', alt: 'Firma con penna stilografica su un documento' },
+  palette: { id: '1561070791-2526d30994b5', alt: 'Studio di design con palette di colori e campioni' },
+  tax: { id: '1554224155-8d04cb21cd6c', alt: 'Calcoli con lo smartphone su documenti fiscali' },
+  house: { id: '1600585154340-be6161a56a0c', alt: 'Abitazione moderna immersa nel verde' },
+  restaurant: { id: '1517248135467-4c7edcad34c4', alt: 'Sala di un ristorante elegante' },
+  wind: { id: '1466611653911-95081537e5b7', alt: 'Pale eoliche al tramonto' },
+  containers: { id: '1494412519320-aa613dfb7738', alt: 'Vista aerea di container in un terminal portuale' },
+  courthouse: { id: '1701605920759-7b523ee7748c', alt: 'Palazzo di giustizia con colonnato neoclassico' },
+  workstation: { id: '1555421689-491a97ff2040', alt: 'Postazione di lavoro digitale con tastiera' },
+  clipboard: { id: '1586282391129-76a6df230234', alt: 'Cartellina con documenti accanto a un computer portatile' },
 }
 
 // Immagine di ogni area di servizio.
 export const areaPhotos = {
-  'registro-imprese-comunica': photos.signing,
-  marchi: photos.design,
+  'registro-imprese-comunica': photos.pen,
+  marchi: photos.palette,
   'agenzia-entrate-adm': photos.tax,
-  'agenzia-territorio': photos.plans,
-  'pratiche-suap': photos.shop,
-  'servizi-ambientali': photos.recycling,
-  'servizio-estero': photos.shipping,
-  'uffici-esterni': photos.justice,
-  'servizi-digitali': photos.digital,
-  varie: photos.documents,
+  'agenzia-territorio': photos.house,
+  'pratiche-suap': photos.restaurant,
+  'servizi-ambientali': photos.wind,
+  'servizio-estero': photos.containers,
+  'uffici-esterni': photos.courthouse,
+  'servizi-digitali': photos.workstation,
+  varie: photos.clipboard,
 }
 
 const WIDTHS = [480, 768, 1080, 1440, 1920, 2400]

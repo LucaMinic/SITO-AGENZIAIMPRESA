@@ -127,7 +127,7 @@ export function ServicesHub() {
         eyebrow="Servizi"
         title="I nostri Servizi"
         lead={home.claim}
-        image={photos.officeView}
+        image={photos.towers}
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Servizi' }]}
         aside={
           <dl className="grid grid-cols-2 border-t border-ink lg:mt-6">
