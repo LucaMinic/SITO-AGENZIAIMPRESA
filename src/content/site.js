@@ -65,8 +65,8 @@ export const sedi = [
 export const allLocations = sedi.flatMap((s) => s.locations.map((l) => ({ ...l, sede: s.slug })))
 
 // Link della voce "Registrati" nel menu.
-// TODO: sostituire con il link definitivo indicato dal cliente.
-export const REGISTER_URL = '/contatti?oggetto=Registrazione'
+// Registrazione sulla piattaforma Adempio (link indicato dal cliente, ottobre 2026).
+export const REGISTER_URL = 'https://www.adempio.it/#/register'
 
 // Dichiarazione di accessibilità (EAA – D.Lgs. 82/2022).
 // TODO: indicare l'indirizzo email per le segnalazioni quando fornito dal cliente.

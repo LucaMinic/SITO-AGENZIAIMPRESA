@@ -26,7 +26,7 @@
 - **Ricerca:** voce "Cerca" nel menu, con suggerimenti mentre si digita e navigazione da tastiera. La pagina `/cerca` mostra tutti i risultati. Si cercano aree, servizi, prestazioni, schede, sedi e pagine.
 - **Hero slider in Home:** 3 slide, dissolvenza, zoom lento, avanzamento, pausa. I titoli sono testi già presenti nel sito.
 - **Fotografie Unsplash** (licenza con uso commerciale gratuito), servite dal CDN di Unsplash in formato e dimensione automatici. Elenco in `src/content/images.js`.
-- **Voce "Registrati"** nel menu, nel pannello Area clienti e nel menu mobile. Il link provvisorio è `/contatti?oggetto=Registrazione`: il link definitivo va impostato in `REGISTER_URL` (`src/content/site.js`).
+- **Voce "Registrati"** nel menu, nel pannello Area clienti e nel menu mobile. Punta alla registrazione sulla piattaforma Adempio: `https://www.adempio.it/#/register`, che si apre in una nuova scheda (`REGISTER_URL` in `src/content/site.js`).
 
 **Header:** ottimizzato per tutte le larghezze, verificato da 1024 a 2560 px. Contenuti fino a 1600 px di larghezza.
 
