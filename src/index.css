@@ -168,6 +168,59 @@
 .hero-in > *:nth-child(3) { animation-delay: 260ms; }
 .hero-progress { animation: hero-progress var(--slide-ms, 7000ms) linear both; }
 
+/* Foto: svelamento lungo la diagonale a 45° con leggero zoom in uscita. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal-photo] .reveal-photo {
+    clip-path: polygon(0 0, 0 0, 0 0);
+    transition: clip-path 1200ms var(--ease-brand);
+  }
+  .js [data-reveal-photo] .reveal-photo img {
+    transform: scale(1.06);
+    transition: transform 1600ms var(--ease-brand);
+  }
+  .js [data-reveal-photo].is-in .reveal-photo {
+    clip-path: polygon(0 0, 200% 0, 0 200%);
+  }
+  .js [data-reveal-photo].is-in .reveal-photo img {
+    transform: none;
+  }
+
+  /* Fili che si disegnano da sinistra a destra (sostituiscono il bordo superiore). */
+  .js .draw-line {
+    position: relative;
+    border-top-color: transparent;
+  }
+  .js .draw-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 1px;
+    width: 100%;
+    background: var(--line-color, currentColor);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1100ms var(--ease-brand) 150ms;
+  }
+  .js .draw-line.is-in::before,
+  .js .is-in .draw-line::before {
+    transform: scaleX(1);
+  }
+
+  /* Elenchi: le voci compaiono in sequenza (--i = posizione, ritardo massimo ~0,6 s). */
+  .js [data-stagger] > * {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 600ms var(--ease-brand), transform 600ms var(--ease-brand);
+    transition-delay: calc(min(var(--i, 0), 8) * 70ms);
+  }
+  .js .is-in[data-stagger] > *,
+  .js .is-in [data-stagger] > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Reveal allo scroll: attivo solo con JS e senza riduzione del movimento. */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {

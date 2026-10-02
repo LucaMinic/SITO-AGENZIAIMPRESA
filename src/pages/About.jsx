@@ -32,7 +32,7 @@ export function ChiSiamo() {
           <h2 id="soluzioni" className="text-h2 max-w-[22ch]">
             {about.solutionsTitle}
           </h2>
-          <div className="mt-12 grid border-t border-ink md:grid-cols-2">
+          <Reveal className="draw-line mt-12 grid border-t border-ink [--line-color:var(--color-ink)] md:grid-cols-2">
             {Object.values(solutions).map((s, i) => (
               <Link
                 key={s.slug}
@@ -46,7 +46,7 @@ export function ChiSiamo() {
                 </span>
               </Link>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -71,7 +71,7 @@ export function Soluzioni({ kind }) {
         </div>
         <ol className="wrap mt-16 grid gap-12 md:mt-20 md:grid-cols-3 md:gap-6">
           {s.principles.map((p, i) => (
-            <Reveal as="li" key={p.title} className="border-t border-ink pt-8">
+            <Reveal as="li" key={p.title} className="draw-line border-t border-ink pt-8 [--line-color:var(--color-ink)]">
               <span className="text-sm font-semibold text-brand tabular-nums">{String(i + 1).padStart(2, '0')}</span>
               <h2 className="text-h2 mt-4">{p.title}</h2>
               <p className="mt-4 text-muted">{p.text}</p>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { about, apriAgenzia, home, sedi, solutions, telHref } from '../content/site.js'
+import { about, allLocations, apriAgenzia, home, sedi, solutions, telHref } from '../content/site.js'
 import { areasByFamily, areaIndex, areaUrl, serviceCount, services } from '../content/services.js'
 import { photos } from '../content/images.js'
 import { ArrowLink, Button, Eyebrow, FramedPhoto, Icon, Photo, Reveal } from '../components/ui.jsx'
@@ -193,11 +193,11 @@ function Intro() {
 }
 
 /* Indice delle aree: righe numerate al posto dei box. */
-export function AreaIndexRow({ area }) {
+export function AreaIndexRow({ area, index = 0 }) {
   const preview = area.services.slice(0, 3).map((s) => services[s].title)
   const more = area.services.length - preview.length
   return (
-    <li>
+    <li style={{ '--i': index }}>
       <Link
         to={areaUrl(area)}
         className="group relative grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-2 border-t border-line py-6 transition-colors md:grid-cols-[3rem_minmax(0,5fr)_minmax(0,6fr)_auto] md:py-7"
@@ -225,11 +225,19 @@ export function AreaIndexRow({ area }) {
   )
 }
 
+// Colore leggero in trasparenza per ciascuna famiglia di aree (palette Buffetti Group).
+const FAMILY_TINTS = {
+  impresa: { bg: '#0007e012', bar: '#0007e0' },
+  fisco: { bg: '#00268514', bar: '#002685' },
+  autorizzazioni: { bg: '#00b7e617', bar: '#00b7e6' },
+  certificati: { bg: '#bb78ff17', bar: '#bb78ff' },
+}
+
 function Areas() {
   return (
     <section className="section bg-mist/50" aria-labelledby="aree">
       <div className="wrap">
-        <div className="grid gap-8 lg:grid-cols-8 lg:gap-6">
+        <Reveal className="grid gap-8 lg:grid-cols-8 lg:gap-6">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6 text-brand">Servizi</Eyebrow>
             <h2 id="aree" className="text-h1 text-balance">
@@ -241,14 +249,23 @@ function Areas() {
               Tutti i servizi
             </Button>
           </div>
-        </div>
+        </Reveal>
         <div className="mt-16 space-y-14 md:mt-20">
           {areasByFamily.map((f) => (
             <Reveal key={f.id} className="grid gap-4 lg:grid-cols-8 lg:gap-6">
-              <h3 className="eyebrow pt-7 text-muted lg:col-span-2">{f.title}</h3>
-              <ul className="border-b border-line lg:col-span-6">
-                {f.areas.map((a) => (
-                  <AreaIndexRow key={a.slug} area={a} />
+              <div
+                className="relative overflow-hidden px-5 py-4 lg:col-span-2 lg:mr-4 lg:px-6 lg:py-7"
+                style={{ background: FAMILY_TINTS[f.id].bg }}
+              >
+                <span aria-hidden="true" className="absolute inset-y-0 left-0 w-[3px]" style={{ background: FAMILY_TINTS[f.id].bar }} />
+                <h3 className="eyebrow text-ink">{f.title}</h3>
+                <p className="mt-2 text-sm text-muted">
+                  {f.areas.length} {f.areas.length === 1 ? 'area' : 'aree'}
+                </p>
+              </div>
+              <ul data-stagger="" className="border-b border-line lg:col-span-6">
+                {f.areas.map((a, i) => (
+                  <AreaIndexRow key={a.slug} area={a} index={i} />
                 ))}
               </ul>
             </Reveal>
@@ -264,15 +281,15 @@ function Solutions() {
   return (
     <section className="section" aria-labelledby="soluzioni">
       <div className="wrap">
-        <div className="grid gap-8 lg:grid-cols-8 lg:gap-6">
+        <Reveal className="grid gap-8 lg:grid-cols-8 lg:gap-6">
           <div className="lg:col-span-2">
             <Eyebrow className="text-brand">Soluzioni</Eyebrow>
           </div>
           <h2 id="soluzioni" className="text-h1 text-balance lg:col-span-6">
             {about.solutionsTitle}
           </h2>
-        </div>
-        <div className="mt-14 grid border-t border-ink md:mt-20 md:grid-cols-2 lg:ml-[25%]">
+        </Reveal>
+        <Reveal className="draw-line mt-14 grid border-t border-ink [--line-color:var(--color-ink)] md:mt-20 md:grid-cols-2 lg:ml-[25%]">
           {s.map((x, i) => (
             <Reveal
               key={x.slug}
@@ -285,16 +302,16 @@ function Solutions() {
               </ArrowLink>
             </Reveal>
           ))}
-        </div>
-        <ol className="mt-4 grid gap-10 border-t border-line pt-12 md:grid-cols-3 md:gap-8 lg:ml-[25%]">
+        </Reveal>
+        <Reveal as="ol" data-stagger="" className="draw-line mt-4 grid gap-10 border-t border-line pt-12 [--line-color:var(--color-line)] md:grid-cols-3 md:gap-8 lg:ml-[25%]">
           {s[0].principles.map((p, i) => (
-            <Reveal as="li" key={p.title}>
+            <li key={p.title} style={{ '--i': i }}>
               <span className="text-sm font-semibold text-brand tabular-nums">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="text-h3 mt-3">{p.title}</h3>
               <p className="mt-3 text-[0.9375rem] text-muted">{p.text}</p>
-            </Reveal>
+            </li>
           ))}
-        </ol>
+        </Reveal>
       </div>
     </section>
   )
@@ -304,7 +321,7 @@ function Locations() {
   return (
     <section className="section" aria-labelledby="sedi">
       <div className="wrap">
-        <div className="grid gap-8 lg:grid-cols-8 lg:gap-6">
+        <Reveal className="grid gap-8 lg:grid-cols-8 lg:gap-6">
           <div className="lg:col-span-5">
             <Eyebrow className="mb-6 text-brand">Presenza territoriale</Eyebrow>
             <h2 id="sedi" className="text-h1">
@@ -316,14 +333,18 @@ function Locations() {
               Contatta le nostre Sedi
             </Button>
           </div>
-        </div>
+        </Reveal>
         <Reveal className="mt-14 md:mt-20">
           <FramedPhoto photo={photos.portaNuova} aspect="aspect-[16/9] md:aspect-[21/7]" sizes="(min-width: 1440px) 1280px, 92vw" />
         </Reveal>
-        <ul className="mt-6 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal as="ul" data-stagger="" className="mt-6 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
           {sedi.flatMap((s) =>
             s.locations.map((l) => (
-              <li key={l.city} className="group relative border-b border-r border-line p-6 transition-colors hover:bg-mist/50 md:p-8">
+              <li
+                key={l.city}
+                style={{ '--i': allLocations.findIndex((x) => x.city === l.city) }}
+                className="group relative border-b border-r border-line p-6 transition-colors hover:bg-mist/50 md:p-8"
+              >
                 <h3 className="text-h2">
                   <Link to={`/sedi/${s.slug}`} className="after:absolute after:inset-0 group-hover:text-brand">
                     {l.city}
@@ -345,7 +366,7 @@ function Locations() {
               </li>
             )),
           )}
-        </ul>
+        </Reveal>
       </div>
     </section>
   )

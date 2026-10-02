@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { telHref } from '../content/site.js'
+import { MAPS_REQUIRE_CONSENT, telHref } from '../content/site.js'
 import { ArrowLink, Icon } from './ui.jsx'
 
-/* Mappa Google caricata solo su richiesta (niente iframe di terze parti al caricamento). */
+/*
+ * Mappa Google della sede. Di default è visibile subito (il consenso ai cookie è gestito
+ * dal banner del sito). Con MAPS_REQUIRE_CONSENT = true viene mostrata solo dopo un clic.
+ */
 export function MapFacade({ src, title }) {
-  const [on, setOn] = useState(false)
+  const [on, setOn] = useState(!MAPS_REQUIRE_CONSENT)
   if (on) {
     return (
       <iframe
@@ -56,7 +59,7 @@ export function Address({ location, className = '' }) {
 /* Riga sede in elenco: città grande, indirizzi, azioni. */
 export function SedeRow({ sede, index }) {
   return (
-    <li className="grid gap-6 border-t border-line py-10 md:grid-cols-8 md:gap-6 md:py-12">
+    <li style={{ '--i': index }} className="grid gap-6 border-t border-line py-10 md:grid-cols-8 md:gap-6 md:py-12">
       <div className="md:col-span-3">
         <span className="text-xs font-semibold text-brand tabular-nums">{String(index + 1).padStart(2, '0')}</span>
         <h2 className="text-h2 mt-2">

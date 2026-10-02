@@ -75,6 +75,10 @@ export const accessibility = {
   reviewed: '2026-10-02',
 }
 
+// Mappe Google delle sedi: false = visibili subito; true = caricate solo dopo un clic
+// (da usare se il banner dei cookie non gestisce il consenso per Google Maps).
+export const MAPS_REQUIRE_CONSENT = false
+
 export const telHref = (phone) => 'tel:+39' + phone.replace(/[^\d]/g, '')
 
 // Raggruppamento delle 10 aree per la navigazione (nuova information architecture).

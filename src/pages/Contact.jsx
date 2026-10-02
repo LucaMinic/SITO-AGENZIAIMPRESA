@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { apriAgenzia, contactIntro, iban, sedi } from '../content/site.js'
 import ContactForm from '../components/ContactForm.jsx'
 import { Address, MapFacade, SedeRow } from '../components/Sede.jsx'
-import { Icon, PageHero } from '../components/ui.jsx'
+import { Icon, PageHero, Reveal } from '../components/ui.jsx'
 import NotFound from './NotFound.jsx'
 import { photos } from '../content/images.js'
 
@@ -19,11 +19,11 @@ export function Sedi() {
         crumbs={[HOME_CRUMB, { label: 'Sedi' }]}
       />
       <section className="wrap section pt-8 md:pt-12">
-        <ul className="border-b border-line">
+        <Reveal as="ul" data-stagger="" className="border-b border-line">
           {sedi.map((s, i) => (
             <SedeRow key={s.slug} sede={s} index={i} />
           ))}
-        </ul>
+        </Reveal>
       </section>
     </>
   )

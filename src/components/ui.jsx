@@ -241,11 +241,19 @@ export function Photo({ photo, sizes = '100vw', className = '', eager = false, w
 }
 
 /* Immagine incorniciata con l'angolo tagliato a 45° e un leggero tocco di blu (guideline foto). */
-export function FramedPhoto({ photo, className = '', aspect = 'aspect-[4/3]', sizes, eager }) {
+export function FramedPhoto({ photo, className = '', aspect = 'aspect-[4/3]', sizes, eager, reveal = !eager }) {
+  const ref = useReveal()
   return (
-    <figure className={`relative isolate overflow-hidden bg-mist cut-corner [--cut:28px] ${aspect} ${className}`}>
-      <Photo photo={photo} sizes={sizes} eager={eager} />
-      <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-brand mix-blend-soft-light opacity-25" />
+    <figure
+      ref={reveal ? ref : undefined}
+      data-reveal-photo={reveal ? '' : undefined}
+      className={`relative isolate overflow-hidden bg-mist cut-corner [--cut:28px] ${aspect} ${className}`}
+    >
+      {/* Svelamento lungo la diagonale a 45° (solo per le foto fuori dalla prima schermata) */}
+      <div className="reveal-photo absolute inset-0">
+        <Photo photo={photo} sizes={sizes} eager={eager} />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-brand mix-blend-soft-light opacity-25" />
+      </div>
     </figure>
   )
 }

@@ -191,9 +191,9 @@ export function ServicesHub() {
                 <h2 id={`fam-${f.id}`} className="eyebrow pt-7 text-muted lg:col-span-2">
                   {f.title}
                 </h2>
-                <ul className="border-b border-line lg:col-span-6">
-                  {f.areas.map((a) => (
-                    <AreaIndexRow key={a.slug} area={a} />
+                <ul data-stagger="" className="border-b border-line lg:col-span-6">
+                  {f.areas.map((a, i) => (
+                    <AreaIndexRow key={a.slug} area={a} index={i} />
                   ))}
                 </ul>
               </Reveal>

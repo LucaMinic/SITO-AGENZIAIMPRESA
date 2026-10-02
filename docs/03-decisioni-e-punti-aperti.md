@@ -37,7 +37,7 @@
 - **Da fare:** confermate con l'amministrazione se va aggiornata, sostituita con la dichiarazione di AGENZIAIMPRESA SRL o rimossa.
 
 **B. Cookie policy.**
-- **Situazione:** il testo originale cita Google Analytics e il "Privacy Shield", invalidato nel 2020. Il nuovo sito **non installa** Google Analytics né altri cookie di tracciamento. L'unico servizio di terze parti è Google Maps, che si carica solo al clic dell'utente.
+- **Situazione:** il testo originale cita Google Analytics e il "Privacy Shield", invalidato nel 2020. Il nuovo sito **non installa** Google Analytics né altri cookie di tracciamento. L'unico servizio di terze parti è Google Maps: le mappe delle sedi sono visibili subito, e il consenso sarà gestito dal banner dei cookie che il cliente integrerà. Finché il banner non c'è, l'interruttore `MAPS_REQUIRE_CONSENT` in `src/content/site.js` permette di farle caricare solo dopo un clic.
 - **Da fare:** il testo va aggiornato da chi segue la parte legale.
 
 **C. Video.**
