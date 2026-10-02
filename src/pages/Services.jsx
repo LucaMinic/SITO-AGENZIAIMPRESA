@@ -15,7 +15,7 @@ import {
   TRANSVERSAL,
 } from '../content/services.js'
 import { families, home, serviceCta } from '../content/site.js'
-import { areaPhotos, photos } from '../content/images.js'
+import { areaPhotos } from '../content/images.js'
 import { ArrowLink, Blocks, Button, FramedPhoto, Icon, PageHero, Reveal } from '../components/ui.jsx'
 import { AreaIndexRow } from './Home.jsx'
 import NotFound from './NotFound.jsx'
@@ -129,7 +129,6 @@ export function ServicesHub() {
         eyebrow="Servizi"
         title="I nostri Servizi"
         lead={home.claim}
-        image={photos.towers}
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Servizi' }]}
         aside={
           <dl className="grid grid-cols-2 border-t border-ink lg:mt-6">
@@ -228,20 +227,53 @@ export function AreaPage() {
       <PageHero
         eyebrow={`${areaIndex(area)} · ${familyTitle(area.family)}`}
         title={area.title}
-        image={areaPhotos[area.slug]}
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Servizi', to: '/servizi' }, { label: area.title }]}
-        aside={<CtaAside subject={area.title} />}
+        aside={
+          // Foto e richiesta di informazioni accanto al titolo solo su desktop:
+          // su schermi stretti l'indice e l'elenco dei servizi vengono prima.
+          <div className="hidden space-y-8 lg:block">
+            <FramedPhoto photo={areaPhotos[area.slug]} eager aspect="aspect-[4/3]" sizes="(min-width: 1440px) 480px, 30vw" />
+            <CtaAside subject={area.title} />
+          </div>
+        }
       >
-        <p className="mt-8 text-muted">
+        <p className="mt-6 text-muted">
           {serviceCount(area)} {serviceCount(area) === 1 ? 'servizio' : 'servizi'}
           {area.approfondimenti.length > 0 && ` · ${area.approfondimenti.length} schede informative`}
         </p>
+        {/* Indice dei servizi: mostra subito il contenuto della pagina e porta al servizio nell'elenco */}
+        <nav aria-label={`Servizi dell'area ${area.title}`} className="mt-8">
+          <p className="eyebrow mb-3 text-muted">In quest’area</p>
+          <ul className="flex flex-wrap gap-2">
+            {area.services.map((s) => (
+              <li key={s}>
+                <a
+                  href={`#${s}`}
+                  className="inline-flex min-h-10 items-center bg-mist/70 px-3.5 py-2 text-sm font-medium leading-snug text-ink transition-colors hover:bg-brand hover:text-white"
+                >
+                  {services[s].title}
+                </a>
+              </li>
+            ))}
+            {area.approfondimenti.length > 0 && (
+              <li>
+                <a
+                  href="#schede"
+                  className="inline-flex min-h-10 items-center px-3.5 py-2 text-sm font-semibold text-brand ring-1 ring-inset ring-brand/30 transition-colors hover:bg-brand hover:text-white"
+                >
+                  Schede informative
+                </a>
+              </li>
+            )}
+          </ul>
+        </nav>
       </PageHero>
 
-      <div className="wrap section pt-8 md:pt-12">
+      <div className="wrap section pt-10 md:pt-14">
+        <h2 className="eyebrow mb-2 text-muted">Servizi e prestazioni</h2>
         <ul>
           {area.services.map((s) => (
-            <Reveal as="li" key={s} className="grid gap-6 border-b border-line py-10 md:py-12 lg:grid-cols-8 lg:gap-6">
+            <Reveal as="li" id={s} key={s} className="grid scroll-mt-28 gap-6 border-b border-line py-10 md:py-12 lg:grid-cols-8 lg:gap-6">
               <div className="lg:col-span-3">
                 <h2 className="text-h3 text-[1.375rem] md:text-[1.5rem]">
                   <Link to={serviceUrl(s)} className="group inline-flex items-start gap-3 hover:text-brand">
@@ -262,6 +294,11 @@ export function AreaPage() {
             <TransversalNote slugs={area.transversal} />
           </div>
         )}
+
+        {/* Su schermi stretti la richiesta di informazioni arriva dopo l'elenco */}
+        <div className="mt-14 lg:hidden">
+          <CtaAside subject={area.title} />
+        </div>
 
         <SchedeList slugs={area.approfondimenti} />
 

@@ -18,7 +18,7 @@ function RouteEffects() {
     const meta = metaFor(pathname)
     document.title = meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
-    if (!hash) window.scrollTo(0, 0)
+    if (!hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname, hash])
   return null
 }
