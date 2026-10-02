@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { areasByFamily, areaIndex, areaUrl, serviceCount, serviceUrl, services, totalServices } from '../content/services.js'
+import { areasByFamily, areaIndex, areaUrl, serviceUrl, services, totalServices } from '../content/services.js'
 import { REGISTER_URL, sedi, solutions } from '../content/site.js'
 import { asset, Button, Icon, SmartLink } from './ui.jsx'
 import { SearchBox } from './Search.jsx'
@@ -35,7 +35,6 @@ function ServicesPanel() {
                 >
                   <span className="w-6 shrink-0 text-xs font-semibold text-brand tabular-nums">{areaIndex(a)}</span>
                   <span className="flex-1 font-medium leading-snug group-hover:text-brand">{a.title}</span>
-                  <span className="text-xs text-muted tabular-nums">{serviceCount(a)}</span>
                 </Link>
               </li>
             ))}
