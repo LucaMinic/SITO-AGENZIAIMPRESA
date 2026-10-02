@@ -318,7 +318,7 @@ function Locations() {
           </div>
         </div>
         <Reveal className="mt-14 md:mt-20">
-          <FramedPhoto photo={photos.navigli} aspect="aspect-[16/9] md:aspect-[21/7]" sizes="(min-width: 1440px) 1280px, 92vw" />
+          <FramedPhoto photo={photos.portaNuova} aspect="aspect-[16/9] md:aspect-[21/7]" sizes="(min-width: 1440px) 1280px, 92vw" />
         </Reveal>
         <ul className="mt-6 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
           {sedi.flatMap((s) =>

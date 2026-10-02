@@ -16,7 +16,7 @@ export const photos = {
   towers: { id: '1449157291145-7efd050a4d0e', alt: 'Grattacieli nella nebbia visti dal basso' },
   glassTowers: { id: '1511818966892-d7d671e672a2', alt: 'Grattacieli in vetro di un distretto direzionale' },
   laptop: { id: '1484807352052-23338990c6c6', alt: 'Professionista al lavoro su un computer portatile' },
-  navigli: { id: '1513581166391-887a96ddeafd', alt: 'I Navigli di Milano al tramonto' },
+  portaNuova: { id: '1662114800275-9a641a2dad03', alt: 'Il Bosco Verticale nel quartiere Porta Nuova a Milano' },
   milanoTower: { id: '1741513542741-26c8d5cdedf6', alt: 'La Torre UniCredit a Milano Porta Nuova vista dal basso' },
   handshake: { id: '1521790797524-b2497295b8a0', alt: 'Stretta di mano tra due professionisti' },
   contact: { id: '1505409859467-3a796fd5798e', alt: 'Uffici moderni con area di accoglienza e vista sulla città' },
