@@ -18,7 +18,7 @@ const base = process.env.BASE_PATH || '/'
 http
   .createServer((req, res) => {
     let p = decodeURIComponent(new URL(req.url, 'http://x').pathname)
-    if (req.method === 'POST' && p.endsWith('/api/contact')) {
+    if (req.method === 'POST' && (p.endsWith('/api/contact') || p.endsWith('/contact.php'))) {
       res.writeHead(503, { 'Content-Type': 'application/json' })
       return res.end('{"error":"not_configured"}')
     }

@@ -58,17 +58,22 @@ npm run redirects  # rigenera vercel.json (redirect 301 dalle vecchie URL WordPr
 
 ## Moduli di contatto
 
-I moduli inviano a `/api/contact`, che inoltra l'email tramite [Resend](https://resend.com). Finché le variabili non sono configurate, l'API risponde `503` e il modulo mostra i numeri di telefono delle sedi.
+I moduli inviano a `contact.php` (in `public/`), uno script PHP per l'hosting definitivo. Lo script inoltra il messaggio alla casella della sede scelta; il "Rispondi" va al mittente.
 
-Variabili d'ambiente da impostare su Vercel:
-
-| Variabile | Esempio |
+| Sede | Destinatario |
 |---|---|
-| `RESEND_API_KEY` | `re_…` |
-| `CONTACT_FROM` | `Sito AgenziaImpresa <sito@agenziaimpresa.com>` (dominio verificato su Resend) |
-| `CONTACT_TO` | destinatario predefinito (più indirizzi separati da virgola) |
-| `CONTACT_TO_MILANO`, `_MANTOVA`, `_MODENA`, `_BRESCIA`, `_BOLOGNA` | opzionali, per sede |
-| `CONTACT_TO_APRI_AGENZIA` | opzionale, per "Apri la tua Agenzia" |
+| Milano | milano@agenziaimpresa.com |
+| Mantova | brescia@agenziaimpresa.com *(indicato dal cliente, da confermare)* |
+| Modena | modena@agenziaimpresa.com |
+| Brescia (e Darfo Boario Terme) | brescia@agenziaimpresa.com |
+| Bologna | adempio.pratiche@agenziaimpresa.com |
+| Nessuna sede scelta / Apri la tua Agenzia | milano@agenziaimpresa.com *(da confermare)* |
+
+Gli indirizzi e il mittente tecnico (`noreply@agenziaimpresa.com`, che deve appartenere al dominio dell'hosting) si modificano in testa a `public/contact.php`.
+
+- Lo script usa la funzione `mail()` di PHP. Se l'hosting richiede SMTP autenticato, va adattato.
+- **Su GitHub Pages** lo script non viene eseguito: il modulo mostra i numeri di telefono delle sedi.
+- **Su Vercel** si può usare la funzione `api/contact.js` (invio con Resend). In quel caso va impostato `VITE_CONTACT_ENDPOINT=/api/contact` in build, più le variabili `RESEND_API_KEY`, `CONTACT_FROM` e, facoltativa, `CONTACT_TO`.
 
 ## Design system
 

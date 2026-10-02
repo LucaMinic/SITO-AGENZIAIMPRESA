@@ -11,6 +11,14 @@
 // e il modulo mostra i recapiti telefonici delle sedi.
 
 const SEDI = ['milano', 'mantova', 'modena', 'brescia', 'bologna']
+// Destinatari per sede indicati dal cliente (sovrascrivibili con CONTACT_TO_<SEDE>).
+const RECIPIENTS = {
+  milano: 'milano@agenziaimpresa.com',
+  mantova: 'brescia@agenziaimpresa.com',
+  modena: 'modena@agenziaimpresa.com',
+  brescia: 'brescia@agenziaimpresa.com',
+  bologna: 'adempio.pratiche@agenziaimpresa.com',
+}
 const clip = (v, n) => String(v ?? '').trim().slice(0, n)
 const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c])
 
@@ -41,8 +49,9 @@ export default async function handler(req, res) {
   const { RESEND_API_KEY, CONTACT_FROM, CONTACT_TO } = process.env
   const to =
     (data.origin === 'apri-la-tua-agenzia' && process.env.CONTACT_TO_APRI_AGENZIA) ||
-    (data.sede && process.env[`CONTACT_TO_${data.sede.toUpperCase()}`]) ||
-    CONTACT_TO
+    (data.sede && (process.env[`CONTACT_TO_${data.sede.toUpperCase()}`] || RECIPIENTS[data.sede])) ||
+    CONTACT_TO ||
+    RECIPIENTS.milano
   if (!RESEND_API_KEY || !CONTACT_FROM || !to) return res.status(503).json({ error: 'not_configured' })
 
   const rows = [

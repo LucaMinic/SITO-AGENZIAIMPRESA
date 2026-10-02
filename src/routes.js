@@ -43,7 +43,7 @@ const pages = [
   { path: '/privacy-policy', title: 'Privacy Policy' + SUFFIX, description: 'Informativa privacy di Agenzia Impresa S.r.l.' },
   { path: '/cookie-policy', title: 'Cookie Policy' + SUFFIX, description: 'Cookie policy di agenziaimpresa.com.' },
   { path: '/dichiarazione-accessibilita', title: 'Dichiarazione di accessibilità' + SUFFIX, description: 'Dichiarazione di accessibilità del sito AgenziaImpresa ai sensi del D.Lgs. 82/2022 (European Accessibility Act).' },
-  { path: '/note-legali', title: 'Note legali' + SUFFIX, description: 'Note legali.' },
+  { path: '/note-legali', title: 'Dati societari' + SUFFIX, description: 'Dati societari di AGENZIAIMPRESA SRL: ragione sociale, partita IVA, capitale sociale, sede legale e PEC.' },
   { path: '/cerca', title: 'Cerca' + SUFFIX, description: 'Cerca servizi, prestazioni, sedi e notizie nel sito AgenziaImpresa.', noindex: true },
   { path: '/pagamenti', title: 'Coordinate per i pagamenti' + SUFFIX, description: 'Coordinate bancarie per i pagamenti.', noindex: true },
 ]

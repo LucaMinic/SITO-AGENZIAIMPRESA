@@ -9,7 +9,7 @@
 | 3 | Shop e webinar | Eliminare | Eliminati prodotti, carrello, checkout, account e i Termini e condizioni della sezione webinar. Le vecchie URL rimandano alla Home. |
 | 4 | Dati delle sedi | Lasciarli come sono | Indirizzi, telefoni, login e mappe sono identici all'originale. |
 | 5 | Colore del logo | Usare il Main Blu delle guideline | Simbolo in `#0007e0`. Versione negativa (bianca) creata dall'SVG ufficiale. |
-| 6 | Moduli di contatto | Predisporli, destinatari email da definire | `api/contact.js` è pronto e si attiva con le variabili d'ambiente (vedi README). |
+| 6 | Moduli di contatto | Destinatari per sede comunicati dal cliente | `public/contact.php` (hosting PHP): Milano → milano@, Mantova → brescia@ *(da confermare)*, Modena → modena@, Brescia → brescia@, Bologna → adempio.pratiche@ (tutti @agenziaimpresa.com). Il modulo generale e Apri la tua Agenzia vanno a milano@ *(da confermare)*. |
 | 7 | Refusi | Correggerli | "Presentazionedocumenti", "BUSINNESS", "notra", "Richeste", "anuale", "ufficali", "HCCP" → HACCP, "Un storia", "Inizia, variazioni", una parentesi non chiusa, una voce duplicata nel Tribunale, spaziature. |
 
 ## Modifiche successive (02/10/2026)
@@ -33,8 +33,8 @@
 ## Punti aperti da verificare
 
 **A. Note legali.**
-- **Situazione:** il testo dichiara che "Gruppo Apm srl" ha ricevuto aiuti di Stato nel 2021 (L. 124/2017). È una dichiarazione legale riferita a una specifica persona giuridica: attribuirla a un'altra società la renderebbe falsa. Per questo **non ho sostituito il nome**.
-- **Da fare:** confermate con l'amministrazione se va aggiornata, sostituita con la dichiarazione di AGENZIAIMPRESA SRL o rimossa.
+- **Risolto il 02/10/2026.** Su decisione del cliente la pagina contiene ora i dati societari di AGENZIAIMPRESA SRL. Il vecchio testo sugli aiuti di Stato 2021 di Gruppo Apm srl è stato rimosso.
+- **Da fare:** se AGENZIAIMPRESA SRL dovesse avere aiuti pubblici da dichiarare (L. 124/2017), la dichiarazione va aggiunta a questa pagina.
 
 **B. Cookie policy.**
 - **Situazione:** il testo originale cita Google Analytics e il "Privacy Shield", invalidato nel 2020. Il nuovo sito **non installa** Google Analytics né altri cookie di tracciamento. L'unico servizio di terze parti è Google Maps: le mappe delle sedi sono visibili subito, e il consenso sarà gestito dal banner dei cookie che il cliente integrerà. Finché il banner non c'è, l'interruttore `MAPS_REQUIRE_CONSENT` in `src/content/site.js` permette di farle caricare solo dopo un clic.

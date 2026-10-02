@@ -4,8 +4,9 @@ import { sedi, telHref } from '../content/site.js'
 import { Button, Icon } from './ui.jsx'
 
 /*
- * Modulo di contatto. Invia a /api/contact (funzione serverless Vercel) oppure
- * all'indirizzo indicato in VITE_CONTACT_ENDPOINT (es. script dell'hosting definitivo).
+ * Modulo di contatto. Invia allo script PHP contact.php (hosting definitivo), che
+ * inoltra il messaggio alla casella della sede scelta. In alternativa l'indirizzo si
+ * imposta con VITE_CONTACT_ENDPOINT (es. /api/contact per la funzione Vercel).
  * Finché i destinatari email non sono configurati l'API risponde 503 e
  * il modulo mostra i recapiti telefonici come alternativa.
  */
@@ -37,7 +38,7 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
     }
     setStatus('sending')
     try {
-      const res = await fetch(import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact', {
+      const res = await fetch(import.meta.env.VITE_CONTACT_ENDPOINT || `${import.meta.env.BASE_URL}contact.php`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, origin, page: window.location.pathname }),

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import BackToTop from './components/BackToTop.jsx'
 import { metaFor } from './routes.js'
 import Home from './pages/Home.jsx'
 import { AreaPage, ServicePage, ServicesHub } from './pages/Services.jsx'
@@ -51,6 +52,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }

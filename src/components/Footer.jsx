@@ -13,7 +13,7 @@ const COMPANY_LINKS = [
 const LEGAL_LINKS = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
   { to: '/cookie-policy', label: 'Cookie Policy' },
-  { to: '/note-legali', label: 'Note legali' },
+  { to: '/note-legali', label: 'Dati societari' },
   { to: '/dichiarazione-accessibilita', label: 'Accessibilità' },
 ]
 
@@ -104,7 +104,7 @@ export default function Footer({ cta = true }) {
       </div>
 
       <div className="border-t border-white/15">
-        <div className="wrap flex flex-col gap-6 py-8 text-[0.8125rem] leading-relaxed text-white/70 lg:flex-row lg:items-end lg:justify-between">
+        <div className="wrap flex flex-col gap-6 py-8 pr-20 text-[0.8125rem] leading-relaxed text-white/70 md:pr-28 lg:flex-row lg:items-end lg:justify-between">
           <p className="max-w-3xl">
             {company.legalName} – CF / P.IVA {company.vat} – Capitale Sociale {company.capital} – Sede Legale{' '}
             {company.legalSeat} –{' '}

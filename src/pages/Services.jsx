@@ -57,6 +57,20 @@ function Prestazioni({ blocks, compact = false }) {
   )
 }
 
+/* Richiesta di informazioni sul singolo servizio, sobria, su ogni riga dell'elenco. */
+function RowCta({ service, area, className = '' }) {
+  return (
+    <Link
+      to={contactHref(`${service} – ${area}`)}
+      aria-label={`Richiedi informazioni su ${service}`}
+      className={`group inline-flex min-h-6 items-center gap-2 text-sm font-semibold text-brand hover:text-brand-dark ${className}`}
+    >
+      <span className="link-draw">Richiedi informazioni</span>
+      <Icon name="arrow" className="size-4 transition-transform group-hover:translate-x-1" />
+    </Link>
+  )
+}
+
 function CtaAside({ subject }) {
   return (
     <div className="border-t-2 border-brand pt-6">
@@ -281,9 +295,15 @@ export function AreaPage() {
                     <Icon name="arrow" className="mt-1.5 size-5 shrink-0 text-brand opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
                   </Link>
                 </h2>
+                <div className="mt-4 hidden lg:block">
+                  <RowCta service={services[s].title} area={area.title} />
+                </div>
               </div>
               <div className="lg:col-span-4 lg:col-start-5">
                 <Prestazioni blocks={services[s].blocks} compact />
+                <div className="mt-5 lg:hidden">
+                  <RowCta service={services[s].title} area={area.title} />
+                </div>
               </div>
             </Reveal>
           ))}
