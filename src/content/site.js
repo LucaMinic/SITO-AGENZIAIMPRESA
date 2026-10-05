@@ -26,21 +26,18 @@ export const sedi = [
     city: 'Milano',
     note: 'Sede legale',
     locations: [{ address: 'Via Feltre 32', cap: '20132', city: 'Milano', phone: '02 86453881', coords: [45.49015, 9.23950] }],
-    login: 'http://agenziaimpresa.milano.eccosolution.it',
     maps: maps.milano,
   },
   {
     slug: 'mantova',
     city: 'Mantova',
     locations: [{ address: 'Piazza Alcide de Gasperi 23 / 24', cap: '46100', city: 'Mantova', phone: '0376 222020', coords: [45.15186, 10.77625] }],
-    login: 'http://agenziaimpresa.mantova.eccosolution.it',
     maps: maps.mantova,
   },
   {
     slug: 'modena',
     city: 'Modena',
     locations: [{ address: 'Via Carlo Zucchi 21 Scala B', cap: '41123', city: 'Modena', phone: '0376 222020', coords: [44.65284, 10.91058] }],
-    login: 'http://agenziaimpresa.mantova.eccosolution.it',
     maps: maps.modena,
   },
   {
@@ -50,15 +47,21 @@ export const sedi = [
       { address: 'Via Romanino 1', cap: '25122', city: 'Brescia', phone: '030 3771630', coords: [45.53342, 10.21401] },
       { address: 'Via Roccole 76/A', cap: '25047', city: 'Darfo Boario Terme', phone: '0364 535740', coords: [45.89657, 10.18912] },
     ],
-    login: 'http://agenziaimpresa.brescia.eccosolution.it',
     maps: maps.brescia,
   },
   {
     slug: 'bologna',
     city: 'Bologna',
     locations: [{ address: 'Via Amendola 8/E', cap: '40121', city: 'Bologna (BO)', phone: '051.4211114', coords: [44.50399, 11.33796] }],
-    login: 'http://agenziaimpresa.mantova.eccosolution.it',
     maps: maps.bologna,
+  },
+  {
+    // Sede aggiunta su indicazione del cliente (05/10/2026). Telefono non ancora fornito.
+    // coords a livello di via: il civico non è presente in OpenStreetMap.
+    slug: 'reggio-emilia',
+    city: 'Reggio Emilia',
+    locations: [{ address: 'Via Bernardino Zacchetti 32', cap: '42124', city: 'Reggio Emilia', coords: [44.70889, 10.63818] }],
+    maps: ['https://maps.google.com/maps?q=Via%20Bernardino%20Zacchetti%2032%2C%2042124%20Reggio%20Emilia&output=embed&hl=it'],
   },
 ]
 
@@ -67,37 +70,34 @@ export const allLocations = sedi.flatMap((s) => s.locations.map((l) => ({ ...l, 
 // Link della voce "Registrati" nel menu.
 // Registrazione sulla piattaforma Adempio (link indicato dal cliente, ottobre 2026).
 export const REGISTER_URL = 'https://www.adempio.it/#/register'
+// Login unico dell'area clienti sul portale Adempio (sostituisce i login EccoSolution delle singole sedi).
+export const LOGIN_URL = 'https://www.adempio.it/#/register'
 
 // Mappe Google delle sedi: false = visibili subito; true = caricate solo dopo un clic
 // (da usare se il banner dei cookie non gestisce il consenso per Google Maps).
 export const MAPS_REQUIRE_CONSENT = false
 
 export const telHref = (phone) => 'tel:+39' + phone.replace(/[^\d]/g, '')
+// Testo "tel. …" di una sede, vuoto se il telefono non è ancora disponibile.
+export const phoneText = (l, prefix = 'tel. ') => (l.phone ? `${prefix}${l.phone}` : '')
 
-// Raggruppamento delle 10 aree per la navigazione (nuova information architecture).
-export const families = [
-  { id: 'impresa', title: 'Impresa e Registri' },
-  { id: 'fisco', title: 'Fisco e Patrimonio' },
-  { id: 'autorizzazioni', title: 'Autorizzazioni, Ambiente ed Estero' },
-  { id: 'certificati', title: 'Certificati, Uffici e Digitale' },
-]
 
 export const home = {
   claim:
-    'Servizi di digitalizzazione dei processi telematici in ambito amministrativo rivolti alla Pubblica Amministrazione',
+    'Servizi di intermediazione dei processi telematici in ambito amministrativo rivolti alla Pubblica Amministrazione',
 }
 
 export const about = {
   quote:
-    'Offriamo da sempre Soluzioni Digitali all’avanguardia in grado di rispondere a tutte le esigenze operative a norma di legge in continua evoluzione.',
+    'Offriamo da sempre Servizi Telematici all’avanguardia in grado di rispondere a tutte le esigenze operative, nei confronti della pubblica amministrazione, a norma di legge in continua evoluzione.',
   storyTitle: 'Una storia di Passione Successi e Soddisfazioni.',
   story: [
-    'AgenziaImpresa Buffetti Group è attiva da anni nel settore dei servizi digitali, affianchiamo da sempre le Imprese e gli Studi Professionali nella gestione e nella conservazione di tutti i documenti digitali prodotti nel corso della loro attività.',
+    'AgenziaImpresa Buffetti Group è attiva dal 1992 nel settore dei servizi di intermediazione degli adempimenti rivolti alla pubblica amministrazione per le imprese e gli studi professionali, gestendo con competenza ogni adempimento previsto dalle normative che nel corso degli anni si sono evolute, dando modo alle imprese stesse di certificare a norma le proprie attività.',
     'Con l’avanzamento dei processi di digitalizzazione le Aziende e gli Studi Professionali sono obbligati ad aggiornarsi di continuo partendo dagli adempimenti telematici rivolti alla PA, alla gestione di PEC, all’utilizzo di FIRME DIGITALI, alla CONSERVAZIONE DIGITALE e alla FATTURAZIONE ELETTRONICA.',
-    'AgenziaImpresa tramite la piattaforma WEB EccoSolution offre in un unico “luogo” servizi in grado di rispondere a tutte le esigenze operative a norma di legge mediante i più moderni processi di Digitalizzazione all’avanguardia.',
+    'AgenziaImpresa tramite la piattaforma WEB Adempio offre in un unico “luogo” servizi in grado di rispondere a tutte le esigenze operative a norma di legge mediante i più moderni processi di Digitalizzazione all’avanguardia.',
     'Nel 2020 con la fusione di 3 società, amplia l’offerta rivolta ai propri clienti introducendo Servizi di Comunicazione e Programmi di Fidelizzazione digitale.',
   ],
-  solutionsTitle: 'Soluzioni Digitali per Imprese e Professionisti',
+  solutionsTitle: 'Servizi e Soluzioni Digitali per Imprese e Professionisti - il portale Adempio',
 }
 
 // Contenuti delle pagine Soluzioni. Testi ampliati su richiesta del cliente (ottobre 2026),
@@ -105,15 +105,15 @@ export const about = {
 const principlesImprese = [
   {
     title: 'Semplicità',
-    text: 'L’interfaccia di ogni prodotto è sviluppata per essere estremamente semplice ed intuitiva, inoltre i clienti possono fruire dell’assistenza del nostro personale specializzato per tutte le esigenze.',
+    text: 'L’interfaccia di Adempio è stata sviluppata per essere estremamente semplice ed intuitiva, i nostri clienti possono effettuare le loro richieste di servizio e fruire dell’assistenza del nostro personale specializzato per tutte le esigenze.',
   },
   {
     title: 'Funzionalità',
-    text: 'Ogni prodotto sviluppato da AgenziaImpresa Buffetti Group rappresenta uno strumento funzionale in grado di rispondere alle esigenze più articolate.',
+    text: 'Adempio è il portale sviluppato da Agenziaimpresa Buffetti Group per essere uno strumento funzionale in grado di rispondere a tutte le esigenze anche le più articolate, dei nostri clienti.',
   },
   {
     title: 'Efficacia',
-    text: 'Grazie alle Soluzioni di AgenziaImpresa Buffetti Group, le imprese Clienti possono usufruire di uno strumento efficiente ed efficace.',
+    text: 'Adempio è uno strumento efficiente ed efficace, i nostri clienti possono in qualsiasi momento richiedere istruttorie sui vari adempimenti che devono essere rivolti alla Pubblica Amministrazione, verificare in tempo reale il loro relativo stato d’avanzamento.',
   },
 ]
 
@@ -157,7 +157,7 @@ export const solutions = {
     slug: 'imprese',
     label: 'Imprese',
     title: 'Soluzioni per le imprese',
-    teaser: 'Scopri le Soluzioni Digitali di AgenziaImpresa sviluppate appositamente per le Imprese.',
+    teaser: 'Scopri i Servizi e le Soluzioni Digitali di AgenziaImpresa sviluppate appositamente per le Imprese.',
     text: 'Agenziaimpresa studia e sviluppa Soluzioni Digitali all’avanguardia per rispondere alle esigenze specifiche delle imprese. Oltre ad essere Funzionali e a norma di legge, i Prodotti ed i Servizi che AgenziaImpresa Buffetti Group offre alle sue imprese clienti sono accomunati da tre principi fondamentali:',
     intro:
       'Dalla costituzione della società alle autorizzazioni per avviare l’attività, dagli adempimenti ambientali ai rapporti con l’estero: AgenziaImpresa gestisce per conto dell’impresa le pratiche telematiche rivolte alla Pubblica Amministrazione, così che imprenditori e uffici amministrativi possano dedicare tempo ed energie al proprio lavoro.',
@@ -249,13 +249,9 @@ export const solutions = {
 
 export const territory = {
   title: 'Sul territorio',
-  text: 'Milano, Mantova, Modena, Brescia, Darfo Boario Terme e Bologna: un riferimento diretto sul territorio e un’area clienti online sulla piattaforma EccoSolution.',
+  text: 'Milano, Mantova, Modena, Brescia, Darfo Boario Terme, Bologna e Reggio Emilia: un riferimento diretto sul territorio e un’area clienti online sul portale Adempio.',
 }
 
-export const apriAgenzia = {
-  title: 'Entra nel nostro mondo',
-  text: 'Con AGENZIA IMPRESA potrai diventare un professionista nel mondo della digitalizzazione dei processi telematici in ambito amministrativo rivolti alla Pubblica amministrazione. Avrai la possibilità di aprire una tua impresa e offrire ai tuoi clienti nuovi servizi innovativi. Attraverso un nostro team di esperti e con le nostre soluzioni in cloud siamo in grado di fornirti tutti gli strumenti necessari per diventare uno dei protagonisti del nostro mercato di riferimento.',
-}
 
 export const contactIntro = 'Scrivici il tuo messaggio, ti proporremo la Soluzione Digitale che stai cercando.'
 export const serviceCta = 'Contattaci ora per maggiori informazioni e per attivare subito il Servizio!'

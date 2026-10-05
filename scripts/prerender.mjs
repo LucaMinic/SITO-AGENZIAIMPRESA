@@ -75,7 +75,45 @@ for (const r of routes) {
   fs.writeFileSync(file, page(r.path, metaFor(r.path)))
   count++
 }
-fs.writeFileSync(path.join(dist, '404.html'), page('/404', metaFor('/404'), { notFound: true }))
+// Redirect per hosting statici (GitHub Pages, hosting tradizionali), dove vercel.json non vale:
+// stessa fonte dei redirect 301 di Vercel (scripts/gen-redirects.mjs → vercel.json).
+const BASE = process.env.BASE_PATH || '/'
+const { redirects } = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf-8'))
+const target = (dest) => BASE.replace(/\/$/, '') + dest
+let redirectPages = 0
+for (const { source, destination } of redirects.filter((r) => !r.source.includes(':'))) {
+  const file = path.join(dist, source, 'index.html')
+  if (fs.existsSync(file)) continue // mai sovrascrivere una pagina vera
+  fs.mkdirSync(path.dirname(file), { recursive: true })
+  fs.writeFileSync(
+    file,
+    `<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pagina spostata – AgenziaImpresa</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="${SITE_URL}${destination === '/' ? '/' : destination}" />
+    <meta http-equiv="refresh" content="0; url=${target(destination)}" />
+    <script>location.replace(${JSON.stringify(target(destination))} + location.hash)</script>
+  </head>
+  <body>
+    <p>La pagina è stata spostata: <a href="${target(destination)}">vai alla nuova pagina</a>.</p>
+  </body>
+</html>
+`,
+  )
+  redirectPages++
+}
+// Redirect con prefisso (es. /prodotto/…): gestiti dalla pagina 404.
+const prefixes = redirects
+  .filter((r) => r.source.endsWith('/:path*'))
+  .map((r) => [r.source.replace('/:path*', '/'), target(r.destination)])
+const prefixScript = `<script>(function(){var b=${JSON.stringify(BASE)},p=location.pathname;if(p.indexOf(b)===0)p='/'+p.slice(b.length);var r=${JSON.stringify(prefixes)};for(var i=0;i<r.length;i++)if(p.indexOf(r[i][0])===0){location.replace(r[i][1]);return}})()</script>`
+fs.writeFileSync(
+  path.join(dist, '404.html'),
+  page('/404', metaFor('/404'), { notFound: true }).replace('</head>', `  ${prefixScript}\n  </head>`),
+)
 
 const today = new Date().toISOString().slice(0, 10)
 const urls = routes
@@ -95,4 +133,4 @@ fs.writeFileSync(
 fs.writeFileSync(path.join(dist, '.nojekyll'), '')
 fs.rmSync(path.join(root, 'dist-ssr'), { recursive: true, force: true })
 
-console.log(`Pre-render${PREVIEW ? ' (anteprima, noindex)' : ''}: ${count} pagine + 404${PREVIEW ? '' : `, sitemap con ${urls.length} URL`}.`)
+console.log(`Pre-render${PREVIEW ? " (anteprima, noindex)" : ""}: ${count} pagine + 404, ${redirectPages} pagine di redirect${PREVIEW ? "" : `, sitemap con ${urls.length} URL`}.`)

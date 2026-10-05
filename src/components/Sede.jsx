@@ -48,10 +48,12 @@ export function Address({ location, className = '' }) {
       <span className="block">
         {location.cap} {location.city}
       </span>
-      <a href={telHref(location.phone)} className="mt-3 inline-flex min-h-6 items-center gap-2 font-semibold text-ink hover:text-brand">
-        <Icon name="phone" className="size-4 text-brand" />
-        <span className="link-draw">tel: {location.phone}</span>
-      </a>
+      {location.phone && (
+        <a href={telHref(location.phone)} className="mt-3 inline-flex min-h-6 items-center gap-2 font-semibold text-ink hover:text-brand">
+          <Icon name="phone" className="size-4 text-brand" />
+          <span className="link-draw">tel: {location.phone}</span>
+        </a>
+      )}
     </address>
   )
 }
@@ -79,15 +81,6 @@ export function SedeRow({ sede, index }) {
       </div>
       <div className="flex flex-col items-start gap-3 md:col-span-2 md:items-end">
         <ArrowLink to={`/sedi/${sede.slug}`}>Contatta ora</ArrowLink>
-        <a
-          href={sede.login}
-          target="_blank"
-          rel="noopener"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-ink"
-        >
-          <Icon name="login" className="size-4" />
-          <span className="link-draw">Login</span>
-        </a>
       </div>
     </li>
   )

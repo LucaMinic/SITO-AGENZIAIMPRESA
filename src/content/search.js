@@ -1,6 +1,6 @@
 // Indice di ricerca dell'intero sito (lato client, nessun servizio esterno).
-import { areas, services, approfondimenti, areaUrl, serviceUrl, areaBySlug, TRANSVERSAL } from './services.js'
-import { about, apriAgenzia, sedi, solutions, contactIntro, home } from './site.js'
+import { areas, services, areaUrl, ownSubareas, serviceUrl, TRANSVERSAL } from './services.js'
+import { about, sedi, solutions, contactIntro, home, phoneText } from './site.js'
 
 export const normalize = (s) =>
   String(s)
@@ -13,15 +13,15 @@ const textOf = (blocks) => blocks.map((b) => b.text ?? (b.items ?? []).join(' ')
 
 const entries = [
   ...areas.map((a) => ({
-    kind: 'Area di servizio',
+    kind: 'Area',
     title: a.title,
     url: areaUrl(a),
-    excerpt: a.services.map((s) => services[s].title).join(' · '),
-    text: a.services.map((s) => services[s].title + ' ' + textOf(services[s].blocks)).join(' '),
+    excerpt: (a.items ?? a.services.map((s) => services[s].title)).join(' · '),
+    text: [...(a.items ?? []), ...a.services.map((s) => services[s].title + ' ' + textOf(services[s].blocks))].join(' '),
   })),
   ...areas.flatMap((a) =>
-    a.services.map((slug) => ({
-      kind: 'Servizio',
+    ownSubareas(a).map((slug) => ({
+      kind: 'Sotto-area',
       context: a.title,
       title: services[slug].title,
       url: serviceUrl(slug),
@@ -30,28 +30,20 @@ const entries = [
     })),
   ),
   ...TRANSVERSAL.map((slug) => ({
-    kind: 'Servizio',
-    context: 'Tutte le aree',
+    kind: 'Sotto-area',
+    context: 'Più aree',
     title: services[slug].title,
     url: serviceUrl(slug),
     excerpt: textOf(services[slug].blocks),
     text: textOf(services[slug].blocks),
-  })),
-  ...Object.entries(approfondimenti).map(([slug, s]) => ({
-    kind: 'Scheda informativa',
-    context: areaBySlug[s.area].title,
-    title: s.title,
-    url: serviceUrl(slug),
-    excerpt: textOf(s.blocks),
-    text: textOf(s.blocks),
   })),
   ...sedi.flatMap((s) =>
     s.locations.map((l) => ({
       kind: 'Sede',
       title: l.city,
       url: `/sedi/${s.slug}`,
-      excerpt: `${l.address}, ${l.cap} ${l.city} – tel. ${l.phone}`,
-      text: `${l.address} ${l.cap} ${l.city} ${l.phone} sede contatti`,
+      excerpt: [`${l.address}, ${l.cap} ${l.city}`, phoneText(l)].filter(Boolean).join(' – '),
+      text: `${l.address} ${l.cap} ${l.city} ${l.phone ?? ''} sede contatti`,
     })),
   ),
   { kind: 'Pagina', title: 'Chi siamo', url: '/chi-siamo', excerpt: about.quote, text: [about.quote, ...about.story].join(' ') },
@@ -63,9 +55,8 @@ const entries = [
     text: [s.text, s.intro, ...s.audience, ...s.needs.map((n) => n.title + ' ' + n.text), ...s.principles.map((p) => p.title + ' ' + p.text)].join(' '),
   })),
   { kind: 'Pagina', title: 'I nostri Servizi', url: '/servizi', excerpt: home.claim, text: home.claim },
-  { kind: 'Pagina', title: 'Le nostre Sedi', url: '/sedi', excerpt: contactIntro, text: 'sedi contatti indirizzi telefoni login area clienti' },
+  { kind: 'Pagina', title: 'Le nostre Sedi', url: '/sedi', excerpt: contactIntro, text: 'sedi contatti indirizzi telefoni login area clienti adempio' },
   { kind: 'Pagina', title: 'Contattaci', url: '/contatti', excerpt: contactIntro, text: contactIntro + ' contatti modulo email' },
-  { kind: 'Pagina', title: 'Apri la tua Agenzia', url: '/apri-la-tua-agenzia', excerpt: apriAgenzia.title, text: apriAgenzia.text },
   { kind: 'Pagina', title: 'Privacy Policy', url: '/privacy-policy', excerpt: 'Informativa privacy', text: 'privacy dati personali gdpr' },
   { kind: 'Pagina', title: 'Cookie Policy', url: '/cookie-policy', excerpt: 'Informativa cookie', text: 'cookie tracciamento' },
 ].map((e) => ({ ...e, _title: normalize(e.title), _all: normalize(`${e.title} ${e.context ?? ''} ${e.text}`) }))

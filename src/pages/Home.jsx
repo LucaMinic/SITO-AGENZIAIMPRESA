@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { about, allLocations, apriAgenzia, home, sedi, solutions, telHref } from '../content/site.js'
-import { areasByFamily, areaIndex, areaUrl, serviceCount, services } from '../content/services.js'
+import { about, allLocations, home, sedi, solutions, telHref } from '../content/site.js'
+import { areaIndex, areas, areaSummary, areaUrl, services } from '../content/services.js'
 import { photos } from '../content/images.js'
-import { ArrowLink, Button, Eyebrow, FramedPhoto, Icon, Photo, Reveal } from '../components/ui.jsx'
+import { ArrowLink, asset, Button, Eyebrow, FramedPhoto, Icon, Photo, Reveal } from '../components/ui.jsx'
 import SediMap from '../components/SediMap.jsx'
 
 // Slide dell'hero: i titoli sono contenuti già presenti nel sito.
@@ -28,13 +28,6 @@ const SLIDES = [
       { to: '/soluzioni/imprese', label: solutions.imprese.title },
       { to: '/soluzioni/professionisti', label: solutions.professionisti.title },
     ],
-  },
-  {
-    photo: photos.teamwork,
-    eyebrow: 'Apri la tua Agenzia',
-    label: 'Apri la tua Agenzia',
-    title: apriAgenzia.title,
-    ctas: [{ to: '/apri-la-tua-agenzia', label: 'Apri la tua Agenzia' }],
   },
 ]
 const SLIDE_MS = 7000
@@ -126,7 +119,7 @@ function Hero() {
       {/* Controlli: avanzamento per slide, frecce, pausa */}
       <div className="wrap relative pb-8 md:pb-10">
         <div className="flex items-end gap-6">
-          <ol className="grid flex-1 grid-cols-3 gap-3 md:max-w-xl md:gap-4">
+          <ol className="grid flex-1 grid-cols-2 gap-3 md:max-w-xl md:gap-4">
             {SLIDES.map((s, i) => (
               <li key={s.photo.id}>
                 <button
@@ -208,8 +201,10 @@ function Intro() {
 
 /* Indice delle aree: righe numerate al posto dei box. */
 export function AreaIndexRow({ area, index = 0 }) {
-  const preview = area.services.slice(0, 3).map((s) => services[s].title)
-  const more = area.services.length - preview.length
+  // Anteprima: prime sotto-aree, oppure primi servizi per le aree senza sotto-aree.
+  const all = area.items ?? area.services.map((s) => services[s].title)
+  const preview = all.slice(0, 3)
+  const more = all.length - preview.length
   return (
     <li style={{ '--i': index }}>
       <Link
@@ -230,7 +225,7 @@ export function AreaIndexRow({ area, index = 0 }) {
         </span>
         <span className="col-start-3 row-start-1 flex items-center gap-3 md:col-start-4">
           <span className="hidden text-sm text-muted tabular-nums sm:inline">
-            {serviceCount(area)} {serviceCount(area) === 1 ? 'servizio' : 'servizi'}
+            {areaSummary(area)}
           </span>
           <Icon name="arrow" className="size-5 text-ink transition-transform duration-200 group-hover:translate-x-1 group-hover:text-brand" />
         </span>
@@ -239,13 +234,6 @@ export function AreaIndexRow({ area, index = 0 }) {
   )
 }
 
-// Colore leggero in trasparenza per ciascuna famiglia di aree (palette Buffetti Group).
-const FAMILY_TINTS = {
-  impresa: { bg: '#0007e012', bar: '#0007e0' },
-  fisco: { bg: '#00268514', bar: '#002685' },
-  autorizzazioni: { bg: '#00b7e617', bar: '#00b7e6' },
-  certificati: { bg: '#bb78ff17', bar: '#bb78ff' },
-}
 
 function Areas() {
   return (
@@ -260,31 +248,15 @@ function Areas() {
           </div>
           <div className="flex items-end lg:col-span-3 lg:justify-end">
             <Button to="/servizi" variant="secondary">
-              Tutti i servizi
+              Tutte le aree
             </Button>
           </div>
         </Reveal>
-        <div className="mt-16 space-y-14 md:mt-20">
-          {areasByFamily.map((f) => (
-            <Reveal key={f.id} className="grid gap-4 lg:grid-cols-8 lg:gap-6">
-              <div
-                className="relative overflow-hidden px-5 py-4 lg:col-span-2 lg:mr-4 lg:px-6 lg:py-7"
-                style={{ background: FAMILY_TINTS[f.id].bg }}
-              >
-                <span aria-hidden="true" className="absolute inset-y-0 left-0 w-[3px]" style={{ background: FAMILY_TINTS[f.id].bar }} />
-                <h3 className="eyebrow text-ink">{f.title}</h3>
-                <p className="mt-2 text-sm text-muted">
-                  {f.areas.length} {f.areas.length === 1 ? 'area' : 'aree'}
-                </p>
-              </div>
-              <ul data-stagger="" className="border-b border-line lg:col-span-6">
-                {f.areas.map((a, i) => (
-                  <AreaIndexRow key={a.slug} area={a} index={i} />
-                ))}
-              </ul>
-            </Reveal>
+        <Reveal as="ul" data-stagger="" className="mt-16 border-b border-line md:mt-20">
+          {areas.map((a, i) => (
+            <AreaIndexRow key={a.slug} area={a} index={i} />
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -321,11 +293,17 @@ function Solutions() {
           {s[0].principles.map((p, i) => (
             <li key={p.title} style={{ '--i': i }}>
               <span className="text-sm font-semibold text-brand tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="text-h3 mt-3">{p.title}</h3>
+              <h3 className="text-h3 mt-3 flex items-center gap-3">
+                <img src={asset('brand/adempio-simbolo.svg')} alt="" width="59" height="56" className="h-[1.1em] w-auto shrink-0" />
+                {p.title}
+              </h3>
               <p className="mt-3 text-[0.9375rem] text-muted">{p.text}</p>
             </li>
           ))}
         </Reveal>
+        <div className="mt-14 md:mt-20 lg:ml-[25%]">
+          <img src={asset('brand/adempio.svg')} alt="Adempio" width="268" height="56" className="h-10 w-auto md:h-12" />
+        </div>
       </div>
     </section>
   )
@@ -370,13 +348,15 @@ function Locations() {
                   <br />
                   {l.cap} {l.city}
                 </p>
-                <a
-                  href={telHref(l.phone)}
-                  className="relative z-10 mt-4 inline-flex min-h-11 items-center gap-2 font-semibold hover:text-brand"
-                >
-                  <Icon name="phone" className="size-4 text-brand" />
-                  {l.phone}
-                </a>
+                {l.phone && (
+                  <a
+                    href={telHref(l.phone)}
+                    className="relative z-10 mt-4 inline-flex min-h-11 items-center gap-2 font-semibold hover:text-brand"
+                  >
+                    <Icon name="phone" className="size-4 text-brand" />
+                    {l.phone}
+                  </a>
+                )}
               </li>
             )),
           )}
@@ -386,33 +366,6 @@ function Locations() {
   )
 }
 
-export function OpenAgencyBand() {
-  return (
-    <section aria-labelledby="apri" className="section pt-0">
-      <div className="wrap">
-        <Reveal className="grid overflow-hidden lg:grid-cols-8">
-          <div className="bg-mist/70 p-8 md:p-14 lg:col-span-5">
-            <Eyebrow className="mb-6 text-brand">Apri la tua Agenzia</Eyebrow>
-            <h2 id="apri" className="text-h1">
-              {apriAgenzia.title}
-            </h2>
-            <p className="mt-8 max-w-[58ch] text-muted">{apriAgenzia.text}</p>
-          </div>
-          <div className="on-dark relative isolate flex min-h-72 items-end overflow-hidden bg-brand p-8 text-white md:p-14 lg:col-span-3 lg:[clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)] lg:pl-24">
-            <div aria-hidden="true" className="absolute inset-0 -z-10">
-              <Photo photo={photos.boardroom} sizes="(min-width: 1024px) 36vw, 92vw" />
-              <div className="absolute inset-0 bg-brand mix-blend-multiply opacity-80" />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/70 to-transparent" />
-            </div>
-            <Button to="/apri-la-tua-agenzia" variant="light" className="relative">
-              Apri la tua Agenzia
-            </Button>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  )
-}
 
 export default function Home() {
   return (
@@ -422,7 +375,6 @@ export default function Home() {
       <Areas />
       <Solutions />
       <Locations />
-      <OpenAgencyBand />
     </>
   )
 }

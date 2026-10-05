@@ -54,7 +54,7 @@ export default function SediMap() {
               `<div class="sede-popup">
                 <p class="sede-popup__city">${esc(l.city)}</p>
                 <p>${esc(l.address)}<br>${esc(l.cap)} ${esc(l.city)}</p>
-                <p><a href="${telHref(l.phone)}">tel: ${esc(l.phone)}</a></p>
+                ${l.phone ? `<p><a href="${telHref(l.phone)}">tel: ${esc(l.phone)}</a></p>` : ''}
                 <p><a class="sede-popup__cta" href="${base}sedi/${s.slug}">Contatta la sede →</a></p>
               </div>`,
               { closeButton: true, maxWidth: 260 },

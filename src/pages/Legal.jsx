@@ -70,9 +70,11 @@ function NoteLegali() {
                     <span className="block text-muted">
                       {l.address}, {l.cap} {l.city}
                     </span>
-                    <a href={telHref(l.phone)} className="inline-flex min-h-6 items-center text-muted hover:text-brand">
-                      tel. {l.phone}
-                    </a>
+                    {l.phone && (
+                      <a href={telHref(l.phone)} className="inline-flex min-h-6 items-center text-muted hover:text-brand">
+                        tel. {l.phone}
+                      </a>
+                    )}
                   </li>
                 )),
               )}

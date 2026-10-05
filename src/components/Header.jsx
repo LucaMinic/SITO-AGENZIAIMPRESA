@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { areasByFamily, areaIndex, areaUrl, serviceUrl, services, totalServices } from '../content/services.js'
-import { REGISTER_URL, sedi, solutions } from '../content/site.js'
+import { areaIndex, areas, areaUrl } from '../content/services.js'
+import { LOGIN_URL, REGISTER_URL, solutions } from '../content/site.js'
 import { asset, Button, Icon, SmartLink } from './ui.jsx'
 import { SearchBox } from './Search.jsx'
 
@@ -19,38 +19,24 @@ export function Logo({ negative = false, className = '' }) {
   )
 }
 
-/* Pannello del mega-menu "Servizi": le 10 aree raggruppate in 4 famiglie. */
+/* Pannello del mega-menu "Servizi": le aree nell'ordine del listino. */
 function ServicesPanel() {
   return (
-    <div className="wrap grid gap-x-6 gap-y-10 py-12 lg:grid-cols-4">
-      {areasByFamily.map((f) => (
-        <div key={f.id}>
-          <p className="eyebrow mb-5 text-muted">{f.title}</p>
-          <ul className="space-y-1">
-            {f.areas.map((a) => (
-              <li key={a.slug}>
-                <Link
-                  to={areaUrl(a)}
-                  className="group -mx-3 flex items-baseline gap-3 px-3 py-2.5 transition-colors hover:bg-mist/70"
-                >
-                  <span className="w-6 shrink-0 text-xs font-semibold text-brand tabular-nums">{areaIndex(a)}</span>
-                  <span className="flex-1 font-medium leading-snug group-hover:text-brand">{a.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-6 lg:col-span-4">
+    <div className="wrap py-12">
+      <ul className="grid gap-x-6 gap-y-1 lg:grid-cols-3">
+        {areas.map((a) => (
+          <li key={a.slug}>
+            <Link to={areaUrl(a)} className="group -mx-3 flex items-baseline gap-3 px-3 py-2.5 transition-colors hover:bg-mist/70">
+              <span className="w-6 shrink-0 text-xs font-semibold text-brand tabular-nums">{areaIndex(a)}</span>
+              <span className="flex-1 font-medium leading-snug group-hover:text-brand">{a.title}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-8 border-t border-line pt-6">
         <Link to="/servizi" className="group inline-flex items-center gap-2 font-semibold text-brand">
-          Tutti i servizi ({totalServices})
+          Tutte le aree
           <Icon name="arrow" className="size-4 transition-transform group-hover:translate-x-1" />
-        </Link>
-        <Link to={serviceUrl('diritto-durgenza')} className="link-draw text-sm text-muted hover:text-ink">
-          {services['diritto-durgenza'].title}
-        </Link>
-        <Link to={serviceUrl('assistenza-normativa-e-procedurale')} className="link-draw text-sm text-muted hover:text-ink">
-          Assistenza normativa e procedurale
         </Link>
       </div>
     </div>
@@ -79,7 +65,8 @@ function ListPanel({ links, columns = 1 }) {
   )
 }
 
-const LOGIN_LINKS = sedi.map((s) => ({ to: s.login, label: `Login ${s.city}`, external: true }))
+// Area clienti: login unico sul portale Adempio.
+const LOGIN_LINKS = [{ to: LOGIN_URL, label: 'Login Adempio', external: true }]
 
 const MENUS = {
   servizi: { label: 'Servizi', mega: true },
@@ -248,12 +235,6 @@ export default function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1.5 xl:gap-4">
-          <Link
-            to="/apri-la-tua-agenzia"
-            className="link-draw hidden whitespace-nowrap text-[0.9375rem] font-medium min-[1440px]:inline"
-          >
-            Apri la tua Agenzia
-          </Link>
           <div className="relative hidden lg:block" onMouseEnter={() => hoverOpen('login')} onMouseLeave={hoverClose}>
             <button
               id={`${baseId}-login-btn`}
@@ -272,7 +253,7 @@ export default function Header() {
               hidden={open !== 'login'}
               className="absolute right-0 top-full w-64 border border-line bg-white text-ink shadow-[0_24px_48px_-24px_rgb(0_0_0/0.25)]"
             >
-              <p className="eyebrow px-7 pt-5 text-muted">EccoSolution</p>
+              <p className="eyebrow px-7 pt-5 text-muted">Adempio</p>
               <ListPanel links={LOGIN_LINKS} />
               <div className="border-t border-line p-3">
                 <SmartLink to={REGISTER_URL} className="group flex items-center justify-between px-4 py-3 font-semibold text-brand hover:bg-mist/70">
@@ -387,23 +368,18 @@ function MobileMenu({ id, open }) {
     >
       <nav aria-label="Menu mobile" className="wrap flex min-h-full flex-col pb-32 pt-2">
         <Accordion title="Servizi">
-          {areasByFamily.map((f) => (
-            <div key={f.id} className="mb-5">
-              <p className="eyebrow mb-2 text-muted">{f.title}</p>
-              <ul>
-                {f.areas.map((a) => (
-                  <li key={a.slug}>
-                    <Link to={areaUrl(a)} className="flex min-h-12 items-center gap-3 py-2">
-                      <span className="w-6 text-xs font-semibold text-brand tabular-nums">{areaIndex(a)}</span>
-                      <span className="font-medium">{a.title}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <ul className="mb-3">
+            {areas.map((a) => (
+              <li key={a.slug}>
+                <Link to={areaUrl(a)} className="flex min-h-12 items-center gap-3 py-2">
+                  <span className="w-6 text-xs font-semibold text-brand tabular-nums">{areaIndex(a)}</span>
+                  <span className="font-medium">{a.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
           <Link to="/servizi" className="inline-flex min-h-12 items-center gap-2 font-semibold text-brand">
-            Tutti i servizi <Icon name="arrow" className="size-4" />
+            Tutte le aree <Icon name="arrow" className="size-4" />
           </Link>
         </Accordion>
         <Accordion title="Soluzioni">
@@ -420,7 +396,6 @@ function MobileMenu({ id, open }) {
         {[
           { to: '/chi-siamo', label: 'Chi siamo' },
           { to: '/sedi', label: 'Sedi' },
-          { to: '/apri-la-tua-agenzia', label: 'Apri la tua Agenzia' },
         ].map((l) => (
           <Link key={l.to} to={l.to} className="flex min-h-16 items-center border-b border-line text-2xl font-light tracking-[-0.02em]">
             {l.label}

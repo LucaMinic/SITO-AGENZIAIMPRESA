@@ -31,6 +31,7 @@ export const photos = {
   courthouse: { id: '1701605920759-7b523ee7748c', alt: 'Palazzo di giustizia con colonnato neoclassico' },
   workstation: { id: '1555421689-491a97ff2040', alt: 'Postazione di lavoro digitale con tastiera' },
   clipboard: { id: '1586282391129-76a6df230234', alt: 'Cartellina con documenti accanto a un computer portatile' },
+  atm: { id: '1601597111158-2fceff292cdc', alt: 'Mano che digita sulla tastiera di uno sportello bancomat' },
 }
 
 // Immagine di ogni area di servizio.
@@ -39,6 +40,7 @@ export const areaPhotos = {
   marchi: photos.palette,
   'agenzia-entrate-adm': photos.tax,
   'agenzia-territorio': photos.house,
+  'operatori-finanziari': photos.atm,
   'pratiche-suap': photos.restaurant,
   'servizi-ambientali': photos.wind,
   'servizio-estero': photos.containers,

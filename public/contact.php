@@ -17,6 +17,7 @@ $RECIPIENTS = [
     'modena'  => 'modena@agenziaimpresa.com',
     'brescia' => 'brescia@agenziaimpresa.com',   // comprende Darfo Boario Terme
     'bologna' => 'adempio.pratiche@agenziaimpresa.com',
+    'reggio-emilia' => 'milano@agenziaimpresa.com', // provvisorio: destinatario da indicare dal cliente
 ];
 // Modulo generale senza sede scelta: sede legale (da confermare). "Apri la tua Agenzia": rete agenzie.
 $DEFAULT_TO     = 'milano@agenziaimpresa.com';

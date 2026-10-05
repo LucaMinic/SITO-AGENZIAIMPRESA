@@ -8,7 +8,6 @@ const COMPANY_LINKS = [
   { to: '/chi-siamo', label: 'Chi siamo' },
   { to: '/soluzioni/imprese', label: 'Soluzioni per le imprese' },
   { to: '/soluzioni/professionisti', label: 'Soluzioni per Professionisti' },
-  { to: '/apri-la-tua-agenzia', label: 'Apri la tua Agenzia' },
 ]
 const LEGAL_LINKS = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
@@ -91,9 +90,11 @@ export default function Footer({ cta = true }) {
                       {l.city}
                     </Link>
                     <span className="block text-white/70">{l.address}</span>
-                    <a href={telHref(l.phone)} className="link-draw inline-block py-0.5 text-white/85 hover:text-white">
-                      {l.phone}
-                    </a>
+                    {l.phone && (
+                      <a href={telHref(l.phone)} className="link-draw inline-block py-0.5 text-white/85 hover:text-white">
+                        {l.phone}
+                      </a>
+                    )}
                   </li>
                 )),
               )}

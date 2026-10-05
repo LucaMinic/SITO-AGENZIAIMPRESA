@@ -169,7 +169,7 @@ function SendFallback({ sede }) {
       <p className="mt-1 text-muted">Puoi contattarci telefonicamente:</p>
       <ul className="mt-4 grid gap-2 sm:grid-cols-2">
         {list.flatMap((s) =>
-          s.locations.map((l) => (
+          s.locations.filter((l) => l.phone).map((l) => (
             <li key={l.city}>
               <a href={telHref(l.phone)} className="inline-flex items-center gap-2 font-medium hover:text-brand">
                 <Icon name="phone" className="size-4 text-brand" />

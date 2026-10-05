@@ -97,7 +97,7 @@
     },
     {
       "source": "/obbligatorio-pagare-online-il-certificato-dorigine",
-      "destination": "/servizi/servizio-estero/il-certificato-d-origine",
+      "destination": "/servizi/servizio-estero",
       "permanent": true
     },
     {
@@ -181,8 +181,168 @@
       "permanent": true
     },
     {
+      "source": "/apri-la-tua-agenzia",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/banche-dati",
+      "destination": "/servizi/servizi-digitali",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizi-digitali/banche-dati",
+      "destination": "/servizi/servizi-digitali",
+      "permanent": true
+    },
+    {
+      "source": "/il-codice-lei-legal-entity-identifier",
+      "destination": "/servizi/registro-imprese-comunica",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/registro-imprese-comunica/il-codice-lei",
+      "destination": "/servizi/registro-imprese-comunica",
+      "permanent": true
+    },
+    {
+      "source": "/cpi",
+      "destination": "/servizi/pratiche-suap",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/pratiche-suap/cpi",
+      "destination": "/servizi/pratiche-suap",
+      "permanent": true
+    },
+    {
+      "source": "/hccp",
+      "destination": "/servizi/pratiche-suap",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/pratiche-suap/haccp",
+      "destination": "/servizi/pratiche-suap",
+      "permanent": true
+    },
+    {
+      "source": "/banca-dati-f-gas",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizi-ambientali/banca-dati-f-gas",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/registro-f-gas",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizi-ambientali/registro-f-gas",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/registro-nazionale-accumulatori-pile",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizi-ambientali/registro-nazionale-accumulatori-pile",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/valutazione-dellimpatto-acustico",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizi-ambientali/valutazione-dellimpatto-acustico",
+      "destination": "/servizi/servizi-ambientali",
+      "permanent": true
+    },
+    {
+      "source": "/il-certificato-d-origine",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizio-estero/il-certificato-d-origine",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/il-carnet-ata",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizio-estero/il-carnet-ata",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/il-codice-meccanografico",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizio-estero/il-codice-meccanografico",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/visti-consolari-e-legalizzazioni",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizio-estero/visti-consolari-e-legalizzazioni",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/bolle-doganali-digitali",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/servizio-estero/bolle-doganali-digitali",
+      "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/registrazione-marchio-dimpresa",
+      "destination": "/servizi/marchi",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/marchi/registrazione-marchio-dimpresa",
+      "destination": "/servizi/marchi",
+      "permanent": true
+    },
+    {
+      "source": "/varie",
+      "destination": "/servizi/varie",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/varie/varie",
+      "destination": "/servizi/varie",
+      "permanent": true
+    },
+    {
       "source": "/area-registro-imprese-comunica",
       "destination": "/servizi/registro-imprese-comunica",
+      "permanent": true
+    },
+    {
+      "source": "/area-pratiche-suap",
+      "destination": "/servizi/pratiche-suap",
       "permanent": true
     },
     {
@@ -201,11 +361,6 @@
       "permanent": true
     },
     {
-      "source": "/area-pratiche-suap",
-      "destination": "/servizi/pratiche-suap",
-      "permanent": true
-    },
-    {
       "source": "/area-servizi-ambientali",
       "destination": "/servizi/servizi-ambientali",
       "permanent": true
@@ -213,6 +368,11 @@
     {
       "source": "/area-servizio-estero",
       "destination": "/servizi/servizio-estero",
+      "permanent": true
+    },
+    {
+      "source": "/area-varie",
+      "destination": "/servizi/varie",
       "permanent": true
     },
     {
@@ -226,8 +386,13 @@
       "permanent": true
     },
     {
-      "source": "/area-varie",
-      "destination": "/servizi/varie",
+      "source": "/assistenza-e-approfondimenti-sui-quesiti-specifici-inerenti-gli-aspetti-normativi-e-procedurali",
+      "destination": "/servizi/assistenza-normativa-e-procedurale",
+      "permanent": true
+    },
+    {
+      "source": "/diritto-durgenza",
+      "destination": "/servizi/diritto-durgenza",
       "permanent": true
     },
     {
@@ -291,56 +456,6 @@
       "permanent": true
     },
     {
-      "source": "/assistenza-e-approfondimenti-sui-quesiti-specifici-inerenti-gli-aspetti-normativi-e-procedurali",
-      "destination": "/servizi/assistenza-normativa-e-procedurale",
-      "permanent": true
-    },
-    {
-      "source": "/diritto-durgenza",
-      "destination": "/servizi/diritto-durgenza",
-      "permanent": true
-    },
-    {
-      "source": "/registrazione-marchio-dimpresa",
-      "destination": "/servizi/marchi/registrazione-marchio-dimpresa",
-      "permanent": true
-    },
-    {
-      "source": "/ufficio-successioni",
-      "destination": "/servizi/agenzia-entrate-adm/ufficio-successioni",
-      "permanent": true
-    },
-    {
-      "source": "/ufficio-del-registro",
-      "destination": "/servizi/agenzia-entrate-adm/ufficio-del-registro",
-      "permanent": true
-    },
-    {
-      "source": "/iva",
-      "destination": "/servizi/agenzia-entrate-adm/iva",
-      "permanent": true
-    },
-    {
-      "source": "/adm",
-      "destination": "/servizi/agenzia-entrate-adm/adm",
-      "permanent": true
-    },
-    {
-      "source": "/ries",
-      "destination": "/servizi/agenzia-entrate-adm/ries",
-      "permanent": true
-    },
-    {
-      "source": "/catasto",
-      "destination": "/servizi/agenzia-territorio/catasto",
-      "permanent": true
-    },
-    {
-      "source": "/conservatoria-e-registri-immobiliari",
-      "destination": "/servizi/agenzia-territorio/conservatoria-e-registri-immobiliari",
-      "permanent": true
-    },
-    {
       "source": "/attivita-di-vendita-vicinato-commercio-elettronico-commercio-ingrosso",
       "destination": "/servizi/pratiche-suap/attivita-di-vendita-vicinato-commercio-elettronico-commercio-ingrosso",
       "permanent": true
@@ -383,6 +498,41 @@
     {
       "source": "/carta-esercizio-ambulanti",
       "destination": "/servizi/pratiche-suap/carta-esercizio-ambulanti",
+      "permanent": true
+    },
+    {
+      "source": "/ufficio-successioni",
+      "destination": "/servizi/agenzia-entrate-adm/ufficio-successioni",
+      "permanent": true
+    },
+    {
+      "source": "/ufficio-del-registro",
+      "destination": "/servizi/agenzia-entrate-adm/ufficio-del-registro",
+      "permanent": true
+    },
+    {
+      "source": "/iva",
+      "destination": "/servizi/agenzia-entrate-adm/iva",
+      "permanent": true
+    },
+    {
+      "source": "/adm",
+      "destination": "/servizi/agenzia-entrate-adm/adm",
+      "permanent": true
+    },
+    {
+      "source": "/ries",
+      "destination": "/servizi/agenzia-entrate-adm/ries",
+      "permanent": true
+    },
+    {
+      "source": "/catasto",
+      "destination": "/servizi/agenzia-territorio/catasto",
+      "permanent": true
+    },
+    {
+      "source": "/conservatoria-e-registri-immobiliari",
+      "destination": "/servizi/agenzia-territorio/conservatoria-e-registri-immobiliari",
       "permanent": true
     },
     {
@@ -448,76 +598,6 @@
     {
       "source": "/pec",
       "destination": "/servizi/servizi-digitali/pec",
-      "permanent": true
-    },
-    {
-      "source": "/banche-dati",
-      "destination": "/servizi/servizi-digitali/banche-dati",
-      "permanent": true
-    },
-    {
-      "source": "/varie",
-      "destination": "/servizi/varie/varie",
-      "permanent": true
-    },
-    {
-      "source": "/il-codice-lei-legal-entity-identifier",
-      "destination": "/servizi/registro-imprese-comunica/il-codice-lei",
-      "permanent": true
-    },
-    {
-      "source": "/cpi",
-      "destination": "/servizi/pratiche-suap/cpi",
-      "permanent": true
-    },
-    {
-      "source": "/hccp",
-      "destination": "/servizi/pratiche-suap/haccp",
-      "permanent": true
-    },
-    {
-      "source": "/banca-dati-f-gas",
-      "destination": "/servizi/servizi-ambientali/banca-dati-f-gas",
-      "permanent": true
-    },
-    {
-      "source": "/registro-f-gas",
-      "destination": "/servizi/servizi-ambientali/registro-f-gas",
-      "permanent": true
-    },
-    {
-      "source": "/registro-nazionale-accumulatori-pile",
-      "destination": "/servizi/servizi-ambientali/registro-nazionale-accumulatori-pile",
-      "permanent": true
-    },
-    {
-      "source": "/valutazione-dellimpatto-acustico",
-      "destination": "/servizi/servizi-ambientali/valutazione-dellimpatto-acustico",
-      "permanent": true
-    },
-    {
-      "source": "/il-certificato-d-origine",
-      "destination": "/servizi/servizio-estero/il-certificato-d-origine",
-      "permanent": true
-    },
-    {
-      "source": "/il-carnet-ata",
-      "destination": "/servizi/servizio-estero/il-carnet-ata",
-      "permanent": true
-    },
-    {
-      "source": "/il-codice-meccanografico",
-      "destination": "/servizi/servizio-estero/il-codice-meccanografico",
-      "permanent": true
-    },
-    {
-      "source": "/visti-consolari-e-legalizzazioni",
-      "destination": "/servizi/servizio-estero/visti-consolari-e-legalizzazioni",
-      "permanent": true
-    },
-    {
-      "source": "/bolle-doganali-digitali",
-      "destination": "/servizi/servizio-estero/bolle-doganali-digitali",
       "permanent": true
     }
   ],

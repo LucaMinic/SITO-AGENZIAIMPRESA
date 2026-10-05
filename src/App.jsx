@@ -7,7 +7,7 @@ import { metaFor } from './routes.js'
 import Home from './pages/Home.jsx'
 import { AreaPage, ServicePage, ServicesHub } from './pages/Services.jsx'
 import { ChiSiamo, Soluzioni } from './pages/About.jsx'
-import { ApriAgenzia, Contatti, Pagamenti, SedePage, Sedi } from './pages/Contact.jsx'
+import { Contatti, Pagamenti, SedePage, Sedi } from './pages/Contact.jsx'
 import Legal from './pages/Legal.jsx'
 import NotFound from './pages/NotFound.jsx'
 import SearchPage from './pages/SearchPage.jsx'
@@ -40,7 +40,6 @@ export default function App() {
           <Route path="/sedi" element={<Sedi />} />
           <Route path="/sedi/:slug" element={<SedePage />} />
           <Route path="/contatti" element={<Contatti />} />
-          <Route path="/apri-la-tua-agenzia" element={<ApriAgenzia />} />
           <Route path="/privacy-policy" element={<Legal doc="privacy" />} />
           <Route path="/cookie-policy" element={<Legal doc="cookie" />} />
           <Route path="/note-legali" element={<Legal doc="note" />} />
