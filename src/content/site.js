@@ -84,7 +84,7 @@ export const phoneText = (l, prefix = 'tel. ') => (l.phone ? `${prefix}${l.phone
 
 export const home = {
   claim:
-    'Servizi di intermediazione dei processi telematici in ambito amministrativo rivolti alla Pubblica Amministrazione',
+    'Servizi di intermediazione telematica degli adempimenti rivolti alla pubblica amministrazione',
 }
 
 export const about = {
