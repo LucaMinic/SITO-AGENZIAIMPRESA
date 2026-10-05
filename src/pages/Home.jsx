@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { about, allLocations, apriAgenzia, home, sedi, solutions, telHref } from '../content/site.js'
 import { areasByFamily, areaIndex, areaUrl, serviceCount, services } from '../content/services.js'
@@ -60,6 +60,15 @@ function Hero() {
     return () => clearTimeout(t)
   }, [running, index])
 
+  // Scelta di una slide dai pulsanti numerati: il focus va al primo link della slide (WCAG 2.1.1, 2.4.3).
+  const contentRef = useRef(null)
+  const focusSlide = useRef(false)
+  useEffect(() => {
+    if (!focusSlide.current) return
+    focusSlide.current = false
+    contentRef.current?.querySelector('a')?.focus()
+  }, [index])
+
   const go = (i) => setIndex((i + SLIDES.length) % SLIDES.length)
   const slide = SLIDES[index]
   const Title = index === 0 ? 'h1' : 'h2'
@@ -99,7 +108,7 @@ function Hero() {
       <div className="wrap relative flex flex-1 flex-col justify-center pb-10 pt-32 md:pt-40">
         {/* Il titolo principale della pagina resta sempre presente per le tecnologie assistive. */}
         {index !== 0 && <h1 className="sr-only">{home.claim}</h1>}
-        <div key={index} className="hero-in max-w-[62rem]">
+        <div key={index} ref={contentRef} className="hero-in max-w-[62rem]">
           <Eyebrow className="mb-8 text-white">{slide.eyebrow}</Eyebrow>
           <Title className={`${slide.long ? 'text-h1 md:text-display max-w-[19ch]' : 'text-display max-w-[16ch]'} text-balance`}>
             {slide.title}
@@ -122,7 +131,11 @@ function Hero() {
               <li key={s.photo.id}>
                 <button
                   type="button"
-                  onClick={() => go(i)}
+                  onClick={() => {
+                    if (i === index) return contentRef.current?.querySelector('a')?.focus()
+                    focusSlide.current = true
+                    go(i)
+                  }}
                   aria-label={`Vai alla slide ${i + 1}: ${s.label}`}
                   aria-current={i === index ? 'true' : undefined}
                   className="group block w-full py-3 text-left"

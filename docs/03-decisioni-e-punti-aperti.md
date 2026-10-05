@@ -30,6 +30,11 @@
 
 **Header:** ottimizzato per tutte le larghezze, verificato da 1024 a 2560 px. Contenuti fino a 1600 px di larghezza.
 
+## Modifiche del 05/10/2026
+
+- **Pagina "Accessibilità" eliminata** su richiesta: rimossi la pagina `/dichiarazione-accessibilita`, la voce "Accessibilità" nel footer, il risultato nella ricerca, la voce nella sitemap e la configurazione `accessibility` in `src/content/site.js`. Non serve un redirect, perché la URL esisteva solo nel nuovo sito.
+- **Slider della Home:** scegliendo una slide con i pulsanti numerati, il focus passa al primo link della slide. Così i link della slide (es. "Soluzioni per le imprese" e "Soluzioni per Professionisti") si raggiungono e si attivano da tastiera. L'aspetto non cambia.
+
 ## Punti aperti da verificare
 
 **A. Note legali.**

@@ -68,14 +68,6 @@ export const allLocations = sedi.flatMap((s) => s.locations.map((l) => ({ ...l, 
 // Registrazione sulla piattaforma Adempio (link indicato dal cliente, ottobre 2026).
 export const REGISTER_URL = 'https://www.adempio.it/#/register'
 
-// Dichiarazione di accessibilità (EAA – D.Lgs. 82/2022).
-// TODO: indicare l'indirizzo email per le segnalazioni quando fornito dal cliente.
-export const accessibility = {
-  email: '',
-  date: '2026-10-02',
-  reviewed: '2026-10-02',
-}
-
 // Mappe Google delle sedi: false = visibili subito; true = caricate solo dopo un clic
 // (da usare se il banner dei cookie non gestisce il consenso per Google Maps).
 export const MAPS_REQUIRE_CONSENT = false

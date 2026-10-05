@@ -5,7 +5,7 @@
 | **Data** | 02/10/2026 |
 | **Riferimenti** | Direttiva (UE) 2019/882 (European Accessibility Act); D.Lgs. 82/2022; Legge 4/2004; UNI EN 301 549 → WCAG 2.1 livello AA. Sono stati verificati anche i criteri aggiuntivi WCAG 2.2 AA. |
 | **Ambito** | Tutte le 87 pagine del sito, più la pagina 404, in visualizzazione desktop (1440 px) e mobile (390 px). |
-| **Dichiarazione pubblicata** | `/dichiarazione-accessibilita`, collegata nel footer alla voce "Accessibilità". |
+| **Dichiarazione pubblicata** | Nessuna: la pagina `/dichiarazione-accessibilita` e la voce "Accessibilità" nel footer sono state eliminate su richiesta (05/10/2026). |
 
 > **Nota sull'ambito normativo.** L'EAA si applica ai servizi indicati dalla direttiva rivolti ai consumatori: e-commerce, servizi bancari, trasporti, comunicazioni elettroniche e simili. L'applicabilità a un sito B2B informativo, e l'eventuale obbligo previsto dalla Legge 4/2004 (art. 3, c. 1-bis) per le grandi imprese, va confermata dal consulente legale. Il sito è comunque realizzato per essere conforme.
 
@@ -52,4 +52,4 @@
 - **Lettore di schermo.** La verifica è un'autovalutazione tecnica e non è stata fatta con un lettore di schermo vero (NVDA, JAWS o VoiceOver). Prima della pubblicazione definitiva si raccomanda una prova manuale con NVDA su Windows e VoiceOver su iOS.
 - **Contenuti di terze parti.** Le mappe Google (caricate su richiesta) e i portali EccoSolution (area clienti) sono esclusi dalla dichiarazione.
 - **Nuovi contenuti.** Testi e foto aggiunti in futuro devono mantenere le stesse regole: testo alternativo, titoli in ordine, contrasto. Ripetere axe a ogni rilascio.
-- **Dichiarazione.** Va riesaminata almeno una volta l'anno e a ogni modifica sostanziale. Quando il cliente lo comunicherà, va inserito l'indirizzo email per le segnalazioni in `accessibility.email` (`src/content/site.js`).
+- **Dichiarazione.** La pagina è stata eliminata il 05/10/2026. Se il cliente deciderà di pubblicare le informazioni sull'accessibilità, andrà creata una nuova pagina collegata dal footer, da riesaminare almeno una volta l'anno e a ogni modifica sostanziale.

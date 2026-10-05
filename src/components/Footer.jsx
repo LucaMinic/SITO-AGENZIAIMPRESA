@@ -14,7 +14,6 @@ const LEGAL_LINKS = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
   { to: '/cookie-policy', label: 'Cookie Policy' },
   { to: '/note-legali', label: 'Dati societari' },
-  { to: '/dichiarazione-accessibilita', label: 'Accessibilità' },
 ]
 
 function Col({ title, children }) {
