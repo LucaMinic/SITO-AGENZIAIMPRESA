@@ -27,7 +27,7 @@ export default function AdempioPrinciples({ className = '', offset = '', heading
       </Reveal>
       <div className={`mt-14 md:mt-20 ${offset}`}>
         <img src={asset('brand/adempio.svg')} alt="Adempio" width="268" height="56" className="mx-auto block h-10 w-auto md:h-12" />
-        {note && <p className="text-lead mt-8 max-w-[52ch]">{note}</p>}
+        {note && <p className="text-lead mx-auto mt-8 max-w-[52ch] text-center text-balance">{note}</p>}
       </div>
     </>
   )
