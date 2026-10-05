@@ -1,4 +1,4 @@
-// Aree, sotto-aree e servizi: Listino 2026 di AgenziaImpresa (nomi, ordine e gerarchia; prezzi esclusi).
+// Aree, sotto-aree e servizi: Listino 2026 di Agenzia Impresa (nomi, ordine e gerarchia; prezzi esclusi).
 // areas[].services = sotto-aree (pagina propria); services[].blocks = riga descrittiva (p) e servizi (item);
 // areas[].items = servizi delle aree senza sotto-aree (Marchi, Varie).
 

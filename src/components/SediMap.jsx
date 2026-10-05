@@ -94,7 +94,7 @@ export default function SediMap() {
       <div
         ref={ref}
         role="region"
-        aria-label="Mappa delle sedi AgenziaImpresa"
+        aria-label="Mappa delle sedi Agenzia Impresa"
         className="sedi-map aspect-[4/5] w-full sm:aspect-[16/10] md:aspect-[21/9]"
       />
     </figure>

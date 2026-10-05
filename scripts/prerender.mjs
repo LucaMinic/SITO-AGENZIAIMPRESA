@@ -20,7 +20,7 @@ function jsonLd() {
   const org = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'AgenziaImpresa',
+    name: 'Agenzia Impresa',
     legalName: company.legalName,
     url: SITE_URL,
     logo: `${SITE_URL}/brand/agenzia-impresa.svg`,
@@ -31,7 +31,7 @@ function jsonLd() {
     department: sedi.flatMap((s) =>
       s.locations.map((l) => ({
         '@type': 'LocalBusiness',
-        name: `AgenziaImpresa ${l.city}`,
+        name: `Agenzia Impresa ${l.city}`,
         telephone: l.phone,
         url: `${SITE_URL}/sedi/${s.slug}`,
         address: { '@type': 'PostalAddress', streetAddress: l.address, postalCode: l.cap, addressLocality: l.city, addressCountry: 'IT' },
@@ -46,7 +46,7 @@ function page(url, meta, { notFound = false } = {}) {
   const head = [
     `<link rel="canonical" href="${canonical}" />`,
     `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="AgenziaImpresa – Buffetti Group" />`,
+    `<meta property="og:site_name" content="Agenzia Impresa – Buffetti Group" />`,
     `<meta property="og:locale" content="it_IT" />`,
     `<meta property="og:title" content="${esc(meta.title)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
@@ -91,7 +91,7 @@ for (const { source, destination } of redirects.filter((r) => !r.source.includes
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <title>Pagina spostata – AgenziaImpresa</title>
+    <title>Pagina spostata – Agenzia Impresa</title>
     <meta name="robots" content="noindex" />
     <link rel="canonical" href="${SITE_URL}${destination === '/' ? '/' : destination}" />
     <meta http-equiv="refresh" content="0; url=${target(destination)}" />

@@ -1,12 +1,12 @@
 // Contenuti istituzionali, ripresi dal sito agenziaimpresa.com (ottobre 2026).
 // Modifiche concordate col cliente: riferimenti a "Gruppo APM" sostituiti con
-// "AgenziaImpresa Buffetti Group"; numeri, certificazioni ISO/231 e "Microsoft ISV
+// "Agenzia Impresa Buffetti Group"; numeri, certificazioni ISO/231 e "Microsoft ISV
 // Partner" rimossi; shop/webinar eliminati; refusi corretti.
 import { maps } from './maps.generated.js'
 
 export const SITE_URL = 'https://www.agenziaimpresa.com'
-export const BRAND = 'AgenziaImpresa'
-export const BRAND_GROUP = 'AgenziaImpresa Buffetti Group'
+export const BRAND = 'Agenzia Impresa'
+export const BRAND_GROUP = 'Agenzia Impresa Buffetti Group'
 
 export const company = {
   legalName: 'AGENZIAIMPRESA SRL',
@@ -92,24 +92,25 @@ export const about = {
     'Offriamo da sempre Servizi Telematici all’avanguardia in grado di rispondere a tutte le esigenze operative, nei confronti della pubblica amministrazione, a norma di legge in continua evoluzione.',
   storyTitle: 'Una storia di Passione Successi e Soddisfazioni.',
   story: [
-    'AgenziaImpresa Buffetti Group è attiva dal 1992 nel settore dei servizi di intermediazione degli adempimenti rivolti alla pubblica amministrazione per le imprese e gli studi professionali, gestendo con competenza ogni adempimento previsto dalle normative che nel corso degli anni si sono evolute, dando modo alle imprese stesse di certificare a norma le proprie attività.',
-    'Con l’avanzamento dei processi di digitalizzazione le Aziende e gli Studi Professionali sono obbligati ad aggiornarsi di continuo partendo dagli adempimenti telematici rivolti alla PA, alla gestione di PEC, all’utilizzo di FIRME DIGITALI, alla CONSERVAZIONE DIGITALE e alla FATTURAZIONE ELETTRONICA.',
-    'AgenziaImpresa tramite la piattaforma WEB Adempio offre in un unico “luogo” servizi in grado di rispondere a tutte le esigenze operative a norma di legge mediante i più moderni processi di Digitalizzazione all’avanguardia.',
-    'Nel 2020 con la fusione di 3 società, amplia l’offerta rivolta ai propri clienti introducendo Servizi di Comunicazione e Programmi di Fidelizzazione digitale.',
+    'Agenzia Impresa Buffetti Group è attiva dal 1992 nel settore dei servizi di intermediazione degli adempimenti rivolti alla pubblica amministrazione per le imprese e gli studi professionali, gestendo con competenza ogni adempimento previsto dalle normative che nel corso degli anni si sono evolute, dando modo alle imprese stesse di certificare a norma le proprie attività.',
+    'Con l’avanzamento dei processi di digitalizzazione le Aziende e gli Studi Professionali sono obbligati ad aggiornarsi di continuo per compiere gli adempimenti telematici rivolti alla pubblica amministrazione, gestendo caselle di posta elettronica certificate, Firme digitali, e la governance delle procedure telematiche che di volta in volta le pubbliche amministrazioni introducono all’interno dei loro processi.',
+    'Agenzia Impresa tramite la piattaforma WEB Adempio offre in un unico “luogo” presso il quale offrire uno svolgimento di servizi telematici in grado di rispondere a tutte le esigenze operative a norma di legge mediante i più moderni processi di Digitalizzazione all’avanguardia.',
+    'In questo modo Agenzia Impresa è in grado di essere un valido supporto per le imprese e gli studi professionali nella gestione degli adempimenti.',
   ],
   solutionsTitle: 'Servizi e Soluzioni Digitali per Imprese e Professionisti - il portale Adempio',
 }
 
-// Contenuti delle pagine Soluzioni. Testi ampliati su richiesta del cliente (ottobre 2026),
+// Contenuti delle pagine Soggetti (Soluzioni per le imprese / per Professionisti). Testi ampliati su richiesta del cliente (ottobre 2026),
 // basati esclusivamente sui servizi realmente offerti (nessun dato, cliente o certificazione).
-const principlesImprese = [
+// Principi del portale Adempio: stessa sezione in Home e nelle due pagine.
+export const adempioPrinciples = [
   {
     title: 'Semplicità',
     text: 'L’interfaccia di Adempio è stata sviluppata per essere estremamente semplice ed intuitiva, i nostri clienti possono effettuare le loro richieste di servizio e fruire dell’assistenza del nostro personale specializzato per tutte le esigenze.',
   },
   {
     title: 'Funzionalità',
-    text: 'Adempio è il portale sviluppato da Agenziaimpresa Buffetti Group per essere uno strumento funzionale in grado di rispondere a tutte le esigenze anche le più articolate, dei nostri clienti.',
+    text: 'Adempio è il portale sviluppato da Agenzia Impresa Buffetti Group per essere uno strumento funzionale in grado di rispondere a tutte le esigenze anche le più articolate, dei nostri clienti.',
   },
   {
     title: 'Efficacia',
@@ -117,57 +118,26 @@ const principlesImprese = [
   },
 ]
 
-const principlesProfessionisti = [
-  {
-    title: 'Semplicità',
-    text: 'L’interfaccia di ogni prodotto è sviluppata per essere estremamente semplice ed intuitiva, inoltre lo Studio può fruire dell’assistenza del nostro personale specializzato per tutte le esigenze.',
-  },
-  {
-    title: 'Funzionalità',
-    text: 'Ogni prodotto sviluppato da AgenziaImpresa Buffetti Group rappresenta uno strumento funzionale in grado di rispondere alle esigenze più articolate dello Studio e dei suoi clienti.',
-  },
-  {
-    title: 'Efficacia',
-    text: 'Grazie alle Soluzioni di AgenziaImpresa Buffetti Group, gli Studi Professionali possono usufruire di uno strumento efficiente ed efficace.',
-  },
-]
 
-// Modalità di lavoro, comune alle due pagine.
-export const process = [
-  {
-    title: 'Richiesta',
-    text: 'Ci contatti tramite il modulo, per telefono o rivolgendoti alla sede più vicina, indicando la pratica di cui hai bisogno.',
-  },
-  {
-    title: 'Verifica',
-    text: 'Verifichiamo documentazione, requisiti e procedure applicabili presso gli enti competenti.',
-  },
-  {
-    title: 'Predisposizione e invio',
-    text: 'Predisponiamo la pratica e la trasmettiamo in via telematica all’ufficio competente.',
-  },
-  {
-    title: 'Esito',
-    text: 'Ti aggiorniamo sull’esito della pratica e ti trasmettiamo ricevute e documenti.',
-  },
-]
 
 export const solutions = {
   imprese: {
     slug: 'imprese',
     label: 'Imprese',
     title: 'Soluzioni per le imprese',
-    teaser: 'Scopri i Servizi e le Soluzioni Digitali di AgenziaImpresa sviluppate appositamente per le Imprese.',
-    text: 'Agenziaimpresa studia e sviluppa Soluzioni Digitali all’avanguardia per rispondere alle esigenze specifiche delle imprese. Oltre ad essere Funzionali e a norma di legge, i Prodotti ed i Servizi che AgenziaImpresa Buffetti Group offre alle sue imprese clienti sono accomunati da tre principi fondamentali:',
+    teaser: 'Scopri i Servizi e le Soluzioni Digitali di Agenzia Impresa sviluppate appositamente per le Imprese.',
+    text: 'Agenzia Impresa studia, sviluppa e fornisce istruttorie per tutti gli adempimenti necessari per avviare modificare e cessare qualsiasi attività di impresa.',
     intro:
-      'Dalla costituzione della società alle autorizzazioni per avviare l’attività, dagli adempimenti ambientali ai rapporti con l’estero: AgenziaImpresa gestisce per conto dell’impresa le pratiche telematiche rivolte alla Pubblica Amministrazione, così che imprenditori e uffici amministrativi possano dedicare tempo ed energie al proprio lavoro.',
+      'Dalla costituzione della società alle autorizzazioni per avviare l’attività, dagli adempimenti ambientali ai rapporti con l’estero: Agenzia Impresa gestisce per conto dell’impresa le pratiche telematiche rivolte alla Pubblica Amministrazione, così che imprenditori e uffici amministrativi possano dedicare tempo ed energie al proprio lavoro.',
     audience: [
-      'Società di capitali e di persone',
-      'Ditte individuali e imprese artigiane',
-      'Esercizi commerciali e pubblici esercizi',
-      'Strutture ricettive',
-      'Imprese che operano con l’estero',
-      'Imprese soggette ad adempimenti ambientali',
+      'Società di capitali',
+      'Società di persone',
+      'Cooperative',
+      'Consorzi',
+      'Ditte individuali',
+      'Consulenti non ordinistici',
+      'Associazioni',
+      'Fondazioni',
     ],
     needsTitle: 'Cosa facciamo per la tua impresa',
     needs: [
@@ -197,22 +167,35 @@ export const solutions = {
         areas: ['servizi-digitali'],
       },
     ],
-    principles: principlesImprese,
+    principles: adempioPrinciples,
+    adempioNote: 'Le imprese nostre clienti utilizzano il portale Adempio per dialogare a distanza con i nostri operatori.',
+    process: [
+      { title: 'Richiesta', text: 'Attraverso il portale Adempio i nostri clienti inviano le loro richieste di servizio.' },
+      { title: 'Verifica', text: 'Le richieste di servizio una volta ricevute vengono attentamente istruite dai nostri operatori per individuare i relativi adempimenti necessari.' },
+      { title: 'Predisposizione e invio', text: 'I nostri operatori, una volta individuati gli adempimenti da rivolgere alla pubblica amministrazione, predispongono ed inviano le pratiche previste.' },
+      { title: 'Risultato', text: 'I nostri clienti attraverso la dashboard del portale Adempio, possono consultare gli stati d’avanzamento e gestire le relative ricevute degli adempimenti eseguiti.' },
+    ],
   },
   professionisti: {
     slug: 'professionisti',
     label: 'Professionisti',
     title: 'Soluzioni per Professionisti',
-    teaser: 'Scopri le Soluzioni Digitali di AgenziaImpresa sviluppate appositamente per i Professionisti.',
-    text: 'Agenziaimpresa studia e sviluppa Soluzioni Digitali all’avanguardia per rispondere alle esigenze specifiche dei Professionisti. Oltre ad essere Funzionali e a norma di legge, i Prodotti ed i Servizi che AgenziaImpresa Buffetti Group offre agli Studi Professionali sono accomunati da tre principi fondamentali:',
+    teaser: 'Scopri le Soluzioni Digitali di Agenzia Impresa sviluppate appositamente per i Professionisti.',
+    text: 'Agenzia Impresa effettua il disbrigo degli adempimenti rivolti alla Pubblica Amministrazione in nome e per conto dei clienti che gli studi professionali di volta in volta ci affidano.',
     intro:
-      'Commercialisti, consulenti e studi professionali gestiscono ogni giorno pratiche telematiche per conto dei propri clienti. AgenziaImpresa diventa un’estensione operativa dello studio: predispone e deposita le pratiche, reperisce visure e certificati presso gli uffici pubblici e mette a disposizione gli strumenti digitali necessari, lasciando al professionista il rapporto con il cliente e la consulenza.',
+      'Commercialisti, consulenti e studi professionali gestiscono ogni giorno pratiche telematiche per conto dei propri clienti. Agenzia Impresa diventa un’estensione operativa dello studio: predispone e deposita le pratiche, reperisce visure e certificati presso gli uffici pubblici e mette a disposizione gli strumenti digitali necessari, lasciando al professionista il rapporto con il cliente e la consulenza.',
     audience: [
-      'Commercialisti e ragionieri',
+      'Commercialisti',
+      'Avvocati',
+      'Notai',
+      'Architetti',
+      'Medici',
+      'Geometri',
+      'Ingegneri',
+      'Associazioni professionali',
       'Consulenti del lavoro',
-      'Studi professionali e associati',
-      'Società di consulenza',
-      'Centri di elaborazione dati',
+      'STP',
+      'Centri elaborazione dati',
       'Tecnici e professionisti dell’area immobiliare',
     ],
     needsTitle: 'Cosa facciamo per il tuo studio',
@@ -243,7 +226,13 @@ export const solutions = {
         areas: ['servizi-digitali'],
       },
     ],
-    principles: principlesProfessionisti,
+    principles: adempioPrinciples,
+    process: [
+      { title: 'Richiesta', text: 'Attraverso il portale Adempio i nostri clienti professionisti inviano le richieste di servizio per i loro clienti.' },
+      { title: 'Verifica', text: 'Le richieste di servizio una volta ricevute vengono attentamente istruite dai nostri operatori per individuare i relativi adempimenti necessari e comunicati tramite il portale direttamente al professionista.' },
+      { title: 'Predisposizione e invio', text: 'I nostri operatori, individuati gli adempimenti e una volta ricevuta l’approvazione dai professionisti, predispongono ed inviano le pratiche alla Pubblica Amministrazione.' },
+      { title: 'Risultato', text: 'I nostri clienti professionisti, attraverso la dashboard del portale Adempio, possono consultare gli stati d’avanzamento e gestire le relative ricevute di esecuzione dell’adempimento.' },
+    ],
   },
 }
 
@@ -253,7 +242,7 @@ export const territory = {
 }
 
 
-export const contactIntro = 'Scrivici il tuo messaggio, ti proporremo la Soluzione Digitale che stai cercando.'
+export const contactIntro = 'Scrivici: analizzeremo il tuo caso e ti indicheremo gli adempimenti necessari.'
 export const serviceCta = 'Contattaci ora per maggiori informazioni e per attivare subito il Servizio!'
 
 export const iban = {

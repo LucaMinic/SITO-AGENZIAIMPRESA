@@ -1,10 +1,50 @@
 import { Link } from 'react-router-dom'
-import { about, process, solutions, territory } from '../content/site.js'
-import { areaBySlug, areaUrl, services, serviceUrl } from '../content/services.js'
-import { ArrowLink, Button, Eyebrow, Icon, PageHero, Reveal } from '../components/ui.jsx'
+import { about, solutions, territory } from '../content/site.js'
+import { ArrowLink, Button, Eyebrow, FramedPhoto, Icon, PageHero, Photo, Reveal, useReveal } from '../components/ui.jsx'
+import AdempioPrinciples from '../components/Adempio.jsx'
 import { photos } from '../content/images.js'
 
 const HOME_CRUMB = { label: 'Home', to: '/' }
+
+// Pagina Imprese: foto affiancate di settori d'impresa (coerenti con "Cosa facciamo per la tua impresa").
+const SECTORS = [
+  { label: 'Commercio', photo: photos.shop },
+  { label: 'Ristorazione', photo: photos.cafe },
+  { label: 'Artigianato', photo: photos.workshop },
+  { label: 'Logistica', photo: photos.warehouse },
+]
+
+/* Foto di un settore: svelamento lungo la diagonale a 45° (stile delle altre foto), in sequenza. */
+function SectorTile({ sector, index, last }) {
+  const ref = useReveal()
+  const delay = { transitionDelay: `${index * 140}ms` }
+  return (
+    <figure
+      ref={ref}
+      data-reveal-photo=""
+      className={`relative isolate aspect-[4/5] overflow-hidden bg-mist ${last ? 'cut-corner [--cut:28px]' : ''}`}
+    >
+      <div className="reveal-photo absolute inset-0" style={delay}>
+        <Photo photo={sector.photo} eager sizes="(min-width: 768px) 24vw, 46vw" className="[transition-delay:inherit]" />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-brand mix-blend-soft-light opacity-25" />
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#00103f]/80 to-transparent" />
+        <span className="eyebrow absolute bottom-4 left-4 text-white md:bottom-5 md:left-5">{sector.label}</span>
+      </div>
+    </figure>
+  )
+}
+
+function SectorMosaic() {
+  return (
+    <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+      {SECTORS.map((s, i) => (
+        <li key={s.label}>
+          <SectorTile sector={s} index={i} last={i === SECTORS.length - 1} />
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 export function ChiSiamo() {
   return (
@@ -55,12 +95,6 @@ export function ChiSiamo() {
   )
 }
 
-const needLinks = (slugs) =>
-  slugs.map((slug) =>
-    areaBySlug[slug]
-      ? { to: areaUrl(areaBySlug[slug]), label: areaBySlug[slug].title }
-      : { to: serviceUrl(slug), label: slug === 'diritto-durgenza' ? services[slug].title : 'Assistenza normativa e procedurale' },
-  )
 
 export function Soluzioni({ kind }) {
   const s = solutions[kind]
@@ -69,14 +103,20 @@ export function Soluzioni({ kind }) {
   return (
     <>
       <PageHero
-        eyebrow="AgenziaImpresa Buffetti Group"
+        eyebrow="Agenzia Impresa Buffetti Group"
         title={s.title}
         lead={s.intro}
-        image={kind === 'imprese' ? photos.brightOffice : photos.laptop}
-        crumbs={[HOME_CRUMB, { label: 'Soluzioni' }, { label: s.label }]}
+        media={
+          kind === 'imprese' ? (
+            <SectorMosaic />
+          ) : (
+            <FramedPhoto photo={photos.managers} eager reveal aspect="aspect-[16/9] md:aspect-[21/8]" sizes="(min-width: 1440px) 1280px, 92vw" />
+          )
+        }
+        crumbs={[HOME_CRUMB, { label: 'Soggetti' }, { label: s.label }]}
       />
 
-      {/* A chi ci rivolgiamo + principi */}
+      {/* A chi ci rivolgiamo + principi del portale Adempio (stessa sezione della Home) */}
       <section className="section">
         <div className="wrap grid gap-14 lg:grid-cols-8 lg:gap-6">
           <Reveal className="lg:col-span-3">
@@ -90,19 +130,14 @@ export function Soluzioni({ kind }) {
               ))}
             </ul>
           </Reveal>
-          <Reveal className="lg:col-span-4 lg:col-start-5">
-            <p className="text-lead">{s.text}</p>
+          {/* Su desktop il testo è centrato in verticale sull'elenco (pt-10 compensa l'etichetta sopra la lista). */}
+          <Reveal className="lg:col-span-4 lg:col-start-5 lg:flex lg:items-center lg:pt-10">
+            <p className="text-h2 border-l-2 border-brand pl-6 font-light text-balance md:pl-8">{s.text}</p>
           </Reveal>
         </div>
-        <Reveal as="ol" data-stagger="" className="wrap mt-16 grid gap-12 md:mt-20 md:grid-cols-3 md:gap-6">
-          {s.principles.map((p, i) => (
-            <li key={p.title} style={{ '--i': i }} className="border-t border-ink pt-8">
-              <span className="text-sm font-semibold text-brand tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-              <h2 className="text-h2 mt-4">{p.title}</h2>
-              <p className="mt-4 text-muted">{p.text}</p>
-            </li>
-          ))}
-        </Reveal>
+        <div className="wrap mt-16 md:mt-20">
+          <AdempioPrinciples heading="h2" note={s.adempioNote} />
+        </div>
       </section>
 
       {/* Ambiti di intervento */}
@@ -124,19 +159,6 @@ export function Soluzioni({ kind }) {
                   <h3 className="text-h2">{n.title}</h3>
                 </div>
                 <p className="text-muted lg:col-span-3">{n.text}</p>
-                <ul className="flex flex-wrap content-start gap-2 lg:col-span-2 lg:justify-end">
-                  {needLinks(n.areas).map((l) => (
-                    <li key={l.to}>
-                      <Link
-                        to={l.to}
-                        className="group inline-flex min-h-10 items-center gap-2 bg-white px-4 py-2 text-sm font-semibold text-ink ring-1 ring-inset ring-line transition-colors hover:bg-brand hover:text-white hover:ring-brand"
-                      >
-                        {l.label}
-                        <Icon name="arrow" className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
               </li>
             ))}
           </Reveal>
@@ -149,11 +171,11 @@ export function Soluzioni({ kind }) {
           <Reveal>
             <Eyebrow className="mb-6 text-brand">Come lavoriamo</Eyebrow>
             <h2 id="metodo" className="text-h1">
-              Dalla richiesta all’esito
+              Dalla richiesta al risultato
             </h2>
           </Reveal>
           <Reveal as="ol" data-stagger="" className="mt-14 grid gap-10 sm:grid-cols-2 md:mt-20 lg:grid-cols-4 lg:gap-6">
-            {process.map((p, i) => (
+            {s.process.map((p, i) => (
               <li key={p.title} style={{ '--i': i }} className="border-t-2 border-brand pt-6">
                 <span className="text-sm font-semibold text-brand tabular-nums">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="text-h3 mt-3">{p.title}</h3>

@@ -222,7 +222,8 @@ export function Breadcrumb({ items, className = '' }) {
   )
 }
 
-/* Fotografia responsive dal CDN Unsplash (formato e dimensione automatici). */
+/* Fotografia responsive dal CDN Unsplash (formato e dimensione automatici).
+   photo.position (facoltativo): punto da tenere al centro del ritaglio, es. 'center 20%'. */
 export function Photo({ photo, sizes = '100vw', className = '', eager = false, width = 1600, height = 1000 }) {
   return (
     <img
@@ -235,6 +236,7 @@ export function Photo({ photo, sizes = '100vw', className = '', eager = false, w
       loading={eager ? 'eager' : 'lazy'}
       fetchPriority={eager ? 'high' : undefined}
       decoding="async"
+      style={photo.position ? { objectPosition: photo.position } : undefined}
       className={`h-full w-full object-cover ${className}`}
     />
   )

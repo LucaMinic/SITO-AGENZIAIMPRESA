@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 import { about, allLocations, home, sedi, solutions, telHref } from '../content/site.js'
 import { areaIndex, areas, areaSummary, areaUrl, services } from '../content/services.js'
 import { photos } from '../content/images.js'
-import { ArrowLink, asset, Button, Eyebrow, FramedPhoto, Icon, Photo, Reveal } from '../components/ui.jsx'
+import { ArrowLink, Button, Eyebrow, FramedPhoto, Icon, Photo, Reveal } from '../components/ui.jsx'
 import SediMap from '../components/SediMap.jsx'
+import AdempioPrinciples from '../components/Adempio.jsx'
 
 // Slide dell'hero: i titoli sono contenuti già presenti nel sito.
 const SLIDES = [
   {
     photo: photos.skyline,
-    eyebrow: 'AgenziaImpresa · Buffetti Group',
-    label: 'AgenziaImpresa',
+    eyebrow: 'Agenzia Impresa · Buffetti Group',
+    label: 'Agenzia Impresa',
     title: home.claim,
     long: true,
     ctas: [
@@ -289,21 +290,7 @@ function Solutions() {
             </Reveal>
           ))}
         </Reveal>
-        <Reveal as="ol" data-stagger="" className="draw-line mt-4 grid gap-10 border-t border-line pt-12 [--line-color:var(--color-line)] md:grid-cols-3 md:gap-8 lg:ml-[25%]">
-          {s[0].principles.map((p, i) => (
-            <li key={p.title} style={{ '--i': i }}>
-              <span className="text-sm font-semibold text-brand tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="text-h3 mt-3 flex items-center gap-3">
-                <img src={asset('brand/adempio-simbolo.svg')} alt="" width="59" height="56" className="h-[1.1em] w-auto shrink-0" />
-                {p.title}
-              </h3>
-              <p className="mt-3 text-[0.9375rem] text-muted">{p.text}</p>
-            </li>
-          ))}
-        </Reveal>
-        <div className="mt-14 md:mt-20 lg:ml-[25%]">
-          <img src={asset('brand/adempio.svg')} alt="Adempio" width="268" height="56" className="h-10 w-auto md:h-12" />
-        </div>
+        <AdempioPrinciples className="mt-4" offset="lg:ml-[25%]" />
       </div>
     </section>
   )

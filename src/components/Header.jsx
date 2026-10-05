@@ -70,7 +70,7 @@ const LOGIN_LINKS = [{ to: LOGIN_URL, label: 'Login Adempio', external: true }]
 
 const MENUS = {
   servizi: { label: 'Servizi', mega: true },
-  soluzioni: { label: 'Soluzioni', links: SOLUTION_LINKS, width: 'w-[22rem]' },
+  soluzioni: { label: 'Soggetti', links: SOLUTION_LINKS, width: 'w-[22rem]' },
 }
 
 export default function Header() {
@@ -382,7 +382,7 @@ function MobileMenu({ id, open }) {
             Tutte le aree <Icon name="arrow" className="size-4" />
           </Link>
         </Accordion>
-        <Accordion title="Soluzioni">
+        <Accordion title="Soggetti">
           <ul>
             {SOLUTION_LINKS.map((l) => (
               <li key={l.to}>

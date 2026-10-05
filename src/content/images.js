@@ -32,6 +32,13 @@ export const photos = {
   workstation: { id: '1555421689-491a97ff2040', alt: 'Postazione di lavoro digitale con tastiera' },
   clipboard: { id: '1586282391129-76a6df230234', alt: 'Cartellina con documenti accanto a un computer portatile' },
   atm: { id: '1601597111158-2fceff292cdc', alt: 'Mano che digita sulla tastiera di uno sportello bancomat' },
+  // Pagina Soggetti – Imprese: settori di impresa
+  shop: { id: '1753161618091-b4cf35b9aa99', alt: 'Titolare sorridente nella sua boutique di abbigliamento' },
+  cafe: { id: '1555396273-367ea4eb4db5', alt: 'Sala di un locale di ristorazione con bancone e tavoli' },
+  workshop: { id: '1779031242515-205111711b23', alt: 'Artigiano al lavoro sul banco del suo laboratorio', position: '75% center' },
+  warehouse: { id: '1664382953403-fc1ac77073a0', alt: 'Due addetti controllano la merce in magazzino con un tablet' },
+  // Pagina Soggetti – Professionisti
+  managers: { id: '1758518731462-d091b0b4ed0d', alt: 'Professionisti in giacca e cravatta e una professionista in tailleur al tavolo durante la firma di un contratto' },
 }
 
 // Immagine di ogni area di servizio.

@@ -45,6 +45,16 @@
   - **Da verificare col cliente:** la pagina *Soluzioni per Professionisti* cita ancora "accesso alle banche dati camerali" (servizio non più a listino).
 - **Slider della Home:** scegliendo una slide con i pulsanti numerati, il focus passa al primo link della slide. Così i link della slide (es. "Soluzioni per le imprese" e "Soluzioni per Professionisti") si raggiungono e si attivano da tastiera. L'aspetto non cambia.
 
+## Modifiche del 05/10/2026 (testi e pagine Soggetti)
+
+- **Nome:** in tutto il sito "AgenziaImpresa" diventa "Agenzia Impresa" (titoli, testi, dati strutturati). Restano invariati la ragione sociale **AGENZIAIMPRESA SRL** e domini ed email `agenziaimpresa.com`.
+- **Menu:** la voce "Soluzioni" diventa "Soggetti" (anche nel percorso di navigazione); i titoli delle pagine "Soluzioni per le imprese / per Professionisti" restano.
+- **Frase di contatto** (fondo pagina, Sedi, Contatti): "Scrivici: analizzeremo il tuo caso e ti indicheremo gli adempimenti necessari."
+- **Pagine Imprese e Professionisti:** nuovo testo introduttivo e nuovo elenco "A chi ci rivolgiamo". Dopo c'è la sezione dei principi Adempio della Home (stesso componente, con loghi); sulla pagina Imprese è seguita dalla frase sul portale Adempio. In "Cosa facciamo…" sono tolti i bottoni verso i servizi. "Come lavoriamo" ha il titolo "Dalla richiesta al risultato" e i 4 passi riscritti, distinti per Imprese e Professionisti; l'ultimo passo si chiama "Risultato".
+- **Chi siamo:** riscritti il 2° e il 3° paragrafo della storia, aggiunto "In questo modo Agenzia Impresa…", eliminato il paragrafo sulla fusione del 2020.
+- **Foto delle pagine Soggetti:** Imprese ha un mosaico di 4 settori (Commercio, Ristorazione, Artigianato, Logistica), tre con persone al lavoro. Professionisti ha una foto di professionisti in abito formale, donne e uomini. Tutte le foto vengono da Unsplash, gratuite, e si svelano con l'animazione diagonale del sito (disattivata con "riduci movimento"). Su desktop il testo di "A chi ci rivolgiamo" è più grande e centrato in verticale sull'elenco; il logo Adempio sotto i principi è centrato.
+- **Refusi corretti nei testi forniti:** "il disbrigo degli adempimenti", "Centri elaborazione dati", "pubbliche amministrazioni", spazi dopo le virgole, doppio punto finale.
+
 ## Punti aperti da verificare
 
 **A. Note legali.**
