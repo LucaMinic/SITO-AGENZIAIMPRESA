@@ -71,7 +71,7 @@ export const allLocations = sedi.flatMap((s) => s.locations.map((l) => ({ ...l, 
 // Registrazione sulla piattaforma Adempio (link indicato dal cliente, ottobre 2026).
 export const REGISTER_URL = 'https://www.adempio.it/#/register'
 // Login unico dell'area clienti sul portale Adempio (sostituisce i login EccoSolution delle singole sedi).
-export const LOGIN_URL = 'https://www.adempio.it/#/register'
+export const LOGIN_URL = 'https://www.adempio.it/'
 
 // Mappe Google delle sedi: false = visibili subito; true = caricate solo dopo un clic
 // (da usare se il banner dei cookie non gestisce il consenso per Google Maps).
