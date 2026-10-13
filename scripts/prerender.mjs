@@ -23,7 +23,8 @@ function jsonLd() {
     name: 'Agenzia Impresa',
     legalName: company.legalName,
     url: SITE_URL,
-    logo: `${SITE_URL}/brand/agenzia-impresa.svg`,
+    logo: `${SITE_URL}/brand/agenzia-impresa.png`,
+    image: `${SITE_URL}/og-image.png`,
     vatID: `IT${company.vat}`,
     email: company.pec,
     parentOrganization: { '@type': 'Organization', name: 'Buffetti Group' },
@@ -38,7 +39,9 @@ function jsonLd() {
       })),
     ),
   }
-  return `<script type="application/ld+json">${JSON.stringify(org)}</script>`
+  const site = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Agenzia Impresa', url: `${SITE_URL}/`, inLanguage: 'it-IT' }
+  return `<script type="application/ld+json">${JSON.stringify(org)}</script>
+    <script type="application/ld+json">${JSON.stringify(site)}</script>`
 }
 
 function page(url, meta, { notFound = false } = {}) {
@@ -51,6 +54,12 @@ function page(url, meta, { notFound = false } = {}) {
     `<meta property="og:title" content="${esc(meta.title)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
+    // Immagine per anteprime social (1200×630, generata dal logo e dal claim della home).
+    `<meta property="og:image" content="${SITE_URL}/og-image.png" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="Agenzia Impresa – Buffetti Group" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
     PREVIEW
       ? '<meta name="robots" content="noindex, nofollow" />'
       : meta.noindex || notFound

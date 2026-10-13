@@ -3,12 +3,14 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import BackToTop from './components/BackToTop.jsx'
+import CookieConsent from './components/CookieConsent.jsx'
 import { metaFor } from './routes.js'
 import Home from './pages/Home.jsx'
 import { AreaPage, ServicePage, ServicesHub } from './pages/Services.jsx'
 import { ChiSiamo, Soluzioni } from './pages/About.jsx'
 import { Contatti, Pagamenti, SedePage, Sedi } from './pages/Contact.jsx'
 import Legal from './pages/Legal.jsx'
+import CookiePolicy from './pages/CookiePolicy.jsx'
 import NotFound from './pages/NotFound.jsx'
 import SearchPage from './pages/SearchPage.jsx'
 
@@ -41,7 +43,7 @@ export default function App() {
           <Route path="/sedi/:slug" element={<SedePage />} />
           <Route path="/contatti" element={<Contatti />} />
           <Route path="/privacy-policy" element={<Legal doc="privacy" />} />
-          <Route path="/cookie-policy" element={<Legal doc="cookie" />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/note-legali" element={<Legal doc="note" />} />
           <Route path="/pagamenti" element={<Pagamenti />} />
           <Route path="/cerca" element={<SearchPage />} />
@@ -50,6 +52,7 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <CookieConsent />
     </>
   )
 }

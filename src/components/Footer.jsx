@@ -3,6 +3,7 @@ import { areas, areaUrl } from '../content/services.js'
 import { company, contactIntro, sedi, telHref } from '../content/site.js'
 import { Logo } from './Header.jsx'
 import { BrandField, Button } from './ui.jsx'
+import { openPreferences } from '../consent/consentStore.js'
 
 const COMPANY_LINKS = [
   { to: '/chi-siamo', label: 'Chi siamo' },
@@ -122,6 +123,11 @@ export default function Footer({ cta = true }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button type="button" onClick={openPreferences} className="link-draw inline-block py-1 hover:text-white">
+                  Preferenze cookie
+                </button>
+              </li>
             </ul>
             <p>
               Powered by:{' '}

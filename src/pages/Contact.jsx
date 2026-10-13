@@ -54,7 +54,7 @@ export function SedePage() {
                 <Address location={l} className="mt-3 text-muted" />
                 {sede.maps[i] && (
                   <div className="mt-6">
-                    <MapFacade src={sede.maps[i]} title={`Mappa – ${l.address}, ${l.city}`} />
+                    <MapFacade src={sede.maps[i]} title={`Mappa – ${l.address}, ${l.city}`} query={`${l.address}, ${l.cap} ${l.city}`} />
                   </div>
                 )}
               </div>

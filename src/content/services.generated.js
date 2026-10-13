@@ -20,6 +20,7 @@ export const areas = [
       "trasformazione-file-xbrl",
       "compilazione-elenco-soci",
       "codice-lei-legal-entity-identifier",
+      "comunica",
       "assistenza-normativa-e-procedurale",
       "diritto-durgenza"
     ]
@@ -450,6 +451,32 @@ export const services = {
       {
         "type": "item",
         "text": "Richiesta – Rinnovo con attestato – Ripristino – Trasferimento"
+      }
+    ]
+  },
+  "comunica": {
+    "title": "Comunica",
+    "area": "registro-imprese-comunica",
+    "blocks": [
+      {
+        "type": "item",
+        "text": "Registro Imprese"
+      },
+      {
+        "type": "item",
+        "text": "SUAP"
+      },
+      {
+        "type": "item",
+        "text": "INPS"
+      },
+      {
+        "type": "item",
+        "text": "Agenzia Entrate"
+      },
+      {
+        "type": "item",
+        "text": "INAIL"
       }
     ]
   },

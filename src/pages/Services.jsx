@@ -216,17 +216,20 @@ export function AreaPage() {
             </ul>
           </nav>
         )}
-      </PageHero>
-
-      <div className="wrap section pt-10 md:pt-14">
-        {area.items ? (
-          <section aria-labelledby="servizi" className="max-w-4xl">
-            <h2 id="servizi" className="eyebrow mb-6 text-muted">
+        {/* Aree senza sotto-aree (Marchi, Varie): i servizi stanno subito sotto il titolo,
+            accanto alla foto, così la pagina non resta vuota. */}
+        {area.items && (
+          <section aria-labelledby="servizi" className="mt-10">
+            <h2 id="servizi" className="eyebrow mb-4 text-muted">
               Servizi
             </h2>
             <Prestazioni blocks={asItems(area.items)} />
           </section>
-        ) : (
+        )}
+      </PageHero>
+
+      <div className={`wrap section ${area.items ? 'pt-0' : 'pt-10 md:pt-14'}`}>
+        {!area.items && (
           <section aria-labelledby="sotto-aree">
             <h2 id="sotto-aree" className="eyebrow mb-2 text-muted">
               Sotto-aree e servizi

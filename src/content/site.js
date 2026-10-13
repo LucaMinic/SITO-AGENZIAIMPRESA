@@ -9,7 +9,7 @@ export const BRAND = 'Agenzia Impresa'
 export const BRAND_GROUP = 'Agenzia Impresa Buffetti Group'
 
 export const company = {
-  legalName: 'AGENZIAIMPRESA SRL',
+  legalName: 'Agenzia Impresa SRL',
   vat: '01653610202',
   capital: '100.000 Euro',
   legalSeat: 'Via Feltre 32, 20132 Milano',
@@ -73,10 +73,6 @@ export const REGISTER_URL = 'https://www.adempio.it/#/register'
 // Login unico dell'area clienti sul portale Adempio (sostituisce i login EccoSolution delle singole sedi).
 export const LOGIN_URL = 'https://www.adempio.it/'
 
-// Mappe Google delle sedi: false = visibili subito; true = caricate solo dopo un clic
-// (da usare se il banner dei cookie non gestisce il consenso per Google Maps).
-export const MAPS_REQUIRE_CONSENT = false
-
 export const telHref = (phone) => 'tel:+39' + phone.replace(/[^\d]/g, '')
 // Testo "tel. …" di una sede, vuoto se il telefono non è ancora disponibile.
 export const phoneText = (l, prefix = 'tel. ') => (l.phone ? `${prefix}${l.phone}` : '')
@@ -84,18 +80,21 @@ export const phoneText = (l, prefix = 'tel. ') => (l.phone ? `${prefix}${l.phone
 
 export const home = {
   claim:
-    'Servizi di intermediazione telematica degli adempimenti rivolti alla pubblica amministrazione',
+    'Servizi di intermediazione telematica degli adempimenti amministrativi rivolti alla P.A.',
 }
 
 export const about = {
   quote:
-    'Offriamo da sempre Servizi Telematici all’avanguardia in grado di rispondere a tutte le esigenze operative, nei confronti della pubblica amministrazione, a norma di legge in continua evoluzione.',
+    'Offriamo da sempre Servizi Telematici all’avanguardia in grado di rispondere a tutte le esigenze operative, nei confronti della pubblica amministrazione, seguendo la continua evoluzione delle varie normative.',
   storyTitle: 'Una storia di Passione Successi e Soddisfazioni.',
+  // Testi riscritti dal cliente (ottobre 2026).
   story: [
-    'Agenzia Impresa Buffetti Group è attiva dal 1992 nel settore dei servizi di intermediazione degli adempimenti rivolti alla pubblica amministrazione per le imprese e gli studi professionali, gestendo con competenza ogni adempimento previsto dalle normative che nel corso degli anni si sono evolute, dando modo alle imprese stesse di certificare a norma le proprie attività.',
-    'Con l’avanzamento dei processi di digitalizzazione le Aziende e gli Studi Professionali sono obbligati ad aggiornarsi di continuo per compiere gli adempimenti telematici rivolti alla pubblica amministrazione, gestendo caselle di posta elettronica certificate, Firme digitali, e la governance delle procedure telematiche che di volta in volta le pubbliche amministrazioni introducono all’interno dei loro processi.',
-    'Agenzia Impresa tramite la piattaforma WEB Adempio offre in un unico “luogo” presso il quale offrire uno svolgimento di servizi telematici in grado di rispondere a tutte le esigenze operative a norma di legge mediante i più moderni processi di Digitalizzazione all’avanguardia.',
-    'In questo modo Agenzia Impresa è in grado di essere un valido supporto per le imprese e gli studi professionali nella gestione degli adempimenti.',
+    'Agenzia Impresa è attiva dal 1992 nel settore dei servizi di intermediazione degli adempimenti amministrativi rivolti alla P.A. per le imprese e gli studi professionali. Da sempre gestiamo con competenza ogni adempimento previsto dalle normative che nel corso degli anni si sono evolute, dando modo alle imprese di poter certificare a norma le proprie attività.',
+    'Con l’avanzamento dei processi di digitalizzazione le Aziende e gli Studi Professionali sono obbligati ad aggiornarsi di continuo per compiere gli adempimenti verso la pubblica amministrazione, gestendo caselle di posta elettronica certificata, Firme digitali, e piattaforme digitali della pubblica amministrazione presso le quali gestire i processi di comunicazione con gli enti pubblici.',
+    'Attraverso il proprio portale Adempio, Agenzia Impresa mette a disposizione un unico punto di accesso per richiedere e gestire servizi telematici e i relativi adempimenti amministrativi.',
+    'La piattaforma consente di centralizzare e organizzare tutte le richieste, semplificando la gestione delle pratiche e offrendo agli utenti la possibilità di monitorare in tempo reale lo stato di avanzamento dei servizi richiesti.',
+    'Ogni pratica viene gestita attraverso un processo digitale strutturato, che permette di consultare e archiviare le ricevute e la documentazione relativa agli adempimenti effettuati, mantenendo uno storico sempre accessibile.',
+    'Grazie all’utilizzo delle moderne tecnologie di digitalizzazione, Adempio rende la gestione degli adempimenti più semplice, trasparente, efficiente e organizzata, riducendo le attività manuali e facilitando il rapporto tra Agenzia Impresa e i propri utenti.',
   ],
   solutionsTitle: 'Servizi e Soluzioni Digitali per Imprese e Professionisti - il portale Adempio',
 }

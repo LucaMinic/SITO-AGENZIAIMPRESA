@@ -166,15 +166,23 @@ function SendFallback({ sede }) {
   return (
     <div role="alert" className="border-l-2 border-brand bg-mist/60 p-6">
       <p className="font-semibold">Non è stato possibile inviare il messaggio.</p>
-      <p className="mt-1 text-muted">Puoi contattarci telefonicamente:</p>
+      <p className="mt-1 text-muted">Puoi contattare direttamente le nostre sedi:</p>
       <ul className="mt-4 grid gap-2 sm:grid-cols-2">
         {list.flatMap((s) =>
-          s.locations.filter((l) => l.phone).map((l) => (
+          s.locations.map((l) => (
             <li key={l.city}>
-              <a href={telHref(l.phone)} className="inline-flex items-center gap-2 font-medium hover:text-brand">
-                <Icon name="phone" className="size-4 text-brand" />
-                {l.city} · {l.phone}
-              </a>
+              {l.phone ? (
+                <a href={telHref(l.phone)} className="inline-flex items-center gap-2 font-medium hover:text-brand">
+                  <Icon name="phone" className="size-4 text-brand" />
+                  {l.city} · {l.phone}
+                </a>
+              ) : (
+                // Sede senza telefono (per ora Reggio Emilia): indirizzo.
+                <span className="inline-flex items-center gap-2 font-medium">
+                  <Icon name="pin" className="size-4 text-brand" />
+                  {l.city} · {l.address}
+                </span>
+              )}
             </li>
           )),
         )}

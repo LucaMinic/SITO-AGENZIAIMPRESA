@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
-import { cookiePolicy, privacyPolicy } from '../content/legal.generated.js'
+import { privacyPolicy } from '../content/legal.generated.js'
 import { company, sedi, telHref } from '../content/site.js'
 import { PageHero } from '../components/ui.jsx'
 
 const DOCS = {
   privacy: { title: 'Privacy Policy', html: privacyPolicy },
-  cookie: { title: 'Cookie Policy', html: cookiePolicy },
 }
 
 export default function Legal({ doc }) {
@@ -25,7 +24,7 @@ export default function Legal({ doc }) {
   )
 }
 
-/* Dati societari di AGENZIAIMPRESA SRL (indirizzo storico /note-legali). */
+/* Dati societari di Agenzia Impresa SRL (indirizzo storico /note-legali). */
 function NoteLegali() {
   const rows = [
     ['Ragione sociale', company.legalName],

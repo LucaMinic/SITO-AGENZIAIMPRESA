@@ -58,7 +58,7 @@ const entries = [
   { kind: 'Pagina', title: 'Le nostre Sedi', url: '/sedi', excerpt: contactIntro, text: 'sedi contatti indirizzi telefoni login area clienti adempio' },
   { kind: 'Pagina', title: 'Contattaci', url: '/contatti', excerpt: contactIntro, text: contactIntro + ' contatti modulo email' },
   { kind: 'Pagina', title: 'Privacy Policy', url: '/privacy-policy', excerpt: 'Informativa privacy', text: 'privacy dati personali gdpr' },
-  { kind: 'Pagina', title: 'Cookie Policy', url: '/cookie-policy', excerpt: 'Informativa cookie', text: 'cookie tracciamento' },
+  { kind: 'Pagina', title: 'Cookie Policy', url: '/cookie-policy', excerpt: 'Cookie usati dal sito e come gestire il consenso', text: 'cookie tracciamento consenso preferenze google maps' },
 ].map((e) => ({ ...e, _title: normalize(e.title), _all: normalize(`${e.title} ${e.context ?? ''} ${e.text}`) }))
 
 /* Ricerca: tutte le parole devono comparire; il titolo pesa più del testo. */

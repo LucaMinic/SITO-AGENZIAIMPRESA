@@ -1,43 +1,23 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { MAPS_REQUIRE_CONSENT, telHref } from '../content/site.js'
+import { telHref } from '../content/site.js'
+import { ConsentGate } from './CookieConsent.jsx'
 import { ArrowLink, Icon } from './ui.jsx'
 
 /*
- * Mappa Google della sede. Di default è visibile subito (il consenso ai cookie è gestito
- * dal banner del sito). Con MAPS_REQUIRE_CONSENT = true viene mostrata solo dopo un clic.
+ * Mappa Google della sede: Google Maps imposta cookie di terze parti, quindi l'iframe viene
+ * caricato solo con il consenso alla categoria "Marketing e contenuti esterni" (banner cookie);
+ * fino ad allora c'è un segnaposto con "Attiva contenuto" e il link alla mappa su Google.
  */
-export function MapFacade({ src, title }) {
-  const [on, setOn] = useState(!MAPS_REQUIRE_CONSENT)
-  if (on) {
-    return (
-      <iframe
-        src={src}
-        title={title}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="aspect-[4/3] w-full border-0 bg-mist md:aspect-[16/10]"
-      />
-    )
-  }
+export function MapFacade({ src, title, query }) {
+  const box = 'aspect-[4/3] w-full md:aspect-[16/10]'
   return (
-    <button
-      type="button"
-      onClick={() => setOn(true)}
-      className="group relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-mist text-left md:aspect-[16/10]"
+    <ConsentGate
+      service="google-maps"
+      className={`${box} min-h-80`}
+      externalUrl={query && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`}
     >
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 opacity-60 [background-image:linear-gradient(var(--color-line)_1px,transparent_1px),linear-gradient(90deg,var(--color-line)_1px,transparent_1px)] [background-size:32px_32px]"
-      />
-      <span className="relative flex flex-col items-center gap-3 text-center">
-        <span className="flex size-14 items-center justify-center bg-brand text-white cut-corner [--cut:10px] transition-transform duration-200 group-hover:-translate-y-1">
-          <Icon name="pin" className="size-6" />
-        </span>
-        <span className="font-semibold">Mostra la mappa</span>
-        <span className="max-w-[28ch] text-xs text-muted">Il caricamento attiva Google Maps, che può utilizzare cookie di terze parti.</span>
-      </span>
-    </button>
+      <iframe src={src} title={title} loading="lazy" referrerPolicy="no-referrer-when-downgrade" className={`${box} border-0 bg-mist`} />
+    </ConsentGate>
   )
 }
 
