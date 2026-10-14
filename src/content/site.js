@@ -19,10 +19,12 @@ export const company = {
 }
 
 // Dati delle sedi così come pubblicati nella pagina /contatti originale.
+// email: casella a cui arrivano i messaggi del modulo di contatto della sede.
 // coords: [latitudine, longitudine] per la mappa delle sedi (Mantova: indirizzo dichiarato).
 export const sedi = [
   {
     slug: 'milano',
+    email: 'milano@agenziaimpresa.com',
     city: 'Milano',
     note: 'Sede legale',
     locations: [{ address: 'Via Feltre 32', cap: '20132', city: 'Milano', phone: '02 86453881', coords: [45.49015, 9.23950] }],
@@ -30,18 +32,21 @@ export const sedi = [
   },
   {
     slug: 'mantova',
+    email: 'mantova@agenziaimpresa.com',
     city: 'Mantova',
     locations: [{ address: 'Piazza Alcide de Gasperi 23 / 24', cap: '46100', city: 'Mantova', phone: '0376 222020', coords: [45.15186, 10.77625] }],
     maps: maps.mantova,
   },
   {
     slug: 'modena',
+    email: 'adempio.pratiche@agenziaimpresa.com',
     city: 'Modena',
     locations: [{ address: 'Via Carlo Zucchi 21 Scala B', cap: '41123', city: 'Modena', phone: '0376 222020', coords: [44.65284, 10.91058] }],
     maps: maps.modena,
   },
   {
     slug: 'brescia',
+    email: 'brescia@agenziaimpresa.com',
     city: 'Brescia',
     locations: [
       { address: 'Via Romanino 1', cap: '25122', city: 'Brescia', phone: '030 3771630', coords: [45.53342, 10.21401] },
@@ -51,6 +56,7 @@ export const sedi = [
   },
   {
     slug: 'bologna',
+    email: 'adempio.pratiche@agenziaimpresa.com',
     city: 'Bologna',
     locations: [{ address: 'Via Amendola 8/E', cap: '40121', city: 'Bologna (BO)', phone: '051.4211114', coords: [44.50399, 11.33796] }],
     maps: maps.bologna,
@@ -59,11 +65,15 @@ export const sedi = [
     // Sede aggiunta su indicazione del cliente (05/10/2026). Telefono non ancora fornito.
     // coords a livello di via: il civico non è presente in OpenStreetMap.
     slug: 'reggio-emilia',
+    email: 'milano@agenziaimpresa.com',  // provvisorio: destinatario da indicare dal cliente
     city: 'Reggio Emilia',
     locations: [{ address: 'Via Bernardino Zacchetti 32', cap: '42124', city: 'Reggio Emilia', coords: [44.70889, 10.63818] }],
     maps: ['https://maps.google.com/maps?q=Via%20Bernardino%20Zacchetti%2032%2C%2042124%20Reggio%20Emilia&output=embed&hl=it'],
   },
 ]
+
+// Casella del modulo generale (pagina Contatti, nessuna sede scelta).
+export const CONTACT_EMAIL = 'adempio.pratiche@agenziaimpresa.com'
 
 export const allLocations = sedi.flatMap((s) => s.locations.map((l) => ({ ...l, sede: s.slug })))
 

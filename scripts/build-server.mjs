@@ -126,16 +126,6 @@ ${prefix.join('\n')}
         add_header Strict-Transport-Security "max-age=31536000" always;
         add_header X-Content-Type-Options "nosniff" always;
     }
-
-    # Modulo contatti (public/contact.php): funziona solo se sul server c'è PHP-FPM.
-    # Togli il commento e adegua il socket, oppure imposta VITE_CONTACT_ENDPOINT verso un altro servizio.
-    # location = /contact.php {
-    #     include snippets/fastcgi-php.conf;
-    #     fastcgi_pass unix:/run/php/php8.3-fpm.sock;
-    # }
-    location = /contact.php {
-        return 503;
-    }
 }
 `
 const confFile = path.join(root, 'deploy', 'nginx', `www.${DOMAIN}.conf`)

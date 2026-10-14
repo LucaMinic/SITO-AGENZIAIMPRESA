@@ -18,10 +18,6 @@ const base = process.env.BASE_PATH || '/'
 http
   .createServer((req, res) => {
     let p = decodeURIComponent(new URL(req.url, 'http://x').pathname)
-    if (req.method === 'POST' && (p.endsWith('/api/contact') || p.endsWith('/contact.php'))) {
-      res.writeHead(503, { 'Content-Type': 'application/json' })
-      return res.end('{"error":"not_configured"}')
-    }
     // Pubblicazione in sottocartella (BASE_PATH), come su GitHub Pages.
     if (base !== '/') {
       if (!p.startsWith(base) && p !== base.slice(0, -1)) {

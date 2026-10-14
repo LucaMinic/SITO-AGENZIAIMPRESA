@@ -16,14 +16,14 @@ export const categoryTexts = {
   marketing: {
     title: 'Marketing e contenuti esterni',
     description:
-      'Permettono di visualizzare le mappe di Google Maps nelle pagine delle sedi. Google può usare i suoi cookie anche per pubblicità personalizzata.',
+      'Permettono di usare Google reCAPTCHA, la protezione antispam dei moduli di contatto, e le mappe di Google Maps nelle pagine delle sedi. Google può usare i suoi cookie anche per pubblicità personalizzata.',
   },
 }
 
 export const ui = {
   bannerTitle: 'Questo sito usa i cookie',
   bannerText:
-    'Usiamo cookie tecnici, necessari al funzionamento del sito. Con il tuo consenso usiamo anche cookie di terze parti (Google Maps) per mostrare le mappe delle sedi, che Google può usare anche per pubblicità personalizzata. Puoi accettare, rifiutare o scegliere quali attivare. Chiudendo questo avviso con la X restano attivi solo i cookie tecnici.',
+    'Usiamo cookie tecnici, necessari al funzionamento del sito. Con il tuo consenso usiamo anche cookie di terze parti di Google (reCAPTCHA, per proteggere i moduli di contatto dallo spam, e Google Maps, per le mappe delle sedi), che Google può usare anche per pubblicità personalizzata. Puoi accettare, rifiutare o scegliere quali attivare. Chiudendo questo avviso con la X restano attivi solo i cookie tecnici.',
   policyLink: 'Cookie Policy',
   acceptAll: 'Accetta tutti',
   rejectAll: 'Rifiuta tutti',

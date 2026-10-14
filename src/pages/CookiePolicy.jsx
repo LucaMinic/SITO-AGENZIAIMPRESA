@@ -91,8 +91,9 @@ export default function CookiePolicy() {
           </p>
           <p>
             La scelta viene ricordata per 6 mesi se rifiuti i cookie facoltativi e per 12 mesi se ne accetti almeno uno; il
-            banner viene riproposto anche quando questa informativa o i servizi usati cambiano. Nelle pagine delle sedi, al
-            posto della mappa Google, il pulsante “Attiva contenuto” consente solo la categoria necessaria a mostrarla.
+            banner viene riproposto anche quando questa informativa o i servizi usati cambiano. Al posto della mappa Google
+            nelle pagine delle sedi e del reCAPTCHA nei moduli di contatto, il pulsante “Attiva contenuto” consente solo la
+            categoria necessaria a mostrarli.
           </p>
           <p>
             Puoi cambiare idea o revocare il consenso in qualsiasi momento dal link “Preferenze cookie” in fondo a ogni pagina
@@ -167,7 +168,7 @@ function CategorySection({ category }) {
               </>
             )}
           </p>
-          {service.id === 'google-maps' && (
+          {service.provider.startsWith('Google') && (
             <p>
               Google può trasferire i dati negli Stati Uniti; Google LLC aderisce all’EU-U.S. Data Privacy Framework. I cookie
               di Google indicati sono quelli principali: l’elenco completo e aggiornato è nell’informativa di Google.

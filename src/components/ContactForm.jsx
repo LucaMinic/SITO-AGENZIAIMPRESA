@@ -1,20 +1,28 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { sedi, telHref } from '../content/site.js'
+import ReCAPTCHA from 'react-google-recaptcha'
+import { CONTACT_EMAIL, sedi, telHref } from '../content/site.js'
+import { ConsentGate } from './CookieConsent.jsx'
 import { Button, Icon } from './ui.jsx'
 
 /*
- * Modulo di contatto. Invia allo script PHP contact.php (hosting definitivo), che
- * inoltra il messaggio alla casella della sede scelta. In alternativa l'indirizzo si
- * imposta con VITE_CONTACT_ENDPOINT (es. /api/contact per la funzione Vercel).
- * Finché i destinatari email non sono configurati l'API risponde 503 e
- * il modulo mostra i recapiti telefonici come alternativa.
+ * Modulo di contatto. Invia il messaggio al servizio email EccoSolution (lo stesso del
+ * sito Gruppo APM), indirizzato alla casella della sede scelta (sedi[].email in site.js)
+ * o, senza sede, a CONTACT_EMAIL. L'indirizzo del servizio si può cambiare con
+ * VITE_CONTACT_ENDPOINT. Se l'invio non riesce il modulo mostra i telefoni delle sedi.
+ *
+ * Il servizio verifica il Google reCAPTCHA v2 (captchaToken). reCAPTCHA imposta cookie di Google,
+ * quindi si carica solo dopo il consenso (servizio "recaptcha" in consent/cookieConfig.js).
  */
+const CONTACT_ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || 'https://eccopec-v2.eccosolution.it/Email/SendKaleyraMessage'
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || ''
+
 export default function ContactForm({ sede = '', origin = 'contatti', showSede = !sede, defaultSubject = '' }) {
   const id = useId()
-  const [status, setStatus] = useState('idle') // idle | sending | sent | error | unavailable
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const [errors, setErrors] = useState({})
   const [subject, setSubject] = useState(defaultSubject)
+  const recaptchaRef = useRef(null)
 
   // Oggetto precompilato dalle pagine servizio (?oggetto=…).
   useEffect(() => {
@@ -31,26 +39,60 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
     if (!data.email?.trim()) errs.email = 'Inserisci la tua email.'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errs.email = 'Controlla l’indirizzo email.'
     if (!data.message?.trim()) errs.message = 'Scrivi il tuo messaggio.'
+    const captchaToken = recaptchaRef.current?.getValue() || ''
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      errs.captcha = recaptchaRef.current
+        ? 'Conferma di non essere un robot.'
+        : 'Per inviare il modulo attiva la verifica antispam qui sopra.'
+    }
     setErrors(errs)
     if (Object.keys(errs).length) {
-      form.querySelector(`[name="${Object.keys(errs)[0]}"]`)?.focus()
+      const first = Object.keys(errs)[0]
+      if (first === 'captcha') form.querySelector('[data-captcha] iframe, [data-captcha] button')?.focus()
+      else form.querySelector(`[name="${first}"]`)?.focus()
+      return
+    }
+    // Campo trappola compilato: è un bot. Mostriamo l'esito positivo senza inviare nulla.
+    if (data.website) {
+      setStatus('sent')
       return
     }
     setStatus('sending')
     try {
-      const res = await fetch(import.meta.env.VITE_CONTACT_ENDPOINT || `${import.meta.env.BASE_URL}contact.php`, {
+      const target = sedi.find((s) => s.slug === data.sede)
+      const to = target?.email || CONTACT_EMAIL
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, origin, page: window.location.pathname }),
+        body: JSON.stringify({
+          from: to,
+          to,
+          subject: `[Sito] ${data.subject?.trim() || 'Richiesta informazioni'}${target ? ` – ${target.city}` : ''}`,
+          text: [
+            'Nuovo messaggio dal sito Agenzia Impresa',
+            '',
+            `Nome: ${data.name.trim()}`,
+            `Email: ${data.email.trim()}`,
+            `Sede: ${target?.city || '—'}`,
+            `Oggetto: ${data.subject?.trim() || '—'}`,
+            `Provenienza: ${origin} (${window.location.pathname})`,
+            '',
+            'Messaggio:',
+            data.message.trim(),
+          ].join('\n'),
+          captchaToken,
+        }),
       })
       if (res.ok) {
         setStatus('sent')
         form.reset()
         setSubject('')
-      } else setStatus(res.status === 503 ? 'unavailable' : 'error')
+      } else setStatus('error')
     } catch {
       setStatus('error')
     }
+    // Il token vale per un solo invio.
+    recaptchaRef.current?.reset()
   }
 
   if (status === 'sent') {
@@ -134,6 +176,14 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
         <textarea id={`${id}-message`} name="message" rows={5} required className={`${field} resize-y`} {...a11y('message')} />
         {err('message')}
       </div>
+      {RECAPTCHA_SITE_KEY && (
+        <div data-captcha className="sm:col-span-2">
+          <ConsentGate service="recaptcha" className="max-w-md">
+            <ReCAPTCHA ref={recaptchaRef} sitekey={RECAPTCHA_SITE_KEY} hl="it" />
+          </ConsentGate>
+          {err('captcha')}
+        </div>
+      )}
       {/* Campo trappola anti-spam: invisibile alle persone. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label htmlFor={`${id}-website`}>Lascia vuoto questo campo</label>
@@ -155,7 +205,7 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
       </div>
 
       <div aria-live="polite" className="sm:col-span-2">
-        {(status === 'error' || status === 'unavailable') && <SendFallback sede={sede} />}
+        {status === 'error' && <SendFallback sede={sede} />}
       </div>
     </form>
   )

@@ -42,6 +42,7 @@ export const SERVICES = [
   {
     id: 'google-maps',
     category: 'marketing',
+    icon: 'pin',
     name: 'Google Maps',
     provider: 'Google Ireland Limited',
     privacyPolicyUrl: 'https://policies.google.com/privacy',
@@ -61,6 +62,32 @@ export const SERVICES = [
         type: 'cookie',
         duration: '6 mesi',
         purpose: 'Sicurezza: impedisce che le richieste vengano fatte da terzi a nome dell’utente.',
+      },
+    ],
+  },
+  {
+    id: 'recaptcha',
+    category: 'marketing',
+    icon: 'shield',
+    name: 'Google reCAPTCHA',
+    provider: 'Google Ireland Limited',
+    privacyPolicyUrl: 'https://policies.google.com/privacy',
+    description:
+      'Protezione antispam dei moduli di contatto. Google raccoglie dati sul dispositivo e sulla navigazione e può usare i suoi cookie anche per altre finalità.',
+    cookies: [
+      {
+        name: '_GRECAPTCHA',
+        party: 'third',
+        type: 'cookie',
+        duration: '6 mesi',
+        purpose: 'Analisi del rischio per distinguere persone e bot.',
+      },
+      {
+        name: 'NID',
+        party: 'third',
+        type: 'cookie',
+        duration: '6 mesi',
+        purpose: 'Memorizza preferenze e informazioni usate da Google, anche per la pubblicità.',
       },
     ],
   },

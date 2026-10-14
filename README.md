@@ -27,11 +27,10 @@ npm run redirects  # rigenera vercel.json (redirect 301 dalle vecchie URL WordPr
   - si pubblica da sola a ogni push su `main` (`.github/workflows/pages.yml`);
   - la prima volta va attivata in *Settings → Pages → Source: GitHub Actions*;
   - è esclusa dai motori di ricerca;
-  - i moduli mostrano i telefoni delle sedi, perché GitHub Pages non esegue codice lato server.
+  - i moduli inviano davvero le email (stesso servizio del sito definitivo).
 - **Hosting definitivo:** `npm run build` e caricare il contenuto di `dist/` nella radice del dominio.
   - Ogni pagina è `cartella/index.html`, quindi funziona su qualsiasi hosting statico (Apache, nginx…).
   - I redirect dalle vecchie URL sono in `vercel.json`: su un altro hosting vanno riportati nella sua configurazione, per esempio `.htaccess`.
-  - Per i moduli serve un endpoint di invio: `VITE_CONTACT_ENDPOINT` in build, oppure `api/contact.js` su Vercel.
 - **Sottocartella:** per pubblicare in una sottocartella, `BASE_PATH=/cartella/ npm run build`. Con `PREVIEW=1` il sito viene escluso dai motori di ricerca.
 
 ## Struttura
@@ -48,7 +47,6 @@ npm run redirects  # rigenera vercel.json (redirect 301 dalle vecchie URL WordPr
 | `src/components/` | Header + mega-menu, Footer, form contatti, sedi, componenti UI |
 | `src/pages/` | Template di pagina |
 | `scripts/prerender.mjs` | Genera un HTML per pagina, `404.html`, `sitemap.xml`, `robots.txt` |
-| `api/contact.js` | Funzione serverless Vercel per l'invio dei moduli |
 | `public/brand/` | Logo (positivo, negativo) e simbolo in Main Blu `#0007e0` |
 
 ### Modificare i contenuti
@@ -58,23 +56,21 @@ npm run redirects  # rigenera vercel.json (redirect 301 dalle vecchie URL WordPr
 
 ## Moduli di contatto
 
-I moduli inviano a `contact.php` (in `public/`), uno script PHP per l'hosting definitivo. Lo script inoltra il messaggio alla casella della sede scelta; il "Rispondi" va al mittente.
+I moduli inviano il messaggio al servizio email EccoSolution, lo stesso del sito Gruppo APM (`https://eccopec-v2.eccosolution.it/Email/SendKaleyraMessage`, modificabile con `VITE_CONTACT_ENDPOINT`). La richiesta parte dal browser, quindi il servizio deve accettare richieste CORS dal dominio del sito.
 
-| Sede | Destinatario |
+| Modulo | Destinatario |
 |---|---|
 | Milano | milano@agenziaimpresa.com |
-| Mantova | brescia@agenziaimpresa.com *(indicato dal cliente, da confermare)* |
-| Modena | modena@agenziaimpresa.com |
+| Mantova | mantova@agenziaimpresa.com |
+| Modena | adempio.pratiche@agenziaimpresa.com |
 | Brescia (e Darfo Boario Terme) | brescia@agenziaimpresa.com |
 | Bologna | adempio.pratiche@agenziaimpresa.com |
-| Apri la tua Agenzia | network@agenziaimpresa.com |
-| Nessuna sede scelta | milano@agenziaimpresa.com *(da confermare)* |
+| Reggio Emilia | milano@agenziaimpresa.com *(provvisorio, da indicare)* |
+| Contatti generale (nessuna sede scelta) | adempio.pratiche@agenziaimpresa.com |
 
-Gli indirizzi e il mittente tecnico (`noreply@agenziaimpresa.com`, che deve appartenere al dominio dell'hosting) si modificano in testa a `public/contact.php`.
-
-- Lo script usa la funzione `mail()` di PHP. Se l'hosting richiede SMTP autenticato, va adattato.
-- **Su GitHub Pages** lo script non viene eseguito: il modulo mostra i numeri di telefono delle sedi.
-- **Su Vercel** si può usare la funzione `api/contact.js` (invio con Resend). In quel caso va impostato `VITE_CONTACT_ENDPOINT=/api/contact` in build, più le variabili `RESEND_API_KEY`, `CONTACT_FROM` e, facoltativa, `CONTACT_TO`.
+- Gli indirizzi si modificano in `src/content/site.js`: campo `email` di ogni sede e `CONTACT_EMAIL` per il modulo generale.
+- Antispam: Google reCAPTCHA v2 ("Non sono un robot"). La chiave pubblica è `VITE_RECAPTCHA_SITE_KEY` in `.env`; la chiave segreta sta solo sul servizio di invio, che verifica il `captchaToken`. Il captcha imposta cookie di Google, quindi compare solo dopo il consenso ai cookie (categoria Marketing); prima c'è il segnaposto "Attiva contenuto".
+- Se l'invio non riesce, il modulo mostra i numeri di telefono delle sedi.
 
 ## Design system
 

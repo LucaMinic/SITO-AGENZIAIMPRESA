@@ -267,7 +267,7 @@ export function ConsentGate({ service: serviceId, children, externalUrl, classNa
         className="absolute inset-0 opacity-60 [background-image:linear-gradient(var(--color-line)_1px,transparent_1px),linear-gradient(90deg,var(--color-line)_1px,transparent_1px)] [background-size:32px_32px]"
       />
       <span className="relative flex size-12 items-center justify-center bg-brand text-white cut-corner [--cut:10px]">
-        <Icon name="pin" className="size-5" />
+        <Icon name={service.icon || 'pin'} className="size-5" />
       </span>
       <p className="relative font-semibold">{fill(ui.placeholderTitle, values)}</p>
       <p className="relative max-w-[36ch] text-xs leading-relaxed text-muted">{fill(ui.placeholderText, values)}</p>
