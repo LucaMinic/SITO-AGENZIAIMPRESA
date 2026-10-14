@@ -38,6 +38,9 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
     if (!data.name?.trim()) errs.name = 'Inserisci il tuo nome.'
     if (!data.email?.trim()) errs.email = 'Inserisci la tua email.'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errs.email = 'Controlla l’indirizzo email.'
+    if (!data.phone?.trim()) errs.phone = 'Inserisci il tuo numero di telefono.'
+    else if (!/^\+?[\d\s().-]{6,}$/.test(data.phone.trim()) || data.phone.replace(/\D/g, '').length < 6)
+      errs.phone = 'Controlla il numero di telefono.'
     if (!data.message?.trim()) errs.message = 'Scrivi il tuo messaggio.'
     const captchaToken = recaptchaRef.current?.getValue() || ''
     if (RECAPTCHA_SITE_KEY && !captchaToken) {
@@ -73,6 +76,7 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
             '',
             `Nome: ${data.name.trim()}`,
             `Email: ${data.email.trim()}`,
+            `Telefono: ${data.phone.trim()}`,
             `Sede: ${target?.city || '—'}`,
             `Oggetto: ${data.subject?.trim() || '—'}`,
             `Provenienza: ${origin} (${window.location.pathname})`,
@@ -140,6 +144,22 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
         />
         {err('email')}
       </div>
+      <div>
+        <label htmlFor={`${id}-phone`} className={label}>
+          Il tuo telefono <span aria-hidden="true" className="text-brand">*</span>
+        </label>
+        <input
+          id={`${id}-phone`}
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          inputMode="tel"
+          required
+          className={field}
+          {...a11y('phone')}
+        />
+        {err('phone')}
+      </div>
       {showSede ? (
         <div>
           <label htmlFor={`${id}-sede`} className={label}>
@@ -157,7 +177,7 @@ export default function ContactForm({ sede = '', origin = 'contatti', showSede =
       ) : (
         <input type="hidden" name="sede" value={sede} />
       )}
-      <div className={showSede ? '' : 'sm:col-span-2'}>
+      <div className={showSede ? 'sm:col-span-2' : ''}>
         <label htmlFor={`${id}-subject`} className={label}>
           Oggetto
         </label>
